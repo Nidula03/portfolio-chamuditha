@@ -3,10 +3,11 @@
 
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Hand, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Markdown from "react-markdown";
+import { useMediumStats } from "@/lib/useMediumStats";
 
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
@@ -40,6 +41,9 @@ interface Props {
     href: string;
   }[];
   className?: string;
+  claps?: number;
+  comments?: number;
+  mediumPostId?: string;
 }
 
 export function ProjectCard({
@@ -53,7 +57,12 @@ export function ProjectCard({
   video,
   links,
   className,
+  claps: initialClaps,
+  comments,
+  mediumPostId,
 }: Props) {
+  const { stats } = useMediumStats(mediumPostId || "", initialClaps || 0);
+  const displayClaps = mediumPostId && stats.claps > 0 ? stats.claps : (initialClaps || 0);
   return (
     <div
       className={cn(
@@ -135,6 +144,22 @@ export function ProjectCard({
                 {tag}
               </Badge>
             ))}
+          </div>
+        )}
+        {(displayClaps !== undefined || comments !== undefined) && (
+          <div className="flex gap-4 text-xs text-muted-foreground mt-2 pt-3 border-t border-border">
+            {displayClaps !== undefined && (
+              <div className="flex items-center gap-1.5">
+                <Hand className="h-4 w-4 stroke-[1.5]" />
+                <span>{displayClaps}</span>
+              </div>
+            )}
+            {comments !== undefined && (
+              <div className="flex items-center gap-1.5">
+                <MessageCircle className="h-4 w-4 stroke-[1.5]" />
+                <span>{comments}</span>
+              </div>
+            )}
           </div>
         )}
       </div>
