@@ -111,7 +111,7 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "",
+      image: "/logbook.webp",
       video: "",
       claps: 50,
       comments: 0,
