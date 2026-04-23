@@ -65,20 +65,18 @@ export function ProjectCard({
   const displayClaps = mediumPostId && stats.claps > 0 ? stats.claps : (initialClaps || 0);
   return (
     <div
-      onClick={() => href && window.open(href, "_blank", "noopener,noreferrer")}
+      onClick={() => {
+        if (href) {
+          window.location.href = href;
+        }
+      }}
       className={cn(
         "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted hover:scale-[1.02] transition-all duration-500 ease-out",
         className
       )}
     >
       <div className="relative shrink-0">
-        <Link
-          href={href || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block"
-          onClick={(e) => e.stopPropagation()}
-        >
+        <div className="block">
           {video ? (
             <video
               src={video}
@@ -93,11 +91,11 @@ export function ProjectCard({
           ) : (
             <div className="w-full h-48 bg-muted" />
           )}
-        </Link>
+        </div>
         {links && links.length > 0 && (
           <div className="absolute top-2 right-2 flex flex-wrap gap-2">
             {links.map((link, idx) => (
-              <Link
+              <a
                 href={link.href}
                 key={idx}
                 target="_blank"
@@ -111,7 +109,7 @@ export function ProjectCard({
                   {link.icon}
                   {link.type}
                 </Badge>
-              </Link>
+              </a>
             ))}
           </div>
         )}
@@ -122,16 +120,14 @@ export function ProjectCard({
             <h3 className="font-semibold">{title}</h3>
             <time className="text-xs text-muted-foreground">{dates}</time>
           </div>
-          <Link
+          <a
             href={href || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
             aria-label={`Open ${title}`}
             onClick={(e) => e.stopPropagation()}
           >
             <ArrowUpRight className="h-4 w-4" aria-hidden />
-          </Link>
+          </a>
         </div>
         <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
           <Markdown>{description}</Markdown>
