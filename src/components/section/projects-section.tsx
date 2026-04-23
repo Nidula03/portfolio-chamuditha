@@ -6,9 +6,9 @@ const BLUR_FADE_DELAY = 0.04;
 
 export default function ProjectsSection() {
     return (
-        <section id="projects">
-            <div className="flex min-h-0 flex-col gap-y-8">
-                <div className="flex flex-col gap-y-4 items-center justify-center">
+        <section id="projects" className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+            <div className="flex min-h-0 flex-col gap-y-8 w-full px-8 sm:px-16 lg:px-20">
+                <div className="flex flex-col gap-y-4 items-center justify-center w-full">
                     <div className="flex items-center w-full">
                         <div
                             className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent"
@@ -27,7 +27,7 @@ export default function ProjectsSection() {
                     
                     </div>
                 </div>
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto auto-rows-fr">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 w-full mx-auto max-w-5xl" style={{ gridAutoRows: '3fr' }}>
                     {DATA.projects.map((project, id) => (
                         <BlurFade
                             key={project.title}

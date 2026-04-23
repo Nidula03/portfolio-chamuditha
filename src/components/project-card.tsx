@@ -65,8 +65,9 @@ export function ProjectCard({
   const displayClaps = mediumPostId && stats.claps > 0 ? stats.claps : (initialClaps || 0);
   return (
     <div
+      onClick={() => href && window.open(href, "_blank", "noopener,noreferrer")}
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted transition-all duration-200",
+        "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted hover:scale-[1.02] transition-all duration-500 ease-out",
         className
       )}
     >
@@ -76,6 +77,7 @@ export function ProjectCard({
           target="_blank"
           rel="noopener noreferrer"
           className="block"
+          onClick={(e) => e.stopPropagation()}
         >
           {video ? (
             <video
@@ -126,6 +128,7 @@ export function ProjectCard({
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
             aria-label={`Open ${title}`}
+            onClick={(e) => e.stopPropagation()}
           >
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </Link>

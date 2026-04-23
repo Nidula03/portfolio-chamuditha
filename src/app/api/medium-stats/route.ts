@@ -13,6 +13,7 @@ const CACHE_TTL = 30 * 60 * 1000; // 30 minutes
 const FALLBACK_CLAPS: Record<string, number> = {
   '8c15c04d1f3c': 51,      // Beyond the Pedals
   '65d87079d742': 50,      // Ink, Mud and Memories
+  '218197818958': 57,      // Blind on the Summit
 };
 
 async function fetchMediumStats(postId: string) {

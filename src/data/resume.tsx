@@ -15,11 +15,11 @@ import { Csharp } from "@/components/ui/svgs/csharp";
 export const DATA = {
   name: "Chamuditha Ekanayake",
   initials: "DV",
-  url: "https://dillion.io",
+  url: "https://chamuditha.dev",
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
   description:
-    "Scout • Explorer • Builder of meaningful experiences",
+    "Scout • Explorer",
   summary:
     `Scouting has been a defining part of my journey, shaping how I approach leadership, discipline, and problem-solving in both nature and everyday life.
 
@@ -117,6 +117,35 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
       comments: 0,
       mediumPostId: "65d87079d742",
     },
+       {
+      title: "Blind on the Summit: How a Pipeline Saved Our Hike",
+      href: "https://medium.com/@chamudithasawan/blind-on-the-summit-how-a-pipeline-saved-our-hike-218197818958",
+      dates: "2026",
+      active: true,
+      description:
+        "A spontaneous hike turned into a survival situation when I lost my glasses at the summit. Discover how instinct, memory, and a water pipeline led us back to safety.",
+      technologies: ["Mountain Hiking", "Survival", "Life Lessons"],
+      links: [
+        {
+          type: "Read on Medium",
+          href: "https://medium.com/@chamudithasawan/blind-on-the-summit-how-a-pipeline-saved-our-hike-218197818958",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/Blind _Summit.webp",
+      video: "",
+      claps: 57,
+      comments: 0,
+      mediumPostId: "218197818958",
+    },
+
+    
+
+
+
+
+
+
   ],
   hackathons: [] as Array<{
     title: string;
