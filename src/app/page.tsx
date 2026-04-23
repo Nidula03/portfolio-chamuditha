@@ -37,7 +37,7 @@ export default function Page() {
                   width={128}
                   height={128}
                   priority
-                  quality={90}
+                  quality={75}
                   className="w-full h-full object-cover"
                 />
               </div>

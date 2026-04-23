@@ -1,14 +1,5 @@
 import { NextResponse } from 'next/server';
 
-interface CacheEntry {
-  claps: number;
-  timestamp: number;
-}
-
-// In-memory cache with 2 minutes TTL for faster updates
-const cache = new Map<string, CacheEntry>();
-const CACHE_TTL = 2 * 60 * 1000; // 2 minutes
-
 // Fallback clap counts
 const FALLBACK_CLAPS: Record<string, number> = {
   '8c15c04d1f3c': 51,      // Beyond the Pedals
@@ -16,54 +7,104 @@ const FALLBACK_CLAPS: Record<string, number> = {
   '218197818958': 57,      // Blind on the Summit
 };
 
-async function fetchMediumStats(postId: string) {
+interface MediumPostData {
+  id: string;
+  title: string;
+  clappedCount: number;
+  createdAt: number;
+  updatedAt: number;
+}
+
+async function fetchMediumStats(postId: string): Promise<{ claps: number; timestamp: number }> {
   try {
-    // Check cache first
-    const cached = cache.get(postId);
-    if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
-      console.log(`[Cache HIT] Post ${postId}: ${cached.claps} claps`);
-      return cached;
-    }
+    // Method 1: Try the direct API endpoint
+    const apiUrl = `https://medium.com/api/posts/${postId}`;
+    
+    console.log(`[Fetching] ${new Date().toISOString()} - ${apiUrl}`);
+    
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'Accept': 'application/json',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Referer': 'https://medium.com/',
+        'DNT': '1',
+        'Connection': 'keep-alive',
+        'Cache-Control': 'no-cache',
+      },
+      cache: 'no-store',
+      next: { revalidate: 0 },
+    });
 
-    // Try to fetch from Medium's public API endpoint
-    try {
-      const mediumUrl = `https://medium.com/@chamudithasawan/${postId}`;
-      const response = await fetch(mediumUrl, {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-        },
-      });
-
-      if (response.ok) {
-        const html = await response.text();
-        
-        // Try to extract clap count from the HTML
-        const clapMatch = html.match(/"clapCount":(\d+)/);
-        if (clapMatch && clapMatch[1]) {
-          const claps = parseInt(clapMatch[1], 10);
-          console.log(`[Medium Scrape] Post ${postId}: ${claps} claps`);
-          const entry = { claps, timestamp: Date.now() };
-          cache.set(postId, entry);
-          return entry;
-        }
+    if (response.ok) {
+      const data: MediumPostData = await response.json();
+      
+      if (data.clappedCount !== undefined) {
+        const claps = data.clappedCount;
+        console.log(`[SUCCESS] Post ${postId}: ${claps} claps`);
+        return { claps, timestamp: Date.now() };
       }
-    } catch (fetchError) {
-      console.log(`[Medium Fetch Failed]`, fetchError);
+    } else {
+      console.log(`[HTTP ${response.status}] Failed to fetch from ${apiUrl}`);
     }
-
-    // Fallback to static values if fetching fails
-    const fallbackClaps = FALLBACK_CLAPS[postId] || 0;
-    console.log(`[Using Fallback] Post ${postId}: ${fallbackClaps} claps`);
-    
-    const entry = { claps: fallbackClaps, timestamp: Date.now() };
-    cache.set(postId, entry);
-    return entry;
-    
   } catch (error) {
-    console.error('Error in fetchMediumStats:', error);
-    const fallbackClaps = FALLBACK_CLAPS[postId] || 51;
-    return { claps: fallbackClaps, timestamp: Date.now() };
+    console.log(`[Error] ${error instanceof Error ? error.message : String(error)}`);
   }
+
+  // Try Method 2: GraphQL API endpoint as fallback
+  try {
+    console.log(`[Trying GraphQL] ${new Date().toISOString()}`);
+    
+    const graphqlUrl = 'https://medium.com/_/graphql';
+    
+    const graphqlQuery = {
+      operationName: 'GetPost',
+      variables: {
+        postId: postId,
+      },
+      query: `
+        query GetPost($postId: ID!) {
+          post(id: $postId) {
+            id
+            title
+            clapCount
+          }
+        }
+      `,
+    };
+
+    const response = await fetch(graphqlUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'Accept': 'application/json',
+        'Origin': 'https://medium.com',
+        'Referer': 'https://medium.com/',
+      },
+      cache: 'no-store',
+      next: { revalidate: 0 },
+      body: JSON.stringify(graphqlQuery),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      
+      if (data.data?.post?.clapCount !== undefined) {
+        const claps = data.data.post.clapCount;
+        console.log(`[GraphQL SUCCESS] Post ${postId}: ${claps} claps`);
+        return { claps, timestamp: Date.now() };
+      }
+    }
+  } catch (error) {
+    console.log(`[GraphQL Error] ${error instanceof Error ? error.message : String(error)}`);
+  }
+
+  // Fallback to static values
+  const claps = FALLBACK_CLAPS[postId] || 0;
+  console.log(`[Fallback] Post ${postId}: ${claps} claps`);
+  return { claps, timestamp: Date.now() };
 }
 
 export async function GET(request: Request) {
@@ -81,7 +122,10 @@ export async function GET(request: Request) {
 
   return NextResponse.json(stats, {
     headers: {
-      'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=240',
+      'Cache-Control': 'no-cache, no-store, must-revalidate, max-age=0',
+      'Pragma': 'no-cache',
+      'Expires': '0',
+      'X-Accel-Expires': '0',
     },
   });
 }
