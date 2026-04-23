@@ -43,6 +43,7 @@ export function useMediumStats(postId: string, defaultClaps: number = 0) {
       }
     };
 
+    // Fetch on component mount and page refresh
     fetchStats();
 
     return () => {

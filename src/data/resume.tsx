@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon } from "lucide-react";
+import { HomeIcon, BookOpen } from "lucide-react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 import { Typescript } from "@/components/ui/svgs/typescript";
@@ -34,6 +34,7 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
   skills: [],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "https://medium.com/@chamudithasawan", icon: BookOpen, label: "Blogs" },
   ],
   contact: {
     email: "hello@example.com",

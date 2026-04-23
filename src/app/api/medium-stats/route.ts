@@ -5,11 +5,11 @@ interface CacheEntry {
   timestamp: number;
 }
 
-// In-memory cache with 30 minutes TTL
+// In-memory cache with 2 minutes TTL for faster updates
 const cache = new Map<string, CacheEntry>();
-const CACHE_TTL = 30 * 60 * 1000; // 30 minutes
+const CACHE_TTL = 2 * 60 * 1000; // 2 minutes
 
-// Fallback clap counts - these are updated manually as reference values
+// Fallback clap counts
 const FALLBACK_CLAPS: Record<string, number> = {
   '8c15c04d1f3c': 51,      // Beyond the Pedals
   '65d87079d742': 50,      // Ink, Mud and Memories
@@ -25,11 +25,36 @@ async function fetchMediumStats(postId: string) {
       return cached;
     }
 
-    // Get fallback value
+    // Try to fetch from Medium's public API endpoint
+    try {
+      const mediumUrl = `https://medium.com/@chamudithasawan/${postId}`;
+      const response = await fetch(mediumUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        },
+      });
+
+      if (response.ok) {
+        const html = await response.text();
+        
+        // Try to extract clap count from the HTML
+        const clapMatch = html.match(/"clapCount":(\d+)/);
+        if (clapMatch && clapMatch[1]) {
+          const claps = parseInt(clapMatch[1], 10);
+          console.log(`[Medium Scrape] Post ${postId}: ${claps} claps`);
+          const entry = { claps, timestamp: Date.now() };
+          cache.set(postId, entry);
+          return entry;
+        }
+      }
+    } catch (fetchError) {
+      console.log(`[Medium Fetch Failed]`, fetchError);
+    }
+
+    // Fallback to static values if fetching fails
     const fallbackClaps = FALLBACK_CLAPS[postId] || 0;
     console.log(`[Using Fallback] Post ${postId}: ${fallbackClaps} claps`);
     
-    // Return fallback with current timestamp
     const entry = { claps: fallbackClaps, timestamp: Date.now() };
     cache.set(postId, entry);
     return entry;
@@ -56,7 +81,7 @@ export async function GET(request: Request) {
 
   return NextResponse.json(stats, {
     headers: {
-      'Cache-Control': 'public, s-maxage=1800, stale-while-revalidate=3600',
+      'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=240',
     },
   });
 }
