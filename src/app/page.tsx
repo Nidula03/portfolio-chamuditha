@@ -6,6 +6,7 @@ import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
 import ProjectsSection from "@/components/section/projects-section";
+import Image from "next/image";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -29,10 +30,17 @@ export default function Page() {
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
-              <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
-              </Avatar>
+              <div className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted overflow-hidden">
+                <Image
+                  src={DATA.avatarUrl}
+                  alt={DATA.name}
+                  width={128}
+                  height={128}
+                  priority
+                  quality={90}
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </BlurFade>
           </div>
         </div>

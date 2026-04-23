@@ -14,7 +14,7 @@ import { Csharp } from "@/components/ui/svgs/csharp";
 
 export const DATA = {
   name: "Chamuditha Ekanayake",
-  initials: "DV",
+  initials: "CE",
   url: "https://chamuditha.dev",
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
