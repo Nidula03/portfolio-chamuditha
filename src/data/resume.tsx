@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, BookOpen } from "lucide-react";
+import { HomeIcon, BookOpen, Code, MessageSquare, Sparkles } from "lucide-react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 import { Typescript } from "@/components/ui/svgs/typescript";
@@ -18,23 +18,23 @@ export const DATA = {
   url: "https://chamuditha.dev",
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
-  description:
-    "Scout • Explorer",
-  summary:
-    `Scouting has been a defining part of my journey, shaping how I approach leadership, discipline, and problem-solving in both nature and everyday life.
+  description: "Scout • Explorer",
+  summary: `Hello! 👋😊 , You can call me Chamuditha!
 
-As a Rover Scout, I’ve been involved in a wide range of outdoor expeditions, community service activities, and leadership programs that have helped me develop resilience, adaptability, and a strong sense of responsibility.
+I'm a self-driven researcher with expertise in analytical chemistry and passionate about applying analytical techniques to solve complex problems with a focus on innovation and sustainability through multi-disciplinary knowledge in academic and industrial setting.
 
-I’ve been honored with the Baden Powell Award and the President’s Scout Award, representing the highest levels of recognition in scouting at both national and international standards. These achievements reflect years of commitment, service, and personal growth.
+Advancing the traditional laboratory, I ♥️ go beyond the bench by implementing laboratory digitalization strategies to streamline workflows and integrating modern scientific techniques into conventional chemistry methods. 
 
-Beyond formal scouting activities, I’m an avid hiker who finds inspiration in nature and challenging trails. I enjoy experiences that push mental and physical limits while offering perspective and clarity.
-
+Outside the lab, I am an avid hiker who finds inspiration in exploring challenging trails and the untamed beauty of nature. My experiences as a Boy Scout and Rover Scout, culminating in receiving both the Baden Powell Award and the President’s Scout Award—the highest honors at the international and national levels of scouting have profoundly shaped my character.
 Today, I continue to explore, learn, and grow through scouting and outdoor experiences — building discipline, leadership, and a deeper connection with the world around me.`,
   avatarUrl: "/me.png",
   skills: [],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "https://medium.com/@chamudithasawan", icon: BookOpen, label: "Blogs" },
+    { href: "/projects", icon: Code, label: "Projects" },
+    { href: "/blog", icon: BookOpen, label: "Blog" },
+    { href: "/talks", icon: MessageSquare, label: "Talks" },
+    { href: "/interests", icon: Sparkles, label: "Interests" },
   ],
   contact: {
     email: "hello@example.com",
@@ -75,7 +75,7 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
     start: string;
     end: string;
   }>,
-  projects: [
+  blogs: [
     {
       title: "Beyond the Pedals",
       href: "https://medium.com/@chamudithasawan/beyond-the-pedals-8c15c04d1f3c",
@@ -118,7 +118,7 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
       comments: 0,
       mediumPostId: "65d87079d742",
     },
-       {
+    {
       title: "Blind on the Summit: How a Pipeline Saved Our Hike",
       href: "https://medium.com/@chamudithasawan/blind-on-the-summit-how-a-pipeline-saved-our-hike-218197818958",
       dates: "2026",
@@ -139,8 +139,21 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
       comments: 0,
       mediumPostId: "218197818958",
     },
-
-    
+  ] as Array<{
+    title: string;
+    href: string;
+    dates: string;
+    active: boolean;
+    description: string;
+    technologies: string[];
+    links: Array<{ type: string; href: string; icon: React.ReactNode }>;
+    image: string;
+    video: string;
+    claps: number;
+    comments: number;
+    mediumPostId: string;
+  }>,
+  projects: [
 
 
 

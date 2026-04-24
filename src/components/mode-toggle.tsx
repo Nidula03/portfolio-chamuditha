@@ -13,11 +13,11 @@ export function ModeToggle({ className }: { className?: string }) {
       type="button"
       variant="link"
       size="icon"
-      className={cn(className)}
+      className={cn("h-4 w-4", className)}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
-      <SunIcon className="h-full w-full" />
-      <MoonIcon className="hidden h-full w-full" />
+      <SunIcon className="h-4 w-4" />
+      <MoonIcon className="hidden h-4 w-4" />
     </Button>
   );
 }

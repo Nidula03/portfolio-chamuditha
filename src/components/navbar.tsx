@@ -1,97 +1,141 @@
-import { Dock, DockIcon } from "@/components/magicui/dock";
+"use client";
+
+import Link from "next/link";
 import { ModeToggle } from "@/components/mode-toggle";
-import { Separator } from "@/components/ui/separator";
-import {
-  Tooltip,
-  TooltipArrow,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname.startsWith(href);
+  };
+
+  const NavLinks = () => (
+    <>
+      {DATA.navbar.map((item) => {
+        const isExternal = item.href.startsWith("http");
+        const active = !isExternal && isActive(item.href);
+
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
+            onClick={() => setIsOpen(false)}
+            className={cn(
+              "flex items-center gap-2 text-sm transition-colors py-2",
+              active
+                ? "text-primary font-bold"
+                : "text-muted-foreground hover:text-foreground"
+            )}
+          >
+            <item.icon className="size-4" />
+            <span>{item.label}</span>
+          </Link>
+        );
+      })}
+    </>
+  );
+
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-4 z-30 px-6 flex justify-center items-center">
-      <Dock className="z-50 pointer-events-auto relative h-14 p-2 flex gap-2">
-        {DATA.navbar.map((item) => {
-          const isExternal = item.href.startsWith("http");
-          return (
-            <Tooltip key={item.href}>
-              <TooltipTrigger asChild>
-                <a
-                  href={item.href}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
-                >
-                  <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
-                    <item.icon className="size-full rounded-sm overflow-hidden object-contain" />
-                  </DockIcon>
-                </a>
-              </TooltipTrigger>
-              <TooltipContent
-                side="top"
-                sideOffset={8}
-                className="rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] dark:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]"
-              >
-                <p>{item.label}</p>
-                <TooltipArrow className="fill-primary" />
-              </TooltipContent>
-            </Tooltip>
-          );
-        })}
-        <Separator
-          orientation="vertical"
-          className="h-2/3 m-auto w-px bg-border"
-        />
-        {Object.entries(DATA.contact.social)
-          .filter(([_, social]) => social.navbar)
-          .map(([name, social], index) => {
-            const isExternal = social.url.startsWith("http");
-            const IconComponent = social.icon;
-            return (
-              <Tooltip key={`social-${name}-${index}`}>
-                <TooltipTrigger asChild>
+    <nav className="fixed top-0 z-40 w-full backdrop-blur-md border-b border-border/40 bg-background/80">
+      <div className="w-full h-16 flex items-center justify-between px-8 sm:px-16 lg:px-20">
+        {/* Logo - Left */}
+        <Link
+          href="/"
+          className="font-semibold text-lg hover:text-primary transition-colors flex-1"
+        >
+          {DATA.name.split(" ")[0]}.
+        </Link>
+
+        {/* Desktop Navigation Links - Center */}
+        <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
+          <NavLinks />
+        </div>
+
+        {/* Mobile Menu Button & Theme - Right */}
+        <div className="md:hidden flex items-center gap-4 flex-1 justify-end">
+          <ModeToggle className="h-4 w-4 p-0" />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+        </div>
+
+        {/* Desktop Social & Theme - Right */}
+        <div className="hidden md:flex items-center gap-4 flex-1 justify-end">
+          <div className="flex items-center gap-3">
+            {Object.entries(DATA.contact.social)
+              .filter(([_, social]) => social.navbar)
+              .map(([name, social]) => {
+                const isExternal = social.url.startsWith("http");
+                const IconComponent = social.icon;
+
+                return (
                   <a
+                    key={name}
                     href={social.url}
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noopener noreferrer" : undefined}
+                    className="text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
-                      <IconComponent className="size-full rounded-sm overflow-hidden object-contain" />
-                    </DockIcon>
+                    <IconComponent className="size-4" />
                   </a>
-                </TooltipTrigger>
-                <TooltipContent
-                  side="top"
-                  sideOffset={8}
-                  className="rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] dark:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]"
-                >
-                  <p>{name}</p>
-                  <TooltipArrow className="fill-primary" />
-                </TooltipContent>
-              </Tooltip>
-            );
-          })}
-        <Separator
-          orientation="vertical"
-          className="h-2/3 m-auto w-px bg-border"
-        />
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
-              <ModeToggle className="size-full cursor-pointer" />
-            </DockIcon>
-          </TooltipTrigger>
-          <TooltipContent
-            side="top"
-            sideOffset={8}
-            className="rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] dark:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]"
-          >
-            <p>Theme</p>
-            <TooltipArrow className="fill-primary" />
-          </TooltipContent>
-        </Tooltip>
-      </Dock>
-    </div>
+                );
+              })}
+          </div>
+
+          {/* Separator */}
+          <div className="w-px h-4 bg-border"></div>
+
+          {/* Theme Toggle */}
+          <ModeToggle className="h-4 w-4 p-0" />
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-md">
+          <div className="mx-auto w-full max-w-6xl px-6 py-4 flex flex-col gap-4">
+            <NavLinks />
+
+            {/* Mobile Social Links */}
+            <div className="border-t border-border/40 pt-4 flex items-center gap-3">
+              {Object.entries(DATA.contact.social)
+                .filter(([_, social]) => social.navbar)
+                .map(([name, social]) => {
+                  const isExternal = social.url.startsWith("http");
+                  const IconComponent = social.icon;
+
+                  return (
+                    <a
+                      key={name}
+                      href={social.url}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <IconComponent className="size-4" />
+                    </a>
+                  );
+                })}
+            </div>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }
