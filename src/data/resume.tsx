@@ -153,14 +153,19 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
     comments: number;
     mediumPostId: string;
   }>,
-  projects: [
-
-
-
-
-
-
-  ],
+  projects: [] as Array<{
+    title: string;
+    href?: string;
+    description: string;
+    dates: string;
+    technologies: readonly string[];
+    image?: string;
+    video?: string;
+    links?: Array<{ icon: React.ReactNode; type: string; href: string }>;
+    claps?: number;
+    comments?: number;
+    mediumPostId?: string;
+  }>,
   hackathons: [] as Array<{
     title: string;
     dates: string;

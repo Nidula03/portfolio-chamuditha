@@ -11,8 +11,6 @@ export function useMediumStats(postId: string, defaultClaps: number = 0) {
 
   useEffect(() => {
     if (!postId) {
-      setLoading(false);
-      setStats({ claps: defaultClaps });
       return;
     }
 

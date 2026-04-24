@@ -23,7 +23,7 @@ export default function InterestsPage() {
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <div className="text-muted-foreground space-y-4">
               <p>
-                <strong>Scouting:</strong> Baden Powell Award and President's Scout Award recipient. Passionate about outdoor expeditions and community service.
+                <strong>Scouting:</strong> Baden Powell Award and President&apos;s Scout Award recipient. Passionate about outdoor expeditions and community service.
               </p>
               <p>
                 <strong>Hiking:</strong> Avid hiker who loves exploring challenging trails and connecting with nature.

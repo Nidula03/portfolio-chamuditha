@@ -5,13 +5,10 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Menu, X } from "lucide-react";
 
-export default function Navbar() {
-  const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
-
+const NavLinks = ({ pathname, isOpen, setIsOpen }: { pathname: string; isOpen: boolean; setIsOpen: (open: boolean) => void }) => {
   const isActive = (href: string) => {
     if (href === "/") {
       return pathname === "/";
@@ -19,7 +16,7 @@ export default function Navbar() {
     return pathname.startsWith(href);
   };
 
-  const NavLinks = () => (
+  return (
     <>
       {DATA.navbar.map((item) => {
         const isExternal = item.href.startsWith("http");
@@ -46,6 +43,11 @@ export default function Navbar() {
       })}
     </>
   );
+};
+
+export default function Navbar() {
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 z-40 w-full backdrop-blur-md border-b border-border/40 bg-background/80">
@@ -60,7 +62,7 @@ export default function Navbar() {
 
         {/* Desktop Navigation Links - Center */}
         <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
-          <NavLinks />
+          <NavLinks pathname={pathname} isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
 
         {/* Mobile Menu Button & Theme - Right */}
@@ -110,7 +112,7 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-md">
           <div className="mx-auto w-full max-w-6xl px-6 py-4 flex flex-col gap-4">
-            <NavLinks />
+            <NavLinks pathname={pathname} isOpen={isOpen} setIsOpen={setIsOpen} />
 
             {/* Mobile Social Links */}
             <div className="border-t border-border/40 pt-4 flex items-center gap-3">
