@@ -6,11 +6,15 @@ interface MediumStats {
 }
 
 export function useMediumStats(postId: string, defaultClaps: number = 0) {
+  const liveMode = process.env.NEXT_PUBLIC_MEDIUM_STATS_LIVE === 'true';
+  const shouldFetchLive = Boolean(postId) && liveMode && defaultClaps === 0;
   const [stats, setStats] = useState<MediumStats>({ claps: defaultClaps });
-  const [loading, setLoading] = useState(!!postId);
+  const [loading, setLoading] = useState(shouldFetchLive);
 
   useEffect(() => {
-    if (!postId) {
+    if (!postId || !shouldFetchLive) {
+      setStats({ claps: defaultClaps });
+      setLoading(false);
       return;
     }
 
@@ -18,19 +22,18 @@ export function useMediumStats(postId: string, defaultClaps: number = 0) {
 
     const fetchStats = async () => {
       try {
-        console.log(`Fetching stats for post: ${postId}`);
-        const response = await fetch(`/api/medium-stats?postId=${postId}`);
+        const response = await fetch(`/api/medium-stats?postId=${postId}`, {
+          signal: AbortSignal.timeout(1500),
+        });
         if (!response.ok) {
           throw new Error(`Failed to fetch stats: ${response.status}`);
         }
         
         const data = await response.json();
-        console.log(`Got stats:`, data);
         if (isMounted) {
           setStats(data);
         }
       } catch (error) {
-        console.error('Error fetching medium stats:', error);
         if (isMounted) {
           setStats({ claps: defaultClaps });
         }
@@ -47,7 +50,7 @@ export function useMediumStats(postId: string, defaultClaps: number = 0) {
     return () => {
       isMounted = false;
     };
-  }, [postId, defaultClaps]);
+  }, [postId, defaultClaps, shouldFetchLive]);
 
   return { stats, loading };
 }

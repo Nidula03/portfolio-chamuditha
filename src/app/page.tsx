@@ -3,7 +3,6 @@
 import React from "react";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
 import Image from "next/image";
@@ -91,7 +90,7 @@ export default function Page() {
             {/* Right: About Me Section */}
             <div className="md:col-span-2 space-y-8">
               <BlurFade delay={BLUR_FADE_DELAY * 4}>
-                <div>
+                <div id="About">
                   <BlurFadeText
                     delay={BLUR_FADE_DELAY * 5}
                     className="text-3xl font-bold tracking-tighter sm:text-4xl"
@@ -106,15 +105,138 @@ export default function Page() {
 
               {/* My Values Section */}
               <BlurFade delay={BLUR_FADE_DELAY * 6}>
-                <div className="space-y-4">
+                <div id="Education" className="space-y-4">
                   <BlurFadeText
                     delay={BLUR_FADE_DELAY * 7}
                     className="text-3xl font-bold tracking-tighter"
                     yOffset={8}
                     text="Education"
                   />
-                  <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert mt-4">
+                  <div className="mt-4 space-y-4">
+                    {DATA.education.map((item, index) => (
+                      <div
+                        key={`${item.school}-${item.degree}-${index}`}
+                        className="rounded-xl border border-border/50 bg-muted/20 p-4"
+                      >
+                        <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                          <div className="flex items-center gap-3">
+                            {item.logoUrl ? (
+                              <div className="size-10 overflow-hidden rounded-full border border-border/60 bg-background shrink-0">
+                                <Image
+                                  src={item.logoUrl}
+                                  alt={`${item.school} logo`}
+                                  width={40}
+                                  height={40}
+                                  className="h-full w-full object-cover"
+                                />
+                              </div>
+                            ) : null}
+                            <div>
+                              <h3 className="text-base font-semibold text-foreground">{item.school}</h3>
+                              <p className="text-sm text-muted-foreground">{item.degree}</p>
+                            </div>
+                          </div>
+                          <p className="text-xs text-muted-foreground sm:mt-0 mt-1">
+                            {item.start} - {item.end}
+                          </p>
+                        </div>
+
+                        {item.description ? (
+                          <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                            {item.description}
+                          </p>
+                        ) : null}
+
+                        {item.skills ? (
+                          <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                            <span className="font-medium text-foreground">Skills:</span> {item.skills}
+                          </p>
+                        ) : null}
+                      </div>
+                    ))}
                   </div>
+                </div>
+              </BlurFade>
+
+              <BlurFade delay={BLUR_FADE_DELAY * 8}>
+                <div id="Experience" className="space-y-4">
+                  <BlurFadeText
+                    delay={BLUR_FADE_DELAY * 9}
+                    className="text-3xl font-bold tracking-tighter"
+                    yOffset={8}
+                    text="Experience"
+                  />
+                  {DATA.work.length > 0 ? (
+                    <div className="mt-4 space-y-4">
+                      {DATA.work.map((item, index) => (
+                        <div
+                          key={`${item.company}-${item.title}-${index}`}
+                          className="rounded-xl border border-border/50 bg-muted/20 p-4"
+                        >
+                          <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+                            <div className="flex items-center gap-3">
+                              {item.logoUrl ? (
+                                <div className="size-10 overflow-hidden rounded-full border border-border/60 bg-background shrink-0">
+                                  <Image
+                                    src={item.logoUrl}
+                                    alt={`${item.company} logo`}
+                                    width={40}
+                                    height={40}
+                                    className="h-full w-full object-cover"
+                                  />
+                                </div>
+                              ) : null}
+                              <div>
+                                <h3 className="text-base font-semibold text-foreground">{item.company}</h3>
+                                <p className="text-sm text-muted-foreground">{item.title}</p>
+                                {item.badge ? (
+                                  <p className="mt-1 text-xs text-muted-foreground">
+                                    {item.badge}
+                                  </p>
+                                ) : null}
+                              </div>
+                            </div>
+                            <p className="text-xs text-muted-foreground sm:mt-0 mt-1">
+                              {item.start} - {item.end}
+                            </p>
+                          </div>
+
+                          {item.description ? (
+                            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                              {item.description}
+                            </p>
+                          ) : null}
+
+                          {item.skills ? (
+                            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                              <span className="font-medium text-foreground">Skills:</span> {item.skills}
+                            </p>
+                          ) : null}
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+
+                  {DATA.experienceSkills.length > 0 ? (
+                    <div className="mt-8 space-y-4">
+                      <BlurFadeText
+                        delay={BLUR_FADE_DELAY * 9.5}
+                        className="text-3xl font-bold tracking-tighter"
+                        yOffset={8}
+                        text="Skills"
+                      />
+                      <div className="flex flex-wrap gap-2">
+                        {DATA.experienceSkills.map((skill) => (
+                          <span
+                            key={skill}
+                            className="rounded-full border border-border/60 bg-muted/30 px-4 py-2 text-sm text-muted-foreground"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
               </BlurFade>
             </div>

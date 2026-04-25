@@ -1,7 +1,12 @@
 import { NextResponse } from 'next/server';
 
+const clapCache = new Map<string, { claps: number; timestamp: number }>();
+const CACHE_DURATION = 10 * 60 * 1000;
+const LIVE_MODE = process.env.MEDIUM_STATS_LIVE === 'true';
+
 // Fallback clap counts
 const FALLBACK_CLAPS: Record<string, number> = {
+  '95186def2eb8': 51,      // From 4 Hours to 1 Minute
   '8c15c04d1f3c': 51,      // Beyond the Pedals
   '65d87079d742': 50,      // Ink, Mud and Memories
   '218197818958': 57,      // Blind on the Summit
@@ -16,12 +21,14 @@ interface MediumPostData {
 }
 
 async function fetchMediumStats(postId: string): Promise<{ claps: number; timestamp: number }> {
+  const cached = clapCache.get(postId);
+  if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+    return cached;
+  }
+
   try {
-    // Method 1: Try the direct API endpoint
     const apiUrl = `https://medium.com/api/posts/${postId}`;
-    
-    console.log(`[Fetching] ${new Date().toISOString()} - ${apiUrl}`);
-    
+
     const response = await fetch(apiUrl, {
       method: 'GET',
       headers: {
@@ -35,27 +42,23 @@ async function fetchMediumStats(postId: string): Promise<{ claps: number; timest
       },
       cache: 'no-store',
       next: { revalidate: 0 },
+      signal: AbortSignal.timeout(1200),
     });
 
     if (response.ok) {
       const data: MediumPostData = await response.json();
       
       if (data.clappedCount !== undefined) {
-        const claps = data.clappedCount;
-        console.log(`[SUCCESS] Post ${postId}: ${claps} claps`);
-        return { claps, timestamp: Date.now() };
+        const result = { claps: data.clappedCount, timestamp: Date.now() };
+        clapCache.set(postId, result);
+        return result;
       }
-    } else {
-      console.log(`[HTTP ${response.status}] Failed to fetch from ${apiUrl}`);
     }
-  } catch (error) {
-    console.log(`[Error] ${error instanceof Error ? error.message : String(error)}`);
+  } catch {
+    // Ignore and try fallback method.
   }
 
-  // Try Method 2: GraphQL API endpoint as fallback
   try {
-    console.log(`[Trying GraphQL] ${new Date().toISOString()}`);
-    
     const graphqlUrl = 'https://medium.com/_/graphql';
     
     const graphqlQuery = {
@@ -86,30 +89,31 @@ async function fetchMediumStats(postId: string): Promise<{ claps: number; timest
       cache: 'no-store',
       next: { revalidate: 0 },
       body: JSON.stringify(graphqlQuery),
+      signal: AbortSignal.timeout(1200),
     });
 
     if (response.ok) {
       const data = await response.json();
       
       if (data.data?.post?.clapCount !== undefined) {
-        const claps = data.data.post.clapCount;
-        console.log(`[GraphQL SUCCESS] Post ${postId}: ${claps} claps`);
-        return { claps, timestamp: Date.now() };
+        const result = { claps: data.data.post.clapCount, timestamp: Date.now() };
+        clapCache.set(postId, result);
+        return result;
       }
     }
-  } catch (error) {
-    console.log(`[GraphQL Error] ${error instanceof Error ? error.message : String(error)}`);
+  } catch {
+    // Ignore and use static fallback.
   }
 
-  // Fallback to static values
-  const claps = FALLBACK_CLAPS[postId] || 0;
-  console.log(`[Fallback] Post ${postId}: ${claps} claps`);
-  return { claps, timestamp: Date.now() };
+  const fallback = { claps: FALLBACK_CLAPS[postId] || 0, timestamp: Date.now() };
+  clapCache.set(postId, fallback);
+  return fallback;
 }
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const postId = searchParams.get('postId');
+  const forceLive = searchParams.get('live') === '1';
 
   if (!postId) {
     return NextResponse.json(
@@ -118,14 +122,23 @@ export async function GET(request: Request) {
     );
   }
 
-  const stats = await fetchMediumStats(postId);
+  let stats: { claps: number; timestamp: number };
+  if (LIVE_MODE || forceLive) {
+    stats = await fetchMediumStats(postId);
+  } else {
+    const cached = clapCache.get(postId);
+    if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+      stats = cached;
+    } else {
+      const fallback = { claps: FALLBACK_CLAPS[postId] || 0, timestamp: Date.now() };
+      clapCache.set(postId, fallback);
+      stats = fallback;
+    }
+  }
 
   return NextResponse.json(stats, {
     headers: {
-      'Cache-Control': 'no-cache, no-store, must-revalidate, max-age=0',
-      'Pragma': 'no-cache',
-      'Expires': '0',
-      'X-Accel-Expires': '0',
+      'Cache-Control': 'public, max-age=60, stale-while-revalidate=300',
     },
   });
 }
