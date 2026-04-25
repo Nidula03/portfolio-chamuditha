@@ -108,9 +108,9 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Fixed Overlay */}
       {isOpen && (
-        <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-md">
+        <div className="fixed md:hidden top-16 left-0 right-0 bottom-0 z-40 border-t border-border/40 bg-background border-b backdrop-blur-md overflow-y-auto">
           <div className="mx-auto w-full max-w-6xl px-6 py-4 flex flex-col gap-4">
             <NavLinks pathname={pathname} isOpen={isOpen} setIsOpen={setIsOpen} />
 
