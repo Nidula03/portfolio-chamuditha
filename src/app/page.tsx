@@ -62,15 +62,9 @@ export default function Page() {
               <div>
                 <BlurFadeText
                   delay={BLUR_FADE_DELAY * 1}
-                  className="text-lg font-semibold"
+                  className="text-2xl  font-bold"
                   yOffset={8}
                   text={DATA.name}
-                />
-                <BlurFadeText
-                  delay={BLUR_FADE_DELAY * 1.5}
-                  className="text-2xl font-bold"
-                  yOffset={8}
-                  text={DATA.name.split(" ")[0]}
                 />
                 <BlurFadeText
                   delay={BLUR_FADE_DELAY * 2}
