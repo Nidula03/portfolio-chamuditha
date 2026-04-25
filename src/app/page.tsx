@@ -15,9 +15,11 @@ export default function Page() {
     const sidebarElement = document.getElementById('sticky-sidebar');
     if (!sidebarElement) return;
     
+    // Only apply sticky on md screens and larger (768px+)
+    const isMobile = window.innerWidth < 768;
     const scrollY = window.scrollY;
     
-    if (scrollY < 697) {
+    if (isMobile || scrollY < 697) {
       sidebarElement.style.position = 'relative';
       sidebarElement.style.top = 'auto';
     } else {
@@ -28,7 +30,11 @@ export default function Page() {
 
   React.useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   return (
