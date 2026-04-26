@@ -18,7 +18,7 @@ export const DATA = {
   url: "https://chamuditha.dev",
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
-  description: "Scout • Explorer",
+  description: "Analytical Chemistry Researcher • Instrumentation • Scout",
   summary: `Hello! 👋😊 , You can call me Chamuditha!
 
 I'm a self-driven researcher with expertise in analytical chemistry and passionate about applying analytical techniques to solve complex problems with a focus on innovation and sustainability through multi-disciplinary knowledge in academic and industrial setting.

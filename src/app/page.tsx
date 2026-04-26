@@ -55,6 +55,7 @@ export default function Page() {
                     <a href="#Education" className="text-muted-foreground hover:text-foreground transition-colors text-xs">Education</a>
                     <a href="#Experience" className="text-muted-foreground hover:text-foreground transition-colors text-xs">Experience</a>
                     <a href="#Skills" className="text-muted-foreground hover:text-foreground transition-colors text-xs">Skills</a>
+                    <a href="#Contact" className="text-muted-foreground hover:text-foreground transition-colors text-xs">Contact</a>
                   </div>
                 </div>
               </BlurFade>
@@ -210,6 +211,33 @@ export default function Page() {
                       </div>
                     </div>
                   ) : null}
+
+                  <div id="Contact" className="mt-8 space-y-4 scroll-mt-24">
+                    <BlurFadeText
+                      delay={BLUR_FADE_DELAY * 10}
+                      className="text-3xl font-bold tracking-tighter"
+                      yOffset={8}
+                      text="Let’s Connect"
+                    />
+                    <div className="rounded-2xl border border-border/50 bg-muted/20 p-6 shadow-sm">
+                      <div className="space-y-4 text-sm text-muted-foreground">
+                        <a
+                          href={DATA.contact.social.LinkedIn.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-4 rounded-xl border border-border/40 bg-background/60 px-4 py-3 text-foreground transition-colors hover:bg-background/80"
+                        >
+                          <span className="w-full text-center font-medium">LinkedIn</span>
+                        </a>
+                        <a
+                          href={DATA.contact.social.email.url}
+                          className="flex items-center justify-center gap-4 rounded-xl border border-border/40 bg-background/60 px-4 py-3 text-foreground transition-colors hover:bg-background/80"
+                        >
+                          <span className="w-full text-center font-medium">Email</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </BlurFade>
             </div>
