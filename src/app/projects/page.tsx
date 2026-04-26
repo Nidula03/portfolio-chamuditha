@@ -22,8 +22,8 @@ export default function ProjectsPage() {
               yOffset={8}
               text="My Projects"
             />
-            <div className="flex items-center w-full">
-              <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
+            <div className="flex items-center w-full justify-center">
+              <div className="w-full h-px bg-linear-to-r from-transparent via-border to-transparent" />
             </div>
           </div>
           <BlurFade delay={BLUR_FADE_DELAY * 3}>

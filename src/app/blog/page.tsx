@@ -19,8 +19,8 @@ export default function BlogPage() {
             <div className="flex flex-col gap-y-3 items-center justify-center">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Check out my latest blog posts</h2>
             </div>
-            <div className="flex items-center w-full">
-              <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
+            <div className="flex items-center w-full justify-center">
+              <div className="w-full h-px bg-linear-to-r from-transparent via-border to-transparent" />
             </div>
           </div>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 w-full mx-auto max-w-5xl" style={{ gridAutoRows: '3fr' }}>
