@@ -60,6 +60,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const LinkedInIcon = DATA.contact.social.LinkedIn.icon;
+  const EmailIcon = DATA.contact.social.email.icon;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -75,6 +78,29 @@ export default function RootLayout({
               {children}
             </div>
             <Navbar />
+            <footer className="border-t border-border/60 bg-muted/30">
+              <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6 text-muted-foreground">
+                <p className="text-sm">&copy; 2026 Chamuditha Ekanayake</p>
+                <div className="flex items-center gap-4">
+                  <a
+                    href={DATA.contact.social.LinkedIn.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="transition-colors hover:text-foreground"
+                  >
+                    <LinkedInIcon className="size-4" />
+                  </a>
+                  <a
+                    href={DATA.contact.social.email.url}
+                    aria-label="Email"
+                    className="transition-colors hover:text-foreground"
+                  >
+                    <EmailIcon className="size-4" />
+                  </a>
+                </div>
+              </div>
+            </footer>
           </TooltipProvider>
         </ThemeProvider>
       </body>

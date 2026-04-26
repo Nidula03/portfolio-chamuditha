@@ -37,7 +37,7 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
     { href: "/interests", icon: Sparkles, label: "Interests" },
   ],
   contact: {
-    email: "hello@example.com",
+    email: "chamudithasawan@gmail.com",
     tel: "+123456789",
     social: {
       LinkedIn: {
@@ -49,7 +49,7 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
       },
       email: {
         name: "Send Email",
-        url: "#",
+        url: "mailto:chamudithasawan@gmail.com",
         icon: Icons.email,
 
         navbar: false,
