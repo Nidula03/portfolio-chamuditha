@@ -158,6 +158,27 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
   }>,
   blogs: [
     {
+      title: "Pitching Tents in the Clouds: The Magic of Mountain Camping",
+      href: "https://medium.com/@chamudithasawan/pitching-tents-in-the-clouds-the-magic-of-mountain-camping-7b64b74d4c05",
+      dates: "2026",
+      active: true,
+      description:
+        "A reflection on mountain camping adventures, careful expedition planning, and the unforgettable experience of pitching tents in nature with a strong team.",
+      technologies: ["Adventure", "Camping", "Mountain Hiking"],
+      links: [
+        {
+          type: "Read on Medium",
+          href: "https://medium.com/@chamudithasawan/pitching-tents-in-the-clouds-the-magic-of-mountain-camping-7b64b74d4c05",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/tents.webp",
+      video: "",
+      claps: 20,
+      comments: 0,
+      mediumPostId: "7b64b74d4c05",
+    },
+    {
       title: "From 4 Hours to 1 Minute: Measuring Baby Soap TFM Using FTNIR",
       href: "https://medium.com/@chamudithasawan/from-4-hours-to-1-minute-measuring-baby-soap-tfm-using-ftnir-95186def2eb8",
       dates: "2026",
