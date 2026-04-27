@@ -160,7 +160,7 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
     {
       title: "Pitching Tents in the Clouds: The Magic of Mountain Camping",
       href: "https://medium.com/@chamudithasawan/pitching-tents-in-the-clouds-the-magic-of-mountain-camping-7b64b74d4c05",
-      dates: "2026",
+      dates: "April 26, 2026",
       active: true,
       description:
         "A reflection on mountain camping adventures, careful expedition planning, and the unforgettable experience of pitching tents in nature with a strong team.",
@@ -179,30 +179,9 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
       mediumPostId: "7b64b74d4c05",
     },
     {
-      title: "From 4 Hours to 1 Minute: Measuring Baby Soap TFM Using FTNIR",
-      href: "https://medium.com/@chamudithasawan/from-4-hours-to-1-minute-measuring-baby-soap-tfm-using-ftnir-95186def2eb8",
-      dates: "2026",
-      active: true,
-      description:
-        "How FTNIR plus chemometric modeling transformed baby soap TFM analysis from a 4-hour solvent-based method into a 1-minute rapid, non-destructive, and safer workflow.",
-      technologies: ["Analytical Chemistry", "FTNIR", "Quality Assurance", "Chemometrics"],
-      links: [
-        {
-          type: "Read on Medium",
-          href: "https://medium.com/@chamudithasawan/from-4-hours-to-1-minute-measuring-baby-soap-tfm-using-ftnir-95186def2eb8",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "/FTNIR.png",
-      video: "",
-      claps: 51,
-      comments: 0,
-      mediumPostId: "95186def2eb8",
-    },
-    {
       title: "Beyond the Pedals",
       href: "https://medium.com/@chamudithasawan/beyond-the-pedals-8c15c04d1f3c",
-      dates: "2024",
+      dates: "March 28, 2026",
       active: true,
       description:
         "An exploration of cycling as a metaphor for life's journey, discovering resilience, discipline, and personal growth through pedaling.",
@@ -221,9 +200,30 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
       mediumPostId: "8c15c04d1f3c",
     },
     {
+      title: "From 4 Hours to 1 Minute: Measuring Baby Soap TFM Using FTNIR",
+      href: "https://medium.com/@chamudithasawan/from-4-hours-to-1-minute-measuring-baby-soap-tfm-using-ftnir-95186def2eb8",
+      dates: "March 11, 2026",
+      active: true,
+      description:
+        "How FTNIR plus chemometric modeling transformed baby soap TFM analysis from a 4-hour solvent-based method into a 1-minute rapid, non-destructive, and safer workflow.",
+      technologies: ["Analytical Chemistry", "FTNIR", "Quality Assurance", "Chemometrics"],
+      links: [
+        {
+          type: "Read on Medium",
+          href: "https://medium.com/@chamudithasawan/from-4-hours-to-1-minute-measuring-baby-soap-tfm-using-ftnir-95186def2eb8",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/FTNIR.png",
+      video: "",
+      claps: 51,
+      comments: 0,
+      mediumPostId: "95186def2eb8",
+    },
+    {
       title: "Ink, Mud and Memories: My Scout Log Book",
       href: "https://medium.com/@chamudithasawan/ink-mud-and-memories-my-scout-log-book-65d87079d742",
-      dates: "2026",
+      dates: "March 1, 2026",
       active: true,
       description:
         "A journey through my Scout Log Book - a treasure of memories capturing badge work, survival tips, and unforgettable adventures from camps and hikes spanning nearly eight years.",
@@ -244,7 +244,7 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
     {
       title: "Blind on the Summit: How a Pipeline Saved Our Hike",
       href: "https://medium.com/@chamudithasawan/blind-on-the-summit-how-a-pipeline-saved-our-hike-218197818958",
-      dates: "2026",
+      dates: "February 26, 2026",
       active: true,
       description:
         "A spontaneous hike turned into a survival situation when I lost my glasses at the summit. Discover how instinct, memory, and a water pipeline led us back to safety.",
