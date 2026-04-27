@@ -114,8 +114,12 @@ export function ProjectCard({
 
   useEffect(() => {
     if (!isModalOpen) {
+      document.body.style.overflow = "auto";
       return;
     }
+
+    // Lock body scroll when modal is open
+    document.body.style.overflow = "hidden";
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -124,50 +128,58 @@ export function ProjectCard({
     };
 
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "auto";
+    };
   }, [isModalOpen]);
 
   const modalContent = (
     <div
-      className="fixed inset-0 z-[100] grid place-items-center bg-black/55 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/55 p-4 backdrop-blur-sm overflow-hidden"
       onClick={() => setIsModalOpen(false)}
       role="dialog"
       aria-modal="true"
       aria-label={`${title} details`}
     >
       <div
-        className="relative w-full max-w-[800px] max-h-[84vh] overflow-y-auto rounded-3xl border border-slate-200 bg-slate-100 p-7 text-slate-900 shadow-2xl"
+        className="relative w-full max-w-[800px] max-h-[84vh] rounded-3xl border border-slate-200 bg-slate-100 text-slate-900 shadow-2xl flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
           onClick={() => setIsModalOpen(false)}
-          className="absolute right-5 top-5 inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-emerald-500 bg-slate-100 text-slate-500"
+          className="absolute right-5 top-5 inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-emerald-500 bg-slate-100 text-slate-500 z-10"
           aria-label="Close details"
         >
           <X className="h-6 w-6" />
         </button>
 
-        <div className="pr-16">
-          <h3 className="text-4xl font-bold leading-tight tracking-tight text-slate-900">
-            {title}
-          </h3>
-          <p className="mt-2 text-base font-medium text-slate-500">{dates}</p>
-          {tags && tags.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-3">
-              {tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-flex items-center rounded-full bg-emerald-500 px-4 py-1.5 text-sm font-semibold text-white"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+        <div className="flex-shrink-0 p-7 pb-0">
+          <div className="pr-16">
+            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-slate-900">
+              {title}
+            </h3>
+            <p className="mt-2 text-base font-medium text-slate-500">{dates}</p>
+            {tags && tags.length > 0 && (
+              <div className="mt-4 flex flex-wrap gap-3">
+                {tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center rounded-full bg-emerald-500 px-4 py-1.5 text-sm font-semibold text-white"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="mt-6 border-t border-slate-300" />
         </div>
 
-        <div className="mt-6 border-t border-slate-300" />
+        <div className="flex-1 overflow-y-auto px-7">
+          <div className="pb-7">
 
         {galleryImages.length > 0 && (
           <div className="relative mt-6 rounded-2xl bg-slate-300/70 p-4">
@@ -204,6 +216,8 @@ export function ProjectCard({
 
         <div className="mt-7 prose prose-slate prose-headings:text-slate-900 prose-p:text-slate-600 prose-p:leading-relaxed prose-strong:text-slate-800 max-w-none">
           <Markdown>{details || description}</Markdown>
+        </div>
+          </div>
         </div>
       </div>
     </div>
