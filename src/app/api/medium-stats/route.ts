@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 const clapCache = new Map<string, { claps: number; timestamp: number }>();
-const CACHE_DURATION = 10 * 60 * 1000;
+const CACHE_DURATION = 30 * 60 * 1000;
 const LIVE_MODE = process.env.MEDIUM_STATS_LIVE === 'true';
 
 // Fallback clap counts
@@ -23,11 +23,15 @@ interface MediumPostData {
 async function fetchMediumStats(postId: string): Promise<{ claps: number; timestamp: number }> {
   const cached = clapCache.get(postId);
   if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+    console.log(`[Medium Stats] Cache hit for ${postId}: ${cached.claps} claps`);
     return cached;
   }
 
+  console.log(`[Medium Stats] Fetching live stats for ${postId}...`);
+
   try {
     const apiUrl = `https://medium.com/api/posts/${postId}`;
+    console.log(`[Medium Stats] Trying REST API: ${apiUrl}`);
 
     const response = await fetch(apiUrl, {
       method: 'GET',
@@ -47,19 +51,24 @@ async function fetchMediumStats(postId: string): Promise<{ claps: number; timest
 
     if (response.ok) {
       const data: MediumPostData = await response.json();
+      console.log(`[Medium Stats] REST API response for ${postId}:`, data);
       
       if (data.clappedCount !== undefined) {
         const result = { claps: data.clappedCount, timestamp: Date.now() };
         clapCache.set(postId, result);
+        console.log(`[Medium Stats] SUCCESS - Cached ${data.clappedCount} claps`);
         return result;
       }
+    } else {
+      console.log(`[Medium Stats] REST API failed with status ${response.status}`);
     }
   } catch {
-    // Ignore and try fallback method.
+    console.log(`[Medium Stats] REST API fetch error, trying GraphQL...`);
   }
 
   try {
     const graphqlUrl = 'https://medium.com/_/graphql';
+    console.log(`[Medium Stats] Trying GraphQL endpoint...`);
     
     const graphqlQuery = {
       operationName: 'GetPost',
@@ -93,19 +102,24 @@ async function fetchMediumStats(postId: string): Promise<{ claps: number; timest
 
     if (response.ok) {
       const data = await response.json();
+      console.log(`[Medium Stats] GraphQL response for ${postId}:`, data);
       
       if (data.data?.post?.clapCount !== undefined) {
         const result = { claps: data.data.post.clapCount, timestamp: Date.now() };
         clapCache.set(postId, result);
+        console.log(`[Medium Stats] SUCCESS via GraphQL - Cached ${data.data.post.clapCount} claps`);
         return result;
       }
+    } else {
+      console.log(`[Medium Stats] GraphQL failed with status ${response.status}`);
     }
   } catch {
-    // Ignore and use static fallback.
+    console.log(`[Medium Stats] GraphQL fetch error, using fallback...`);
   }
 
   const fallback = { claps: FALLBACK_CLAPS[postId] || 0, timestamp: Date.now() };
   clapCache.set(postId, fallback);
+  console.log(`[Medium Stats] Using fallback for ${postId}: ${fallback.claps} claps`);
   return fallback;
 }
 
@@ -113,6 +127,8 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const postId = searchParams.get('postId');
   const forceLive = searchParams.get('live') === '1';
+
+  console.log(`[Medium Stats API] Request - postId: ${postId}, LIVE_MODE: ${LIVE_MODE}, forceLive: ${forceLive}`);
 
   if (!postId) {
     return NextResponse.json(
@@ -123,8 +139,10 @@ export async function GET(request: Request) {
 
   let stats: { claps: number; timestamp: number };
   if (LIVE_MODE || forceLive) {
+    console.log(`[Medium Stats API] Fetching live stats...`);
     stats = await fetchMediumStats(postId);
   } else {
+    console.log(`[Medium Stats API] LIVE_MODE disabled, checking cache...`);
     const cached = clapCache.get(postId);
     if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
       stats = cached;
@@ -135,6 +153,7 @@ export async function GET(request: Request) {
     }
   }
 
+  console.log(`[Medium Stats API] Returning ${stats.claps} claps for ${postId}`);
   return NextResponse.json(stats, {
     headers: {
       'Cache-Control': 'public, max-age=60, stale-while-revalidate=300',

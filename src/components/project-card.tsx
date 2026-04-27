@@ -67,8 +67,9 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const { stats } = useMediumStats(mediumPostId || "", initialClaps || 0);
   const hasClaps = typeof initialClaps === "number" || Boolean(mediumPostId);
+  // Always fetch real clap count from Medium
   const displayClaps = hasClaps
-    ? (mediumPostId && stats.claps > 0 ? stats.claps : (initialClaps ?? 0))
+    ? (mediumPostId ? stats.claps : (initialClaps ?? 0))
     : undefined;
   const projectUrl = href || links?.[0]?.href;
   const hasProjectUrl = Boolean(projectUrl && projectUrl !== "#");

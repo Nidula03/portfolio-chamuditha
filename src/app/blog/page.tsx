@@ -41,6 +41,7 @@ export default function BlogPage() {
                   links={blog.links}
                   showViewProjectButton={false}
                   claps={blog.claps}
+                  mediumPostId={blog.mediumPostId}
                 />
               </BlurFade>
             ))}
