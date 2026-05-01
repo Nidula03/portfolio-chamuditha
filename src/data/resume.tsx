@@ -1,16 +1,5 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon, BookOpen, Code, MessageSquare, Sparkles } from "lucide-react";
-import { ReactLight } from "@/components/ui/svgs/reactLight";
-import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
-import { Typescript } from "@/components/ui/svgs/typescript";
-import { Nodejs } from "@/components/ui/svgs/nodejs";
-import { Python } from "@/components/ui/svgs/python";
-import { Golang } from "@/components/ui/svgs/golang";
-import { Postgresql } from "@/components/ui/svgs/postgresql";
-import { Docker } from "@/components/ui/svgs/docker";
-import { Kubernetes } from "@/components/ui/svgs/kubernetes";
-import { Java } from "@/components/ui/svgs/java";
-import { Csharp } from "@/components/ui/svgs/csharp";
 
 export const DATA = {
   name: "Chamuditha Ekanayake",
@@ -18,8 +7,8 @@ export const DATA = {
   url: "https://chamuditha.dev",
   location: "San Francisco, CA",
   locationLink: "https://www.google.com/maps/place/sanfrancisco",
-  description: "Analytical Chemistry Researcher • Instrumentation • Scout",
-  summary: `Hello! 👋😊 , You can call me Chamuditha!
+  description: "MS Analytical Chemistry | Graduate Chemist | Passionate on Laboratory Digitalization | Baden-Powell  &  President Scout Awardee | Mountaineer | Nature Visualist",
+  summary: `Hello! 👋😊
 
 I'm a self-driven researcher with expertise in analytical chemistry and passionate about applying analytical techniques to solve complex problems with a focus on innovation and sustainability through multi-disciplinary knowledge in academic and industrial setting.
 
@@ -72,15 +61,29 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
     {
       company: "Unilever",
       title:
-        "Executive – Quality Assurance | Instructor – Laboratory (Dual Responsibilities) and Industrial Trainee - Quality Assurance",
+        "Executive – Quality Assurance and Instructor – Laboratory (Dual Responsibilities)",
       badge: "Full-time",
-      logoUrl: "/unilever.png",
-      start: "Feb 2023",
+      logoUrl: "/unilever_logo.jpeg",
+      start: "Sep 2023",
       end: "Sep 2024",
       description: "Horana, Western Province, Sri Lanka · On-site",
       skills:
-        "Analytical instrument operation & data interpretation: (GC-FID, FTNIR, FTIR, Celsis Advanced Luminometer), Laboratory Management, Lab Personnel Training, SOPs Development, Laboratory Digitalization. Managing multiple factory-level projects simultaneously.",
+        "Analytical instrument operation & data interpretation: (GC-FID, FTNIR, FTIR, Celsis Advanced Luminometer) Laboratory Management, Lab Personnel Training, SOPs Development, Laboratory Digitalization"
     },
+
+    {
+      company: "Unilever",
+      title:
+        "Industrial Trainee - Quality Assurance",
+      badge: "Full-time",
+      logoUrl: "/unilever_logo.jpeg",
+      start: "Feb 2023",
+      end: "Jul 2023", 
+      description: "Horana, Western Province, Sri Lanka · On-site",
+      skills:
+        "Managing multiple factory-level projects simultaneously"
+    },
+
     {
       company: "Intertek",
       title: "Intern",
