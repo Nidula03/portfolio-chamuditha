@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { OrcidIcon } from "@/components/ui/svgs/orcid";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -97,6 +98,15 @@ export default function RootLayout({
                     className="transition-colors hover:text-foreground"
                   >
                     <EmailIcon className="size-4" />
+                  </a>
+                  <a
+                    href="https://orcid.org/0009-0009-9678-3735"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="ORCID"
+                    className="transition-colors hover:text-foreground"
+                  >
+                    <OrcidIcon className="size-4" />
                   </a>
                 </div>
               </div>

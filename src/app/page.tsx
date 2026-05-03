@@ -219,23 +219,32 @@ export default function Page() {
                       yOffset={8}
                       text="Let’s Connect"
                     />
-                    <div className="rounded-2xl border border-border/50 bg-muted/20 p-6 shadow-sm">
-                      <div className="space-y-4 text-sm text-muted-foreground">
-                        <a
-                          href={DATA.contact.social.LinkedIn.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-4 rounded-xl border border-border/40 bg-background/60 px-4 py-3 text-foreground transition-colors hover:bg-background/80"
-                        >
-                          <span className="w-full text-center font-medium">LinkedIn</span>
-                        </a>
-                        <a
-                          href={DATA.contact.social.email.url}
-                          className="flex items-center justify-center gap-4 rounded-xl border border-border/40 bg-background/60 px-4 py-3 text-foreground transition-colors hover:bg-background/80"
-                        >
-                          <span className="w-full text-center font-medium">Email</span>
-                        </a>
-                      </div>
+                    <div className="flex flex-wrap gap-4">
+                      <a
+                        href={DATA.contact.social.LinkedIn.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 rounded-lg border border-border/40 bg-background/60 hover:bg-background/80 hover:border-border/80 hover:shadow-md hover:scale-105 transition-all duration-200 text-foreground font-medium"
+                      >
+                        <DATA.contact.social.LinkedIn.icon className="size-5" />
+                        <span>LinkedIn</span>
+                      </a>
+                      <a
+                        href={DATA.contact.social.email.url}
+                        className="flex items-center gap-2 px-6 py-3 rounded-lg border border-border/40 bg-background/60 hover:bg-background/80 hover:border-border/80 hover:shadow-md hover:scale-105 transition-all duration-200 text-foreground font-medium"
+                      >
+                        <DATA.contact.social.email.icon className="size-5" />
+                        <span>Email</span>
+                      </a>
+                      <a
+                        href={DATA.contact.social.ORCID.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 rounded-lg border border-border/40 bg-background/60 hover:bg-background/80 hover:border-border/80 hover:shadow-md hover:scale-105 transition-all duration-200 text-foreground font-medium"
+                      >
+                        <DATA.contact.social.ORCID.icon className="size-5" />
+                        <span>ORCID</span>
+                      </a>
                     </div>
                   </div>
                 </div>

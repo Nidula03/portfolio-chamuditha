@@ -1,5 +1,6 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon, BookOpen, Code, MessageSquare, Sparkles } from "lucide-react";
+import { OrcidIcon } from "@/components/ui/svgs/orcid";
 
 export const DATA = {
   name: "Chamuditha Ekanayake",
@@ -42,6 +43,13 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
         icon: Icons.email,
 
         navbar: false,
+      },
+      ORCID: {
+        name: "ORCID",
+        url: "https://orcid.org/0009-0009-9678-3735",
+        icon: OrcidIcon,
+
+        navbar: true,
       },
     },
   },
@@ -106,7 +114,9 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
     skills?: string;
   }>,
   experienceSkills: [
-    "Project Management, Project Planning, Team Leadership",
+    "Project Management", 
+    "Project Planning", 
+    "Team Leadership",
     "Analytical Chemistry (GC-FID, FTNIR, FTIR, Celsis Advanced II)",
     "Industrial Automation",
     "Quality & Supply Chain Management",
@@ -147,7 +157,7 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
       end: "Aug 2018",
       description:
         "Activities and societies: Boy Scout, Rover Scout, Science Society, Electronic Club. G.C.E Advanced Level Examination (2018): Biological Science. ACHIEVEMENTS: President Scout Award (2016), Scout of the Year 2016, Best Explorer Scout - 18th Sampath Ranawaka Memorial Challenge Trophy All Island Competition Hike (2016), Represented Sri Lanka at the 23rd World Scout Jamboree, Japan (2015). Thumbnail for Baden Powell Award - Highest International Award in Scouting (Dec, 2024).",
-      skills: "Team Leadership, Project Planning, +1 skill",
+      skills: "Team Leadership, Project Planning, Project Management",
     },
   ] as Array<{
     school: string;
