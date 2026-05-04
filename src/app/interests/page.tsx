@@ -38,8 +38,8 @@ export default function InterestsPage() {
 
       {/* Pill Tab Bar */}
       <BlurFade delay={BLUR_FADE_DELAY * 3}>
-        <div className="flex justify-center px-4 sm:px-4 max-w-xs mx-auto">
-          <div className="inline-flex flex-nowrap items-center justify-center gap-1.5 sm:gap-2 rounded-full border border-border/60 bg-muted/30 p-2 sm:p-1.5">
+        <div className="flex justify-center px-6 sm:px-4 max-w-xs mx-auto">
+          <div className="inline-flex flex-nowrap items-center justify-center gap-2 sm:gap-2 rounded-full border border-border/60 bg-muted/30 p-2 sm:p-1.5">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = tab.id === activeId;
@@ -47,7 +47,7 @@ export default function InterestsPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveId(tab.id)}
-                  className="flex items-center gap-1 rounded-full px-2.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer whitespace-nowrap"
+                  className="flex items-center gap-1 rounded-full px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer whitespace-nowrap"
                   style={
                     isActive
                       ? {
@@ -61,7 +61,7 @@ export default function InterestsPage() {
                         }
                   }
                 >
-                  <Icon className="size-3.5 sm:size-4 shrink-0" />
+                  <Icon className="size-3 sm:size-4 shrink-0" />
                   <span>{tab.label}</span>
                 </button>
               );
