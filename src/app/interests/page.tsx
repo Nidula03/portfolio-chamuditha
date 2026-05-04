@@ -3,6 +3,8 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { HeroVideoDialog } from "@/components/magicui/hero-video-dialog";
+import { DramaMarquee } from "@/components/drama-marquee";
+import { AuroraText } from "@/registry/magicui/aurora-text";
 import { DATA } from "@/data/resume";
 import { useState } from "react";
 import { Mountain, Flame, Camera, Star } from "lucide-react";
@@ -276,6 +278,18 @@ export default function InterestsPage() {
               </BlurFade>
             </div>
           </div>
+
+          {/* Aurora Text Quote */}
+          <BlurFade delay={BLUR_FADE_DELAY * 7} className="w-full flex justify-center pt-8 sm:pt-12 md:pt-16 px-4">
+            <p className="text-center text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-700 dark:text-slate-300 max-w-2xl">
+              Moments that lived beyond the <AuroraText>script</AuroraText>
+            </p>
+          </BlurFade>
+
+          {/* Drama Marquee */}
+          <BlurFade delay={BLUR_FADE_DELAY * 8} className="w-full">
+            <DramaMarquee />
+          </BlurFade>
         </section>
       )}
     </main>
