@@ -7,13 +7,12 @@ import { DramaMarquee } from "@/components/drama-marquee";
 import { AuroraText } from "@/registry/magicui/aurora-text";
 import { DATA } from "@/data/resume";
 import { useState } from "react";
-import { Mountain, Flame, Camera, Star } from "lucide-react";
+import { Mountain, Tent, Camera, Star } from "lucide-react";
 
 const BLUR_FADE_DELAY = 0.04;
 
 const tabs = [
-  { id: "hiking",      label: "Hiking",      icon: Mountain },
-  { id: "camping",     label: "Camping",      icon: Flame    },
+  { id: "hiking",      label: "Hiking & Camping", icon: Mountain },
   { id: "photography", label: "Photography",  icon: Camera   },
   { id: "acting",      label: "Acting",       icon: Star     },
 ];
@@ -166,30 +165,15 @@ export default function InterestsPage() {
           <div className="flex flex-col gap-y-8 w-full px-4 sm:px-8 md:px-16 lg:px-20">
             {/* Description */}
             <BlurFade delay={BLUR_FADE_DELAY * 4}>
-              <div className="w-full flex justify-center">
-                <div className="w-full max-w-2xl rounded-2xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md p-4 sm:p-5">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 justify-center">
-                
-                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-                        The Stage Experience
-                      </h3>
-                    </div>
-                    
-                   
-                    <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed text-center">
-                      The stage is a world of entertainment and being on a stage is a great fun 😀
+              <div className="w-full flex justify-center px-4">
+                <div className="space-y-4 max-w-2xl">
+                  <div className="text-center">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent leading-tight">
+                      The stage is a world of entertainment
+                    </h2>
+                    <p className="text-lg sm:text-xl md:text-2xl font-semibold text-slate-700 dark:text-slate-200 mt-2">
+                      and being on a stage is a great fun 😀
                     </p>
-                    <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed text-center">
-                      I got engaged in the drama titled <span className="font-semibold text-slate-900 dark:text-white">"Eeswah Play"</span> at <span className="font-semibold text-slate-900 dark:text-white">AURA XI</span>, playing the role of <span className="italic font-semibold text-slate-900 dark:text-white">Lucifer, The King of Hell</span>. Moreover through this stage play we conveyed to the community the lesson that doing the incorrect thing will always have a negative outcome.
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 pt-2 justify-center">
-                      {["#acting", "#action", "#comedy", "#entertainment", "#cast"].map((tag) => (
-                        <span key={tag} className="inline-block px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                 </div>
               </div>
@@ -200,11 +184,11 @@ export default function InterestsPage() {
               {/* Card 1 */}
               <BlurFade delay={BLUR_FADE_DELAY * 5} className="h-full">
                 <div className="flex flex-col h-full rounded-2xl overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-950/50 border border-slate-200 dark:border-slate-800/50 shadow-lg transition-all duration-300 ease-out hover:border-slate-300 dark:hover:border-slate-700/80 group">
-                  <div className="relative shrink-0 overflow-hidden bg-slate-200 dark:bg-slate-900/80">
+                  <div className="relative shrink-0 overflow-hidden bg-slate-200 dark:bg-slate-900/80 transition-transform duration-300 group-hover:scale-110" style={{ objectPosition: 'center 40%' }}>
                     <HeroVideoDialog
                       animationStyle="from-center"
                       videoSrc="https://www.youtube.com/embed/xsebIKfulTA"
-                      thumbnailSrc="https://img.youtube.com/vi/xsebIKfulTA/maxresdefault.jpg"
+                      thumbnailSrc="/drama1/thumbnail1.jpeg"
                       thumbnailAlt="Eeswah Play - Act 1"
                     />
                   </div>
@@ -213,7 +197,7 @@ export default function InterestsPage() {
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
                           <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-                            Eeswah Play - Act 1
+                             Act 1 - Eeswah Play
                           </h3>
                           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
                             AURA XI • Drama Performance
@@ -232,6 +216,16 @@ export default function InterestsPage() {
                         </svg>
                         <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Featured Performance</span>
                       </div>
+                      <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed pt-2">
+                        Got engaged in the drama titled <span className="font-semibold text-slate-900 dark:text-white">"Eeswah Play"</span> at <span className="font-semibold text-slate-900 dark:text-white">AURA XI</span>, playing the role of <span className="italic font-semibold text-slate-900 dark:text-white">Lucifer, The King of Hell</span>. Moreover through this stage play we conveyed to the community the lesson that doing the incorrect thing will always have a negative outcome.
+                      </p>
+                      <div className="flex flex-wrap gap-1.5 pt-2">
+                        {["#acting", "#action", "#comedy", "#entertainment", "#cast"].map((tag) => (
+                          <span key={tag} className="inline-block px-2 py-0.5 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -240,12 +234,12 @@ export default function InterestsPage() {
               {/* Card 2 */}
               <BlurFade delay={BLUR_FADE_DELAY * 6} className="h-full">
                 <div className="flex flex-col h-full rounded-2xl overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-950/50 border border-slate-200 dark:border-slate-800/50 shadow-lg transition-all duration-300 ease-out hover:border-slate-300 dark:hover:border-slate-700/80 group">
-                  <div className="relative shrink-0 overflow-hidden bg-slate-200 dark:bg-slate-900/80">
+                  <div className="relative shrink-0 overflow-hidden bg-slate-200 dark:bg-slate-900/80 transition-transform duration-300 group-hover:scale-110" style={{ objectPosition: 'center 25%' }}>
                     <HeroVideoDialog
                       animationStyle="from-center"
                       videoSrc="https://www.youtube.com/embed/HBh2qspoajg"
-                      thumbnailSrc="https://img.youtube.com/vi/HBh2qspoajg/maxresdefault.jpg"
-                      thumbnailAlt="Eeswah Play - Act 2"
+                      thumbnailSrc="/drama2/thumbnail2.jpeg"
+                      thumbnailAlt="Act 2 - Kelani Palama"
                     />
                   </div>
                   <div className="flex flex-col p-5 sm:p-6">
@@ -253,7 +247,7 @@ export default function InterestsPage() {
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1">
                           <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-                            Eeswah Play - Act 2
+                            Act 2 - Kelani Palama
                           </h3>
                           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
                             AURA XI • Drama Performance
