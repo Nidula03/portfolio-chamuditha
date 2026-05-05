@@ -1,4 +1,5 @@
 import { type ComponentPropsWithoutRef } from "react"
+import Image from "next/image"
 
 import { cn } from "@/lib/utils"
 
@@ -107,27 +108,36 @@ function Marquee({
 
 const drama1Images = [
   "/drama1/drama1_3.jpeg",
-  "/drama1/drama1_1.jpeg",
-  "/drama1/drama1_6.jpeg",
+  "/drama2/drama2_1.jpeg",
+
+  
+  "/drama2/drama2_3.jpeg",
+  "/drama2/drama2_2.jpeg",
   "/drama1/drama1_2.jpeg",
-  "/drama1/drama1_5.jpeg",
+ 
   "/drama1/drama1_4.jpeg",
 ];
 
 const drama2Images = [
-  "/drama2/drama2_1.jpeg",
   "/drama2/drama2_2.jpeg",
-  "/drama2/drama2_3.jpeg",
+  "/drama1/drama1_1.jpeg",
+  "/drama1/drama1_5.jpeg",
   "/drama2/drama2_4.jpeg",
+  "/drama1/drama1_6.jpeg",
+
 ];
 
 const PhotoCard = ({ src, alt }: { src: string; alt: string }) => {
   return (
     <figure className="relative h-64 w-48 shrink-0 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
-      <img
+      <Image
         src={src}
         alt={alt}
+        fill
+        sizes="(max-width: 640px) 50vw, 33vw"
         className="h-full w-full object-cover"
+        loading="lazy"
+        quality={85}
       />
     </figure>
   );

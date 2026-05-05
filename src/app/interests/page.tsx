@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { HeroVideoDialog } from "@/components/magicui/hero-video-dialog";
@@ -129,11 +130,18 @@ export default function InterestsPage() {
                   'IMG_5966.jpg',
                 ].map((imageName, idx) => (
                   <BlurFade key={imageName} delay={BLUR_FADE_DELAY * (4.5 + idx * 0.05)} inView>
-                    <img
-                      className="mb-4 w-full rounded-lg object-cover"
-                      src={`/hiking_pics/${imageName}`}
-                      alt={`Hiking photo ${idx + 1}`}
-                    />
+                    <div className="mb-4 relative rounded-lg overflow-hidden">
+                      <Image
+                        src={`/hiking_pics/${imageName}`}
+                        alt={`Hiking photo ${idx + 1}`}
+                        width={500}
+                        height={600}
+                        sizes="(max-width: 640px) 50vw, 33vw"
+                        className="w-full h-auto rounded-lg object-cover"
+                        loading="lazy"
+                        quality={85}
+                      />
+                    </div>
                   </BlurFade>
                 ))}
               </div>
