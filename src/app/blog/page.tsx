@@ -1,4 +1,5 @@
 import BlurFade from "@/components/magicui/blur-fade";
+import { BlogStatsCard } from "@/components/blog-stats-card";
 import { ProjectCard } from "@/components/project-card";
 import { DATA } from "@/data/resume";
 import type { Metadata } from "next";
@@ -23,6 +24,9 @@ export default function BlogPage() {
               <div className="w-full h-px bg-linear-to-r from-transparent via-border to-transparent" />
             </div>
           </div>
+            <BlurFade delay={BLUR_FADE_DELAY * 2} className="w-full mx-auto max-w-5xl">
+              <BlogStatsCard />
+            </BlurFade>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 w-full mx-auto max-w-5xl" style={{ gridAutoRows: '3fr' }}>
             {DATA.blogs.map((blog, id) => (
               <BlurFade
