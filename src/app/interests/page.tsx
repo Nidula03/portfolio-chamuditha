@@ -147,6 +147,15 @@ export default function InterestsPage() {
               </div>
             </BlurFade>
 
+            <BlurFade delay={BLUR_FADE_DELAY * 5.5}>
+              <div className="w-full flex justify-center px-4">
+                <p className="max-w-2xl text-center text-lg sm:text-xl md:text-2xl font-semibold text-slate-700 dark:text-slate-300 leading-relaxed">
+                  Watch snapshots of my hikes,
+                  <span className="block">from paths to peaks</span>
+                </p>
+              </div>
+            </BlurFade>
+
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 w-full mx-auto max-w-5xl" style={{ gridAutoRows: 'auto' }}>
               {/* Card 1 */}
               <BlurFade delay={BLUR_FADE_DELAY * 6} className="h-full">
