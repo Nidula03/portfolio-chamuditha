@@ -6,7 +6,7 @@ import { HeroVideoDialog } from "@/components/magicui/hero-video-dialog";
 import { DramaMarquee } from "@/components/drama-marquee";
 import { AuroraText } from "@/registry/magicui/aurora-text";
 import { DATA } from "@/data/resume";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mountain, Tent, Camera, Star } from "lucide-react";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -19,6 +19,21 @@ const tabs = [
 
 export default function InterestsPage() {
   const [activeId, setActiveId] = useState("hiking");
+
+  useEffect(() => {
+    // Load Instagram embed script
+    if (activeId === "photography") {
+      const script = document.createElement("script");
+      script.src = "https://www.instagram.com/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+      
+      // If Instagram embed is already loaded, process the embeds
+      if ((window as any).instgrm) {
+        (window as any).instgrm.Embeds.process();
+      }
+    }
+  }, [activeId]);
 
   return (
     <main className="min-h-dvh flex flex-col gap-10">
@@ -75,9 +90,58 @@ export default function InterestsPage() {
       {activeId === "hiking" && (
         <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
           <div className="flex flex-col gap-y-8 w-full px-4 sm:px-8 md:px-16 lg:px-20">
+            {/* Description Text */}
+            <BlurFade delay={BLUR_FADE_DELAY * 4}>
+              <div className="w-full flex justify-center px-4">
+                <div className="space-y-4 max-w-2xl">
+                  <div className="text-center">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight">
+                      Every climb reveals hidden beauty,
+                    </h2>
+                    <p className="text-lg sm:text-xl md:text-2xl font-semibold text-slate-700 dark:text-slate-200 mt-2">
+                      every step becomes a memory.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </BlurFade>
+
+            {/* Photo Gallery */}
+            <BlurFade delay={BLUR_FADE_DELAY * 5} inView>
+              <div className="columns-2 gap-4 sm:columns-3 w-full mx-auto max-w-5xl">
+                {[
+                  'IMG_5960.jpg',
+                  'IMG_5964.jpg',
+                  'IMG_5959.jpg',
+                  'IMG_5967.jpg',
+                  'IMG_5955.jpg',
+                  'IMG_5972.jpg',
+                  'IMG_5963.jpg',
+                  'IMG_5961.jpg',
+                  'IMG_5970.jpg',
+                  'IMG_5958.jpg',
+                  'IMG_5965.jpg',
+                  'IMG_5968.jpg',
+                  'IMG_5962.jpg',
+                  'IMG_5969.jpg',
+                  'IMG_5957.jpg',
+                  'IMG_5971.jpg',
+                  'IMG_5966.jpg',
+                ].map((imageName, idx) => (
+                  <BlurFade key={imageName} delay={BLUR_FADE_DELAY * (4.5 + idx * 0.05)} inView>
+                    <img
+                      className="mb-4 w-full rounded-lg object-cover"
+                      src={`/hiking_pics/${imageName}`}
+                      alt={`Hiking photo ${idx + 1}`}
+                    />
+                  </BlurFade>
+                ))}
+              </div>
+            </BlurFade>
+
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 w-full mx-auto max-w-5xl" style={{ gridAutoRows: 'auto' }}>
               {/* Card 1 */}
-              <BlurFade delay={BLUR_FADE_DELAY * 4} className="h-full">
+              <BlurFade delay={BLUR_FADE_DELAY * 6} className="h-full">
                 <div className="flex flex-col h-full rounded-2xl overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-950/50 border border-slate-200 dark:border-slate-800/50 shadow-lg transition-all duration-300 ease-out hover:border-slate-300 dark:hover:border-slate-700/80 group">
                   <div className="relative shrink-0 overflow-hidden bg-slate-200 dark:bg-slate-900/80">
                     <HeroVideoDialog
@@ -117,7 +181,7 @@ export default function InterestsPage() {
               </BlurFade>
 
               {/* Card 2 */}
-              <BlurFade delay={BLUR_FADE_DELAY * 5} className="h-full">
+              <BlurFade delay={BLUR_FADE_DELAY * 7} className="h-full">
                 <div className="flex flex-col h-full rounded-2xl overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-950/50 border border-slate-200 dark:border-slate-800/50 shadow-lg transition-all duration-300 ease-out hover:border-slate-300 dark:hover:border-slate-700/80 group">
                   <div className="relative shrink-0 overflow-hidden bg-slate-200 dark:bg-slate-900/80">
                     <HeroVideoDialog
@@ -284,6 +348,52 @@ export default function InterestsPage() {
           <BlurFade delay={BLUR_FADE_DELAY * 8} className="w-full">
             <DramaMarquee />
           </BlurFade>
+        </section>
+      )}
+
+      {/* Photography Section */}
+      {activeId === "photography" && (
+        <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+          <div className="flex flex-col gap-y-8 w-full px-4 sm:px-8 md:px-16 lg:px-20">
+            {/* Description Text */}
+            <BlurFade delay={BLUR_FADE_DELAY * 4}>
+              <div className="w-full flex justify-center px-4">
+                <div className="space-y-4 max-w-2xl">
+                  <div className="text-center">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white leading-tight">
+                      Follow my photography, adventures, and creative journey on Instagram.
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </BlurFade>
+
+            {/* Instagram Embed */}
+            <BlurFade delay={BLUR_FADE_DELAY * 5}>
+              <div className="w-full flex justify-center">
+                <blockquote 
+                  className="instagram-media w-full max-w-2xl" 
+                  data-instgrm-permalink="https://www.instagram.com/chamma_sawan/?igsh=MWY3NnI2ZXM3d2tiMg=="
+                  data-instgrm-version="14"
+                  style={{
+                    background: "#FFF",
+                    border: "0",
+                    borderRadius: "3px",
+                    boxShadow: "0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)",
+                    margin: "1px",
+                    maxWidth: "540px",
+                    minWidth: "326px",
+                    padding: "0",
+                    width: "calc(100% - 2px)"
+                  }}
+                >
+                  <a href="https://www.instagram.com/chamma_sawan/?igsh=MWY3NnI2ZXM3d2tiMg==" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+                    View on Instagram
+                  </a>
+                </blockquote>
+              </div>
+            </BlurFade>
+          </div>
         </section>
       )}
     </main>
