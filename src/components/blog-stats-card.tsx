@@ -83,7 +83,7 @@ export function BlogStatsCard() {
         className="p-0"
       >
         <CardHeader className="border-border border-b p-4 [.border-b]:pb-4 items-center text-center">
-          <CardTitle className="text-2xl">Blog Statistics</CardTitle>
+          <CardTitle className="text-2xl text-emerald-600">Blog Statistics</CardTitle>
           <CardDescription className="mt-1 text-sm">
             A quick view of the articles published on Medium.
           </CardDescription>
