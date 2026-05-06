@@ -13,9 +13,9 @@ import { Mountain, Tent, Camera, Star } from "lucide-react";
 const BLUR_FADE_DELAY = 0.04;
 
 const tabs = [
-  { id: "hiking",      label: "Hiking & Camping", icon: Mountain },
+  { id: "hiking",      label: "Hiking & Camping", icon: Tent },
   { id: "photography", label: "Photography",  icon: Camera   },
-  { id: "acting",      label: "Acting",       icon: Star     },
+  { id: "acting",      label: "Stage Play",    icon: Star     },
 ];
 
 export default function InterestsPage() {

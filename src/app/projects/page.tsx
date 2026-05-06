@@ -20,7 +20,7 @@ export default function ProjectsPage() {
               delay={BLUR_FADE_DELAY}
               className="block w-full text-center text-3xl font-bold tracking-tighter sm:text-4xl"
               yOffset={8}
-              text="My Projects"
+              text="Industrial Projects Experience"
             />
             <div className="flex items-center w-full justify-center">
               <div className="w-full h-px bg-linear-to-r from-transparent via-border to-transparent" />
