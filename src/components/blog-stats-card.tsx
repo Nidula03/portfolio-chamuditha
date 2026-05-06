@@ -116,9 +116,9 @@ export function BlogStatsCard() {
         </CardContent>
 
         <CardFooter className="border-border border-t p-3 [.border-t]:pt-3">
-          <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <div className="text-center sm:text-left">
-              <p className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+          <div className="flex w-full flex-col gap-3 items-center text-center">
+            <div>
+              <p className="inline-flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 50 50"
@@ -129,18 +129,10 @@ export function BlogStatsCard() {
                 </svg>
                 <span>Medium Profile</span>
               </p>
-              <a
-                href={MEDIUM_PROFILE_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-1 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-emerald-600"
-              >
-                @chamudithasawan
-                <ArrowUpRight className="h-3 w-3" />
-              </a>
+              {/* profile handle removed per request */}
             </div>
 
-            <Button asChild className="w-full rounded-full px-3 py-1 text-sm sm:w-auto">
+            <Button asChild className="w-full rounded-full px-3 py-1 text-sm">
               <a href={MEDIUM_PROFILE_URL} target="_blank" rel="noreferrer">
                 Visit Profile
                 <ArrowUpRight className="ml-2 h-3 w-3" />

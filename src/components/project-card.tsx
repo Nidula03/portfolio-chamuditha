@@ -44,6 +44,7 @@ export interface ProjectCardProps {
   }[];
   className?: string;
   showViewProjectButton?: boolean;
+  ctaLabel?: string;
   claps?: number;
   mediumPostId?: string;
 }
@@ -62,6 +63,7 @@ export function ProjectCard({
   links,
   className,
   showViewProjectButton = true,
+  ctaLabel = "View Project",
   claps: initialClaps,
   mediumPostId,
 }: ProjectCardProps) {
@@ -331,6 +333,16 @@ export function ProjectCard({
             ))}
           </div>
         )}
+        {hasClaps && (
+          <div className="flex gap-4 text-xs text-muted-foreground">
+            {displayClaps !== undefined && (
+              <div className="flex items-center gap-1.5">
+                <Hand className="h-4 w-4 stroke-[1.5]" />
+                <span>{displayClaps}</span>
+              </div>
+            )}
+          </div>
+        )}
         {showViewProjectButton && (
           <div className="mt-2 pt-3 border-t border-border">
             {hasProjectUrl && projectUrl ? (
@@ -339,9 +351,9 @@ export function ProjectCard({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="inline-flex h-8 w-full items-center justify-center gap-1.5 rounded-md border border-white bg-white px-3 text-xs font-semibold text-black shadow-sm transition-colors hover:bg-white/90"
+                className="inline-flex h-8 w-full items-center justify-center gap-1.5 rounded-md border border-primary bg-primary px-3 text-xs font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
               >
-                View Project
+                {ctaLabel}
                 <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
               </a>
             ) : canOpenModal ? (
@@ -352,24 +364,14 @@ export function ProjectCard({
                   setModalImageIndex(currentImageIndex);
                   setIsModalOpen(true);
                 }}
-                className="inline-flex h-8 w-full items-center justify-center gap-1.5 rounded-md border border-white bg-white px-3 text-xs font-semibold text-black shadow-sm transition-colors hover:bg-white/90"
+                className="inline-flex h-8 w-full items-center justify-center gap-1.5 rounded-md border border-primary bg-primary px-3 text-xs font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
               >
-                View Project
+                {ctaLabel}
               </button>
             ) : (
               <span className="inline-flex h-8 w-full items-center justify-center gap-1.5 rounded-md border border-border/70 bg-muted/40 px-3 text-xs font-medium text-muted-foreground/70 cursor-not-allowed">
-                View Project
+                {ctaLabel}
               </span>
-            )}
-          </div>
-        )}
-        {hasClaps && (
-          <div className="flex gap-4 text-xs text-muted-foreground">
-            {displayClaps !== undefined && (
-              <div className="flex items-center gap-1.5">
-                <Hand className="h-4 w-4 stroke-[1.5]" />
-                <span>{displayClaps}</span>
-              </div>
             )}
           </div>
         )}

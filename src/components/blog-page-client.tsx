@@ -47,7 +47,8 @@ export default function BlogPageClient() {
               image={blog.image}
               video={blog.video}
               links={blog.links}
-              showViewProjectButton={false}
+              showViewProjectButton={true}
+              ctaLabel="Read on Medium"
               claps={blog.claps}
               mediumPostId={blog.mediumPostId}
             />

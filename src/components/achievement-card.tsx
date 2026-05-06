@@ -55,6 +55,8 @@ export function AchievementCard({
                 src={galleryImages[currentImageIndex]}
                 alt={`${title} image ${currentImageIndex + 1}`}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                decoding="async"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = "none";
                 }}
