@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, BookOpen, Code, MessageSquare, Sparkles } from "lucide-react";
+import { HomeIcon, BookOpen, Code, MessageSquare, Sparkles, Trophy } from "lucide-react";
 import { OrcidIcon } from "@/components/ui/svgs/orcid";
 
 export const DATA = {
@@ -22,6 +22,7 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/projects", icon: Code, label: "Projects" },
+    { href: "/achievements", icon: Trophy, label: "Achievements" },
     { href: "/blog", icon: BookOpen, label: "Blog" },
     { href: "/talks", icon: MessageSquare, label: "Talks" },
     { href: "/interests", icon: Sparkles, label: "Interests" },
