@@ -1,6 +1,4 @@
-import BlurFade from "@/components/magicui/blur-fade";
 import BlogPageClient from "@/components/blog-page-client";
-import { DATA } from "@/data/resume";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,7 +9,6 @@ export const metadata: Metadata = {
 const BLUR_FADE_DELAY = 0.04;
 
 export default function BlogPage() {
-  const BLUR_FADE_DELAY = 0.04;
   return (
     <main className="min-h-dvh flex flex-col gap-14 relative">
       <section id="blog" className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
@@ -19,7 +16,7 @@ export default function BlogPage() {
           <div className="max-w-5xl mx-auto text-center py-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Check out my latest blog posts</h2>
             <div className="flex items-center justify-center mt-4">
-              <div className="w-64 sm:w-96 h-px bg-linear-to-r from-transparent via-border to-transparent" />
+              <div className="w-64 sm:w-96 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
             </div>
           </div>
         </div>

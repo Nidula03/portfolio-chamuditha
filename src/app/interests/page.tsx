@@ -24,14 +24,17 @@ export default function InterestsPage() {
   useEffect(() => {
     // Load Instagram embed script
     if (activeId === "photography") {
-      const script = document.createElement("script");
-      script.src = "https://www.instagram.com/embed.js";
-      script.async = true;
-      document.body.appendChild(script);
-      
-      // If Instagram embed is already loaded, process the embeds
+      // Check if script is already loaded
       if ((window as any).instgrm) {
         (window as any).instgrm.Embeds.process();
+      } else {
+        // Only add script if it doesn't already exist
+        if (!document.querySelector('script[src="https://www.instagram.com/embed.js"]')) {
+          const script = document.createElement("script");
+          script.src = "https://www.instagram.com/embed.js";
+          script.async = true;
+          document.body.appendChild(script);
+        }
       }
     }
   }, [activeId]);
@@ -389,12 +392,12 @@ export default function InterestsPage() {
             <BlurFade delay={BLUR_FADE_DELAY * 5}>
               <div className="w-full flex justify-center">
                 <blockquote 
-                  className="instagram-media w-full max-w-2xl" 
+                  className="instagram-media w-full max-w-2xl dark:bg-slate-900 dark:border-slate-800" 
                   data-instgrm-permalink="https://www.instagram.com/chamma_sawan/?igsh=MWY3NnI2ZXM3d2tiMg=="
                   data-instgrm-version="14"
                   style={{
-                    background: "#FFF",
-                    border: "0",
+                    background: "var(--instagram-bg, #FFF)",
+                    border: "1px solid var(--instagram-border, #e1e8ed)",
                     borderRadius: "3px",
                     boxShadow: "0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)",
                     margin: "1px",
@@ -404,7 +407,7 @@ export default function InterestsPage() {
                     width: "calc(100% - 2px)"
                   }}
                 >
-                  <a href="https://www.instagram.com/chamma_sawan/?igsh=MWY3NnI2ZXM3d2tiMg==" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+                  <a href="https://www.instagram.com/chamma_sawan/?igsh=MWY3NnI2ZXM3d2tiMg==" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">
                     View on Instagram
                   </a>
                 </blockquote>

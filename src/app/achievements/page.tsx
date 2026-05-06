@@ -23,7 +23,7 @@ export default function AchievementsPage() {
               text="Achievements"
             />
             <div className="flex items-center w-full justify-center">
-              <div className="w-full h-px bg-linear-to-r from-transparent via-border to-transparent" />
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
             </div>
           </div>
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
