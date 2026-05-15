@@ -31,7 +31,7 @@ export default function BlogPageClient() {
         <BlogStatsCard />
       </BlurFade>
 
-      <div ref={gridRef} className="grid grid-cols-1 gap-3 sm:grid-cols-3 w-full mx-auto max-w-5xl" style={{ gridAutoRows: '3fr' }}>
+      <div ref={gridRef} className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 w-full mx-auto max-w-5xl" style={{ gridAutoRows: '3fr' }}>
         {DATA.blogs.map((blog, id) => (
           <BlurFade
             key={blog.title}

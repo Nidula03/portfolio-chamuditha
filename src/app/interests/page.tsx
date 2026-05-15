@@ -8,7 +8,7 @@ import { DramaMarquee } from "@/components/drama-marquee";
 import { AuroraText } from "@/registry/magicui/aurora-text";
 import { DATA } from "@/data/resume";
 import { useState, useEffect } from "react";
-import { Mountain, Tent, Camera, Star } from "lucide-react";
+import { Mountain, Tent, Camera, Star, Instagram } from "lucide-react";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -17,6 +17,103 @@ const tabs = [
   { id: "photography", label: "Photography",  icon: Camera   },
   { id: "acting",      label: "Stage Play",    icon: Star     },
 ];
+
+function InstagramImageCarousel() {
+  const images = [
+    "/instaPics/insta1.jpg",
+    "/instaPics/insta2.jpg",
+    "/instaPics/insta3.jpg",
+    "/instaPics/insta4.jpg",
+    "/instaPics/insta5.jpg",
+    "/instaPics/insta6.jpg",
+  ];
+
+  return (
+    <blockquote 
+      className="instagram-media w-full max-w-2xl dark:bg-slate-900 dark:border-slate-800" 
+      style={{
+        background: "var(--instagram-bg, #FFF)",
+        border: "1px solid var(--instagram-border, #e1e8ed)",
+        borderRadius: "3px",
+        boxShadow: "0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)",
+        margin: "1px",
+        maxWidth: "540px",
+        minWidth: "326px",
+        padding: "0",
+        width: "calc(100% - 2px)"
+      }}
+    >
+      {/* Profile Header */}
+      <div className="p-4 border-b border-slate-200 dark:border-slate-800">
+        <div className="flex items-start gap-4">
+          {/* Profile Picture */}
+          <div className="flex-shrink-0 mt-1">
+            <div className="relative w-24 h-24 rounded-full overflow-hidden">
+              <Image
+                src="/me.png"
+                alt="Profile"
+                fill
+                className="object-cover"
+                quality={85}
+              />
+            </div>
+          </div>
+
+          {/* Profile Info */}
+          <div className="flex-1 pt-1">
+            <div className="flex items-start justify-between gap-2">
+              <a href="https://www.instagram.com/chamma_sawan" target="_blank" rel="noopener noreferrer" className="flex-1 hover:opacity-70 transition-opacity">
+                <p className="font-bold text-black text-sm cursor-pointer">chamma_sawan</p>
+                <p className="text-sm text-black font-bold mt-0.5 cursor-pointer">Chamuditha Sawan Ekanayake😊</p>
+              </a>
+              
+              {/* Instagram Logo */}
+              <a href="https://www.instagram.com/chamma_sawan" target="_blank" rel="noopener noreferrer" className="flex-shrink-0 hover:opacity-70 transition-opacity">
+                <Instagram className="w-6 h-6 text-pink-500 cursor-pointer" />
+              </a>
+            </div>
+            
+            {/* Stats - Below */}
+            <a href="https://www.instagram.com/chamma_sawan" target="_blank" rel="noopener noreferrer" className="flex gap-6 mt-4 text-sm hover:opacity-70 transition-opacity">
+              <div className="cursor-pointer">
+                <p className="font-bold text-black text-lg">1,354</p>
+                <p className="text-black text-xs font-semibold">followers</p>
+              </div>
+              <div className="cursor-pointer">
+                <p className="font-bold text-black text-lg">161</p>
+                <p className="text-black text-xs font-semibold">posts</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Grid of Images */}
+      <a href="https://www.instagram.com/chamma_sawan" target="_blank" rel="noopener noreferrer">
+        <div className="grid grid-cols-3 gap-px bg-slate-300 dark:bg-slate-700 cursor-pointer hover:opacity-90 transition-opacity">
+          {images.map((image, index) => (
+            <div key={index} className="relative aspect-square bg-slate-100 dark:bg-slate-900 overflow-hidden">
+              <Image
+                src={image}
+                alt={`Instagram photo ${index + 1}`}
+                fill
+                className="object-cover hover:opacity-80 transition-opacity"
+                quality={85}
+              />
+            </div>
+          ))}
+        </div>
+      </a>
+
+      {/* Footer */}
+      <div className="p-3 text-center text-xs text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800">
+        <a href="https://www.instagram.com/chamma_sawan" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">
+          View on Instagram
+        </a>
+      </div>
+    </blockquote>
+  );
+}
 
 export default function InterestsPage() {
   const [activeId, setActiveId] = useState("hiking");
@@ -40,7 +137,7 @@ export default function InterestsPage() {
   }, [activeId]);
 
   return (
-    <main className="min-h-dvh flex flex-col gap-10">
+    <main className="min-h-dvh flex flex-col gap-10 pt-16">
       {/* Header */}
       <div className="space-y-4">
         <BlurFadeText
@@ -388,29 +485,10 @@ export default function InterestsPage() {
               </div>
             </BlurFade>
 
-            {/* Instagram Embed */}
+            {/* Instagram Frame with Image Carousel */}
             <BlurFade delay={BLUR_FADE_DELAY * 5}>
               <div className="w-full flex justify-center">
-                <blockquote 
-                  className="instagram-media w-full max-w-2xl dark:bg-slate-900 dark:border-slate-800" 
-                  data-instgrm-permalink="https://www.instagram.com/chamma_sawan/?igsh=MWY3NnI2ZXM3d2tiMg=="
-                  data-instgrm-version="14"
-                  style={{
-                    background: "var(--instagram-bg, #FFF)",
-                    border: "1px solid var(--instagram-border, #e1e8ed)",
-                    borderRadius: "3px",
-                    boxShadow: "0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)",
-                    margin: "1px",
-                    maxWidth: "540px",
-                    minWidth: "326px",
-                    padding: "0",
-                    width: "calc(100% - 2px)"
-                  }}
-                >
-                  <a href="https://www.instagram.com/chamma_sawan/?igsh=MWY3NnI2ZXM3d2tiMg==" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">
-                    View on Instagram
-                  </a>
-                </blockquote>
+                <InstagramImageCarousel />
               </div>
             </BlurFade>
           </div>

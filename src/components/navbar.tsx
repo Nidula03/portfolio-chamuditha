@@ -57,7 +57,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="fixed inset-x-0 top-0 z-50 backdrop-blur-md border-b border-border/40 bg-background/80">
-        <div className="relative w-full h-16 flex items-center px-8 sm:px-16 lg:px-20">
+        <div className="relative w-full h-16 flex items-center px-6 sm:px-8 md:px-16 lg:px-20">
           
           {/* Left - Logo */}
           <div className="flex items-center">
