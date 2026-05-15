@@ -12,13 +12,13 @@ const BLUR_FADE_DELAY = 0.04;
 
 export default function AchievementsPage() {
   return (
-    <main className="min-h-dvh flex flex-col gap-14 relative">
+    <main className="min-h-dvh flex flex-col gap-8 sm:gap-14 relative">
       <section id="achievements">
-        <div className="mx-auto w-full max-w-2xl space-y-8">
-          <div className="space-y-4">
+        <div className="mx-auto w-full max-w-2xl space-y-6 sm:space-y-8">
+          <div className="space-y-3 sm:space-y-4">
             <BlurFadeText
               delay={BLUR_FADE_DELAY}
-              className="block w-full text-center text-3xl font-bold tracking-tighter sm:text-4xl"
+              className="block w-full text-center text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter"
               yOffset={8}
               text="Achievements"
             />
@@ -27,13 +27,14 @@ export default function AchievementsPage() {
             </div>
           </div>
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <div className="space-y-8 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-              <div className="flex min-h-0 flex-col gap-y-8 w-full px-8 sm:px-16 lg:px-20">
+            <div className="space-y-6 sm:space-y-8 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+              <div className="flex min-h-0 flex-col gap-y-6 sm:gap-y-8 w-full px-4 sm:px-8 md:px-16 lg:px-20">
                 <div>
-                  <h2 className="text-2xl font-bold mb-4 text-center">Scouting</h2>
-                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 w-full mx-auto max-w-6xl" style={{ gridAutoRows: '3fr' }}>
+                  <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">Scouting</h2>
+                  <div className="grid grid-cols-1 gap-4 w-full mx-auto max-w-6xl">
                     <BlurFade delay={BLUR_FADE_DELAY * 4}>
                       <AchievementCard
+                        index={0}
                         title="Baden Powell (BP) Award – Sri Lanka Scout Association"
                         category="Scouting"
                         date="Dec 2024"
@@ -45,6 +46,7 @@ export default function AchievementsPage() {
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
                       <AchievementCard
+                        index={1}
                         title="President Scout Award – Sri Lanka Scout Association"
                         category="Scouting"
                         date="Dec 2016"
@@ -56,6 +58,7 @@ export default function AchievementsPage() {
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 6}>
                       <AchievementCard
+                        index={2}
                         title="Represented Sri Lanka at the 23rd World Scout Jamboree"
                         category="Scouting"
                         date="Aug 2015"
@@ -67,6 +70,7 @@ export default function AchievementsPage() {
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 7}>
                       <AchievementCard
+                        index={3}
                         title="Best Explorer Scout & Runner-Up Team Member"
                         category="Scouting"
                         date="Oct 2016"
@@ -77,6 +81,7 @@ export default function AchievementsPage() {
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 8}>
                       <AchievementCard
+                        index={4}
                         title="Scout of the Year – Trinity College Kandy"
                         category="Scouting"
                         date="Dec 2016"
@@ -86,6 +91,7 @@ export default function AchievementsPage() {
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 9}>
                       <AchievementCard
+                        index={5}
                         title="Champion Scouts Team Member"
                         category="Scouting"
                         date="Oct 2015"
