@@ -16,13 +16,18 @@ export default function BlogPageClient() {
     const compute = () => {
       if (gridRef.current) {
         const rect = gridRef.current.getBoundingClientRect();
-        setStatsTop(`${rect.top}px`);
+        // Convert viewport-relative to document-relative coordinates for fixed positioning
+        setStatsTop(`${rect.top + window.scrollY}px`);
       }
     };
 
     compute();
     window.addEventListener("resize", compute);
-    return () => window.removeEventListener("resize", compute);
+    window.addEventListener("scroll", compute);
+    return () => {
+      window.removeEventListener("resize", compute);
+      window.removeEventListener("scroll", compute);
+    };
   }, []);
 
   return (

@@ -6,6 +6,7 @@ const LIVE_MODE = process.env.MEDIUM_STATS_LIVE === 'true';
 
 // Fallback clap counts
 const FALLBACK_CLAPS: Record<string, number> = {
+  '7b64b74d4c05': 20,      // Pitching Tents in the Clouds
   '95186def2eb8': 51,      // From 4 Hours to 1 Minute
   '8c15c04d1f3c': 51,      // Beyond the Pedals
   '65d87079d742': 50,      // Ink, Mud and Memories
