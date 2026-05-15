@@ -51,6 +51,18 @@ export function AchievementCard({
   };
 
   useEffect(() => {
+    if (isModalOpen && window.innerWidth < 768) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isModalOpen]);
+
+  useEffect(() => {
     if (!hasMultipleImages || isModalOpen) return;
     
     const interval = setInterval(() => {
