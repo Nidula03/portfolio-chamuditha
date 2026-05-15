@@ -148,7 +148,7 @@ export function DramaMarquee() {
     <div className="relative flex w-full flex-col items-center justify-center gap-8 py-8">
       {/* Drama 1 - Top Scroll */}
       <div className="w-full">
-        <Marquee pauseOnHover className="[--duration:80s]">
+        <Marquee className="[--duration:80s]">
           {drama1Images.map((image, i) => (
             <PhotoCard
               key={`drama1-${i}`}
@@ -161,7 +161,7 @@ export function DramaMarquee() {
 
       {/* Drama 2 - Bottom Scroll Reverse */}
       <div className="w-full">
-        <Marquee reverse pauseOnHover className="[--duration:80s]">
+        <Marquee reverse className="[--duration:80s]">
           {drama2Images.map((image, i) => (
             <PhotoCard
               key={`drama2-${i}`}
