@@ -22,12 +22,9 @@ export default function ResearchPage() {
               yOffset={8}
               text="Research"
             />
-            <div className="flex items-center w-full justify-center">
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-            </div>
           </div>
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <div className="space-y-6 sm:space-y-8 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+            <div className="space-y-6 sm:space-y-8 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mt-8 sm:mt-12">
               <div className="grid grid-cols-1 gap-4 w-full mx-auto max-w-6xl">
                 <BlurFade delay={BLUR_FADE_DELAY * 5}>
                   <AchievementCard

@@ -2,10 +2,26 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useState, useEffect } from "react";
+
+// Helper function to render title with superscript
+const renderTitleWithSuperscript = (text: string) => {
+  const parts = text.split(/(\d+(?:st|nd|rd|th))/g);
+  return parts.map((part, idx) => {
+    const match = part.match(/(\d+)(st|nd|rd|th)/);
+    if (match) {
+      return (
+        <span key={idx}>
+          {match[1]}
+          <sup>{match[2]}</sup>
+        </span>
+      );
+    }
+    return part;
+  });
+};
 
 export interface AchievementCardProps {
   title: string;
@@ -75,7 +91,7 @@ export function AchievementCard({
   }, [hasMultipleImages, galleryImages.length, isModalOpen]);
 
   const imageSection = galleryImages.length > 0 && (
-    <div className="w-full md:w-48 lg:w-64 xl:w-80 h-48 md:h-64 lg:h-full flex-shrink-0 overflow-hidden bg-muted relative cursor-pointer" onClick={() => setIsModalOpen(true)}>
+    <div className="w-full md:w-full lg:w-1/2 h-80 md:h-96 overflow-hidden bg-muted relative cursor-pointer flex-shrink-0" onClick={() => setIsModalOpen(true)}>
       <img
         src={galleryImages[currentImageIndex]}
         alt={`${title} image ${currentImageIndex + 1}`}
@@ -121,7 +137,7 @@ export function AchievementCard({
 
   return (
     <>
-      <Card className="overflow-hidden border border-border hover:ring-2 hover:ring-muted hover:shadow-lg flex flex-col md:flex-row min-h-64 md:min-h-80">
+      <div className="overflow-hidden flex flex-col md:flex-row min-h-64 md:min-h-80">
         <div className={`flex flex-col md:flex-row w-full ${imageOnLeft ? "md:flex-row" : "md:flex-row-reverse"}`}>
           {imageSection}
           <div className="p-4 sm:p-6 flex flex-col flex-1 justify-between">
@@ -130,7 +146,7 @@ export function AchievementCard({
                 <Badge variant="secondary">{category}</Badge>
               </div>
               
-              <h3 className="text-lg sm:text-2xl md:text-3xl font-bold mb-3 leading-tight">{title}</h3>
+              <h3 className="text-lg sm:text-2xl md:text-3xl font-bold mb-3 leading-tight">{renderTitleWithSuperscript(title)}</h3>
               
 <p className="text-xs sm:text-sm text-muted-foreground mb-1">{organization}</p>
             
@@ -153,7 +169,7 @@ export function AchievementCard({
             </div>
           </div>
         </div>
-      </Card>
+      </div>
 
       {isModalOpen && galleryImages.length > 0 && (
         <div 

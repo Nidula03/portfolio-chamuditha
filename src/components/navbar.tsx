@@ -57,10 +57,10 @@ export default function Navbar() {
   return (
     <>
       <nav className="fixed inset-x-0 top-0 z-50 backdrop-blur-md border-b border-border/40 bg-background/80">
-        <div className="relative w-full h-16 flex items-center px-6 sm:px-8 md:px-16 lg:px-20">
+        <div className="relative w-full h-16 flex items-center justify-between px-6 sm:px-8 md:px-16 lg:px-20">
           
           {/* Left - Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center flex-1">
             <Link
               href="/"
               className="font-semibold text-lg hover:text-primary transition-colors"
@@ -70,7 +70,7 @@ export default function Navbar() {
           </div>
 
           {/* Center - Nav (perfectly centered) */}
-          <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+          <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
             <NavLinks
               pathname={pathname}
               isOpen={isOpen}
@@ -79,7 +79,7 @@ export default function Navbar() {
           </div>
 
           {/* Right - Desktop Social + Theme */}
-          <div className="hidden md:flex items-center gap-4 ml-auto">
+          <div className="hidden md:flex items-center gap-4 flex-1 justify-end">
             <div className="flex items-center gap-3">
               {Object.entries(DATA.contact.social)
                 .filter(([_, social]) => social.navbar)

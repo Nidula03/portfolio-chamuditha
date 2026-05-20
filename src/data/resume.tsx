@@ -3,7 +3,7 @@ import { HomeIcon, BookOpen, Code, MessageSquare, Sparkles, Trophy, Microscope }
 import { OrcidIcon } from "@/components/ui/svgs/orcid";
 
 export const DATA = {
-  name: "Chamuditha Ekanayake",
+  name: "Chamuditha Sawan Ekanayake",
   initials: "CE",
   url: "https://chamuditha.dev",
   location: "San Francisco, CA",
