@@ -173,11 +173,11 @@ export function AchievementCard({
 
       {isModalOpen && galleryImages.length > 0 && (
         <div 
-          className="fixed inset-0 bg-black flex items-center justify-center z-50 p-2 sm:p-4"
+          className="fixed inset-0 bg-black/40 backdrop-blur-md flex items-center justify-center z-50 p-2 sm:p-4"
           onClick={() => setIsModalOpen(false)}
         >
           <div 
-            className="relative w-full max-w-2xl max-h-[85vh] sm:max-h-[80vh] bg-black rounded-lg overflow-hidden"
+            className="relative w-full max-w-2xl h-80 sm:h-96 bg-black rounded-lg overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -194,6 +194,7 @@ export function AchievementCard({
               className="w-full h-full object-contain"
               loading="lazy"
               decoding="async"
+              onClick={(e) => e.stopPropagation()}
             />
 
             {hasMultipleImages && (

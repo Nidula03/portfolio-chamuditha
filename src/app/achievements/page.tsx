@@ -33,7 +33,7 @@ export default function AchievementsPage() {
                   <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">Scouting</h2>
                   <div className="grid grid-cols-1 gap-4 w-full mx-auto max-w-6xl">
                     <BlurFade delay={BLUR_FADE_DELAY * 4}>
-                      <div className="border border-border rounded-lg p-6 hover:shadow-lg hover:ring-2 hover:ring-muted transition-all">
+                      <div className="border border-border/50 bg-background/60 rounded-lg p-6 hover:shadow-lg hover:ring-2 hover:ring-muted/50 hover:bg-background/70 transition-all" style={{ backdropFilter: 'blur(1.17rem)' }}>
                         <AchievementCard
                           index={0}
                           title="Baden Powell (BP) Award – Sri Lanka Scout Association"
@@ -47,7 +47,7 @@ export default function AchievementsPage() {
                       </div>
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                      <div className="border border-border rounded-lg p-6 hover:shadow-lg hover:ring-2 hover:ring-muted transition-all">
+                      <div className="border border-border/50 bg-background/60 rounded-lg p-6 hover:shadow-lg hover:ring-2 hover:ring-muted/50 hover:bg-background/70 transition-all" style={{ backdropFilter: 'blur(1.17rem)' }}>
                         <AchievementCard
                           index={1}
                           title="President Scout Award – Sri Lanka Scout Association"
@@ -61,7 +61,7 @@ export default function AchievementsPage() {
                       </div>
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 6}>
-                      <div className="border border-border rounded-lg p-6 hover:shadow-lg hover:ring-2 hover:ring-muted transition-all">
+                      <div className="border border-border/50 bg-background/60 rounded-lg p-6 hover:shadow-lg hover:ring-2 hover:ring-muted/50 hover:bg-background/70 transition-all" style={{ backdropFilter: 'blur(1.17rem)' }}>
                         <AchievementCard
                           index={2}
                           title="Represented Sri Lanka at the 23rd World Scout Jamboree"
@@ -75,7 +75,7 @@ export default function AchievementsPage() {
                       </div>
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 7}>
-                      <div className="border border-border rounded-lg p-6 hover:shadow-lg hover:ring-2 hover:ring-muted transition-all">
+                      <div className="border border-border/50 bg-background/60 rounded-lg p-6 hover:shadow-lg hover:ring-2 hover:ring-muted/50 hover:bg-background/70 transition-all" style={{ backdropFilter: 'blur(1.17rem)' }}>
                         <AchievementCard
                           index={3}
                           title="Best Explorer Scout & Runner-Up Team Member"
@@ -88,7 +88,7 @@ export default function AchievementsPage() {
                       </div>
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 8}>
-                      <div className="border border-border rounded-lg p-6 hover:shadow-lg hover:ring-2 hover:ring-muted transition-all">
+                      <div className="border border-border/50 bg-background/60 rounded-lg p-6 hover:shadow-lg hover:ring-2 hover:ring-muted/50 hover:bg-background/70 transition-all" style={{ backdropFilter: 'blur(1.17rem)' }}>
                         <AchievementCard
                           index={4}
                           title="Scout of the Year – Trinity College Kandy"
@@ -100,7 +100,7 @@ export default function AchievementsPage() {
                       </div>
                     </BlurFade>
                     <BlurFade delay={BLUR_FADE_DELAY * 9}>
-                      <div className="border border-border rounded-lg p-6 hover:shadow-lg hover:ring-2 hover:ring-muted transition-all">
+                      <div className="border border-border/50 bg-background/60 rounded-lg p-6 hover:shadow-lg hover:ring-2 hover:ring-muted/50 hover:bg-background/70 transition-all" style={{ backdropFilter: 'blur(1.17rem)' }}>
                         <AchievementCard
                           index={5}
                           title="Champion Scouts Team Member"

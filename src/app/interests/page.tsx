@@ -193,31 +193,14 @@ export default function InterestsPage() {
           <div className="flex flex-col gap-y-8 w-full px-4 sm:px-8 md:px-16 lg:px-20">
             {/* Hero Section */}
             <BlurFade delay={BLUR_FADE_DELAY * 3}>
-              <div className="relative w-full h-96 sm:h-[500px] md:h-[600px] rounded-2xl overflow-hidden group">
-                {/* Background Image */}
-                <Image
-                  src="/hiking_pics/IMG_5963.jpg"
-                  alt="Hero hiking image"
-                  fill
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  priority
-                  quality={75}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-                />
-                
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50"></div>
-                
-                {/* Text Content */}
-                <div className="absolute inset-0 flex items-start justify-center p-6 pt-32 md:pt-40">
-                  <div className="text-center space-y-3 max-w-2xl">
-                    <h2 className="bg-linear-to-b from-white to-slate-200 dark:from-white dark:to-slate-400 bg-clip-text text-transparent text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                      Every climb reveals hidden beauty,
-                    </h2>
-                    <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-slate-100 drop-shadow-md">
-                      every step becomes a memory.
-                    </p>
-                  </div>
+              <div className="w-full flex items-center justify-center py-2 sm:py-3 md:py-4">
+                <div className="text-center space-y-3 max-w-2xl px-4">
+                  <h2 className="bg-linear-to-b from-white to-slate-200 dark:from-white dark:to-slate-400 bg-clip-text text-transparent text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                    Every climb reveals hidden beauty,
+                  </h2>
+                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-slate-100 drop-shadow-md">
+                    every step becomes a memory.
+                  </p>
                 </div>
               </div>
             </BlurFade>
