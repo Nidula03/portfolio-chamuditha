@@ -195,10 +195,10 @@ export default function InterestsPage() {
             <BlurFade delay={BLUR_FADE_DELAY * 3}>
               <div className="w-full flex items-center justify-center py-2 sm:py-3 md:py-4">
                 <div className="text-center space-y-3 max-w-2xl px-4">
-                  <h2 className="bg-linear-to-b from-white to-slate-200 dark:from-white dark:to-slate-400 bg-clip-text text-transparent text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                  <h2 className="bg-gradient-to-b from-slate-900 to-slate-600 dark:from-slate-100 dark:to-slate-400 bg-clip-text text-transparent text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                     Every climb reveals hidden beauty,
                   </h2>
-                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-slate-100 drop-shadow-md">
+                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-slate-700 dark:text-slate-100 drop-shadow-md">
                     every step becomes a memory.
                   </p>
                 </div>
