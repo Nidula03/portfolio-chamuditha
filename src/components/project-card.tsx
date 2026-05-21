@@ -47,6 +47,7 @@ export interface ProjectCardProps {
   ctaLabel?: string;
   claps?: number;
   mediumPostId?: string;
+  horizontal?: boolean;
 }
 
 export function ProjectCard({
@@ -66,6 +67,7 @@ export function ProjectCard({
   ctaLabel = "View Project",
   claps: initialClaps,
   mediumPostId,
+  horizontal = false,
 }: ProjectCardProps) {
   const { stats } = useMediumStats(mediumPostId || "", initialClaps || 0);
   const hasClaps = typeof initialClaps === "number" || Boolean(mediumPostId);
@@ -234,15 +236,16 @@ export function ProjectCard({
         }
       }}
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden transition-all duration-500 ease-out",
+        "flex h-full border border-border rounded-xl overflow-hidden transition-all duration-500 ease-out",
+        horizontal ? "flex-row" : "flex-col",
         hasProjectUrl
           ? "cursor-pointer hover:ring-2 hover:ring-muted hover:scale-[1.02]"
           : "cursor-default",
         className
       )}
     >
-      <div className="relative shrink-0">
-        <div className="block">
+      <div className={cn("relative shrink-0", horizontal ? "w-1/3 h-full" : "")}>
+        <div className="block h-full">
           {video ? (
             <video
               src={video}
@@ -250,12 +253,20 @@ export function ProjectCard({
               loop
               muted
               playsInline
-              className="w-full h-48 object-cover"
+              className={cn("object-cover", horizontal ? "w-full h-full" : "w-full h-48")}
             />
           ) : galleryImages.length > 0 ? (
-            <ProjectImage src={galleryImages[currentImageIndex]} alt={title} />
+            <img
+              src={galleryImages[currentImageIndex]}
+              alt={title}
+              className={cn("object-cover", horizontal ? "w-full h-full" : "w-full h-48")}
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = "none";
+              }}
+            />
           ) : (
-            <div className="w-full h-48 bg-muted" />
+            <div className={cn("bg-muted", horizontal ? "w-full h-full" : "w-full h-48")} />
           )}
         </div>
         {!video && hasMultipleImages && (
@@ -300,32 +311,32 @@ export function ProjectCard({
           </div>
         )}
       </div>
-      <div className="p-6 flex flex-col gap-3 flex-1">
+      <div className={cn("flex flex-col gap-2.5 flex-1", horizontal ? "p-4 md:p-5" : "p-6")}>
         <div className="flex items-start justify-between gap-2">
-          <div className="flex flex-col gap-1">
-            <h3 className="font-semibold">{title}</h3>
-            <time className="text-xs text-muted-foreground">{dates}</time>
+          <div className="flex flex-col gap-0.5">
+            <h3 className={cn("font-semibold", horizontal ? "text-sm md:text-base line-clamp-1" : "")}>{title}</h3>
+            <time className="text-xs text-muted-foreground hidden md:block">{dates}</time>
           </div>
           {hasProjectUrl ? (
             <a
               href={projectUrl}
-              className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+              className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm flex-shrink-0"
               aria-label={`Open ${title}`}
               onClick={(e) => e.stopPropagation()}
             >
-              <ArrowUpRight className="h-4 w-4" aria-hidden />
+              <ArrowUpRight className={cn("h-4 w-4", horizontal ? "h-3.5 w-3.5" : "")} aria-hidden />
             </a>
           ) : null}
         </div>
-        <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
+        <div className={cn("flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert", horizontal ? "text-xs line-clamp-2" : "text-xs")}>
           <Markdown>{description}</Markdown>
         </div>
         {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-1 mt-auto">
-            {tags.map((tag) => (
+          <div className={cn("flex flex-wrap gap-1", horizontal ? "gap-1" : "")}>
+            {(horizontal ? tags.slice(0, 3) : tags).map((tag) => (
               <Badge
                 key={tag}
-                className="text-[11px] font-medium border border-border h-6 w-fit px-2"
+                className="text-[10px] font-medium border border-border h-5 w-fit px-2"
                 variant="outline"
               >
                 {tag}
@@ -344,17 +355,17 @@ export function ProjectCard({
           </div>
         )}
         {showViewProjectButton && (
-          <div className="mt-2 pt-3 border-t border-border">
+          <div className={cn("pt-2", horizontal ? "border-t border-border" : "mt-2 pt-3 border-t border-border")}>
             {hasProjectUrl && projectUrl ? (
               <a
                 href={projectUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="inline-flex h-8 w-full items-center justify-center gap-1.5 rounded-md border border-primary bg-primary px-3 text-xs font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+                className={cn("inline-flex items-center justify-center gap-1.5 rounded-md border border-primary bg-primary px-3 text-primary-foreground shadow-sm transition-colors hover:bg-primary/90", horizontal ? "h-7 text-xs w-1/2" : "h-8 w-full text-xs font-semibold")}
               >
                 {ctaLabel}
-                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+                <ArrowUpRight className={cn("aria-hidden", horizontal ? "h-3 w-3" : "h-3.5 w-3.5")} aria-hidden />
               </a>
             ) : canOpenModal ? (
               <button
@@ -364,12 +375,12 @@ export function ProjectCard({
                   setModalImageIndex(currentImageIndex);
                   setIsModalOpen(true);
                 }}
-                className="inline-flex h-8 w-full items-center justify-center gap-1.5 rounded-md border border-primary bg-primary px-3 text-xs font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+                className={cn("inline-flex items-center justify-center gap-1.5 rounded-md border border-primary bg-primary px-3 text-primary-foreground shadow-sm transition-colors hover:bg-primary/90", horizontal ? "h-7 text-xs w-1/2" : "h-8 w-full text-xs font-semibold")}
               >
                 {ctaLabel}
               </button>
             ) : (
-              <span className="inline-flex h-8 w-full items-center justify-center gap-1.5 rounded-md border border-border/70 bg-muted/40 px-3 text-xs font-medium text-muted-foreground/70 cursor-not-allowed">
+              <span className={cn("inline-flex items-center justify-center gap-1.5 rounded-md border border-border/70 bg-muted/40 px-3 text-muted-foreground/70 cursor-not-allowed", horizontal ? "h-7 text-xs w-1/2" : "h-8 w-full text-xs font-medium")}>
                 {ctaLabel}
               </span>
             )}

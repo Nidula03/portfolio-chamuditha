@@ -36,7 +36,7 @@ export default function BlogPageClient() {
         <BlogStatsCard />
       </BlurFade>
 
-      <div ref={gridRef} className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 w-full mx-auto max-w-5xl" style={{ gridAutoRows: '3fr' }}>
+      <div ref={gridRef} className="grid grid-cols-1 gap-4 w-full mx-auto max-w-5xl" style={{ gridAutoRows: '260px' }}>
         {DATA.blogs.map((blog, id) => (
           <BlurFade
             key={blog.title}
@@ -56,6 +56,7 @@ export default function BlogPageClient() {
               ctaLabel="Read on Medium"
               claps={blog.claps}
               mediumPostId={blog.mediumPostId}
+              horizontal
             />
           </BlurFade>
         ))}
