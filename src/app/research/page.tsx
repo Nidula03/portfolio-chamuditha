@@ -14,7 +14,7 @@ export default function ResearchPage() {
   return (
     <main className="min-h-dvh flex flex-col gap-8 sm:gap-14 relative">
       <section id="research">
-        <div className="mx-auto w-full max-w-2xl space-y-6 sm:space-y-8">
+        <div className="mx-auto w-full max-w-2xl space-y-2 sm:space-y-2">
           <div className="space-y-3 sm:space-y-4">
             <BlurFadeText
               delay={BLUR_FADE_DELAY}
@@ -24,17 +24,18 @@ export default function ResearchPage() {
             />
           </div>
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <div className="space-y-6 sm:space-y-8 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mt-8 sm:mt-12">
+            <div className="space-y-6 sm:space-y-8 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mt-2 sm:mt-4">
               <div className="grid grid-cols-1 gap-4 w-full mx-auto max-w-6xl">
                 <BlurFade delay={BLUR_FADE_DELAY * 5}>
                   <AchievementCard
                     index={0}
                     title="Novel Model Development in Fourier Transform - Near Infrared Spectroscopy (FTNIR) for Total Fatty Matter (TFM) Determination in Baby Soap"
-                    category="Research"
-                    date="2024"
-                    organization="Research Project"
-                    description="update the project info in the doc"
-                    image="/FTNIR.png"
+                    category=""
+                    date=""
+                    organization=""
+                    description=""
+                    images={["/FTNIR.png", "/research/research2.png"]}
+                    isResearchLayout
                   />
                 </BlurFade>
               </div>

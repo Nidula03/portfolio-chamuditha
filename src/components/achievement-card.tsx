@@ -33,6 +33,7 @@ export interface AchievementCardProps {
   images?: string[];
   link?: string;
   index?: number;
+  isResearchLayout?: boolean;
 }
 
 export function AchievementCard({
@@ -45,6 +46,7 @@ export function AchievementCard({
   images,
   link,
   index = 0,
+  isResearchLayout = false,
 }: AchievementCardProps) {
   const galleryImages = images && images.length > 0 ? images : image ? [image] : [];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -90,7 +92,26 @@ export function AchievementCard({
     return () => clearInterval(interval);
   }, [hasMultipleImages, galleryImages.length, isModalOpen]);
 
-  const imageSection = galleryImages.length > 0 && (
+  const imageSection = galleryImages.length > 1 && isResearchLayout ? (
+    // Research layout - multiple images side by side
+    <div className="w-full flex gap-24 justify-center items-center py-0">
+      {galleryImages.map((imgUrl, idx) => (
+        <div key={idx} className="h-80 md:h-96 overflow-visible bg-transparent relative">
+          <img
+            src={imgUrl}
+            alt={`${title} image ${idx + 1}`}
+            className="h-full object-contain select-none"
+            loading="lazy"
+            decoding="async"
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = "none";
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  ) : galleryImages.length > 0 ? (
+    // Achievement layout - original with carousel
     <div className="w-full md:w-full lg:w-1/2 h-80 md:h-96 overflow-hidden bg-muted relative cursor-pointer flex-shrink-0" onClick={() => setIsModalOpen(true)}>
       <img
         src={galleryImages[currentImageIndex]}
@@ -133,43 +154,81 @@ export function AchievementCard({
         </>
       )}
     </div>
-  );
+  ) : null;
 
   return (
     <>
-      <div className="overflow-hidden flex flex-col md:flex-row min-h-64 md:min-h-80">
-        <div className={`flex flex-col md:flex-row w-full ${imageOnLeft ? "md:flex-row" : "md:flex-row-reverse"}`}>
-          {imageSection}
-          <div className="p-4 sm:p-6 flex flex-col flex-1 justify-between">
-            <div>
-              <div className="flex items-start justify-between mb-4">
-                <Badge variant="secondary">{category}</Badge>
+      {isResearchLayout ? (
+        // Research layout
+        <div className="overflow-hidden flex flex-col min-h-64 md:min-h-80">
+          <div className="flex flex-col w-full items-center">
+            <div className="p-4 sm:p-6 flex flex-col flex-1 justify-between w-full max-w-2xl">
+              <div>
+                <div className="flex items-start justify-between mb-4">
+                  {category && <Badge variant="secondary">{category}</Badge>}
+                </div>
+                
+                <h3 className="text-lg sm:text-2xl md:text-3xl font-bold mb-3 leading-tight text-center">{renderTitleWithSuperscript(title)}</h3>
+                
+                <p className="text-xs sm:text-sm text-muted-foreground mb-1 text-center">{organization}</p>
+              
+                <span className="text-xs text-muted-foreground mb-3 sm:mb-4 block text-center">{date}</span>
+                
+                <p className="text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 text-muted-foreground line-clamp-2 sm:line-clamp-none text-center">{description}</p>
+                
+                {link && (
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="default" size="sm" className="w-full md:w-1/2">
+                      Read More
+                      <ExternalLink className="size-3 ml-2" />
+                    </Button>
+                  </a>
+                )}
               </div>
+            </div>
+            {imageSection}
+          </div>
+        </div>
+      ) : (
+        // Original achievement layout
+        <div className="overflow-hidden flex flex-col md:flex-row min-h-64 md:min-h-80">
+          <div className={`flex flex-col md:flex-row w-full ${imageOnLeft ? "md:flex-row" : "md:flex-row-reverse"}`}>
+            {imageSection}
+            <div className="p-4 sm:p-6 flex flex-col flex-1 justify-between">
+              <div>
+                <div className="flex items-start justify-between mb-4">
+                  <Badge variant="secondary">{category}</Badge>
+                </div>
+                
+                <h3 className="text-lg sm:text-2xl md:text-3xl font-bold mb-3 leading-tight">{renderTitleWithSuperscript(title)}</h3>
+                
+                <p className="text-xs sm:text-sm text-muted-foreground mb-1">{organization}</p>
               
-              <h3 className="text-lg sm:text-2xl md:text-3xl font-bold mb-3 leading-tight">{renderTitleWithSuperscript(title)}</h3>
-              
-<p className="text-xs sm:text-sm text-muted-foreground mb-1">{organization}</p>
-            
-            <span className="text-xs text-muted-foreground mb-3 sm:mb-4 block">{date}</span>
-            
-            <p className="text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 text-muted-foreground line-clamp-2 sm:line-clamp-none">{description}</p>
-              
-              {link && (
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button variant="default" size="sm" className="w-full md:w-1/2">
-                    Read More
-                    <ExternalLink className="size-3 ml-2" />
-                  </Button>
-                </a>
-              )}
+                <span className="text-xs text-muted-foreground mb-3 sm:mb-4 block">{date}</span>
+                
+                <p className="text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 text-muted-foreground line-clamp-2 sm:line-clamp-none">{description}</p>
+                
+                {link && (
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="default" size="sm" className="w-full md:w-1/2">
+                      Read More
+                      <ExternalLink className="size-3 ml-2" />
+                    </Button>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {isModalOpen && galleryImages.length > 0 && (
         <div 
