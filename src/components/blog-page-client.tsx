@@ -11,6 +11,17 @@ const BLUR_FADE_DELAY = 0.04;
 export default function BlogPageClient() {
   const gridRef = useRef<HTMLDivElement | null>(null);
   const [statsTop, setStatsTop] = useState<string>("6rem");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const compute = () => {
@@ -36,7 +47,7 @@ export default function BlogPageClient() {
         <BlogStatsCard />
       </BlurFade>
 
-      <div ref={gridRef} className="grid grid-cols-1 gap-4 w-full mx-auto max-w-5xl" style={{ gridAutoRows: '260px' }}>
+      <div ref={gridRef} className="grid grid-cols-1 gap-4 w-full mx-auto max-w-5xl" style={{ gridAutoRows: isMobile ? 'auto' : '260px' }}>
         {DATA.blogs.map((blog, id) => (
           <BlurFade
             key={blog.title}
@@ -56,7 +67,7 @@ export default function BlogPageClient() {
               ctaLabel="Read on Medium"
               claps={blog.claps}
               mediumPostId={blog.mediumPostId}
-              horizontal
+              horizontal={!isMobile}
             />
           </BlurFade>
         ))}
