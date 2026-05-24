@@ -195,7 +195,7 @@ export function AchievementCard({
         </div>
       ) : (
         // Original achievement layout
-        <div className="overflow-hidden flex flex-col md:flex-row min-h-64 md:min-h-80 border border-border rounded-lg">
+        <div className="overflow-hidden flex flex-col md:flex-row min-h-64 md:min-h-80">
           <div className={`flex flex-col md:flex-row w-full ${imageOnLeft ? "md:flex-row" : "md:flex-row-reverse"}`}>
             {imageSection}
             <div className="p-4 sm:p-6 flex flex-col flex-1 justify-between">
