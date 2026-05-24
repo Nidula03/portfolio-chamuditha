@@ -22,6 +22,11 @@ export default function ResearchPage() {
               yOffset={8}
               text="Research"
             />
+            <BlurFade delay={BLUR_FADE_DELAY * 2}>
+              <div className="flex items-center w-full justify-center">
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+              </div>
+            </BlurFade>
           </div>
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <div className="space-y-6 sm:space-y-8 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mt-2 sm:mt-4">
@@ -34,6 +39,7 @@ export default function ResearchPage() {
                     organization=""
                     description="Hands-on technical and instrumentation competencies: FTNIR, GC-FID, Origin, ChemDraw, ANOVA, PLS, t-test, F-test, Q-test, Regression analysis."
                     images={["/FTNIR.png", "/research/research2.png"]}
+                    showBorder={true}
                   />
                 </BlurFade>
               </div>

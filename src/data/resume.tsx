@@ -173,6 +173,27 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
   }>,
   blogs: [
     {
+      title: "Ditch the Spreadsheet: A Step-by-Step Guide to Plotting in KaleidaGraph",
+      href: "https://medium.com/@chamudithasawan/ditch-the-spreadsheet-a-step-by-step-guide-to-plotting-in-kaleidagraph-24cabe6610be",
+      dates: "May 24, 2026",
+      active: true,
+      description:
+        "A comprehensive guide to data visualization in KaleidaGraph, showcasing how to move beyond spreadsheets and create publication-quality scientific plots efficiently.",
+      technologies: ["Data Visualization", "KaleidaGraph", "Scientific Analysis"],
+      links: [
+        {
+          type: "Read on Medium",
+          href: "https://medium.com/@chamudithasawan/ditch-the-spreadsheet-a-step-by-step-guide-to-plotting-in-kaleidagraph-24cabe6610be",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/newBlog.webp",
+      video: "",
+      claps: 0,
+      comments: 0,
+      mediumPostId: "24cabe6610be",
+    },
+    {
       title: "Pitching Tents in the Clouds: The Magic of Mountain Camping",
       href: "https://medium.com/@chamudithasawan/pitching-tents-in-the-clouds-the-magic-of-mountain-camping-7b64b74d4c05",
       dates: "April 26, 2026",

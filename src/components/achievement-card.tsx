@@ -34,6 +34,7 @@ export interface AchievementCardProps {
   link?: string;
   index?: number;
   isResearchLayout?: boolean;
+  showBorder?: boolean;
 }
 
 export function AchievementCard({
@@ -47,6 +48,7 @@ export function AchievementCard({
   link,
   index = 0,
   isResearchLayout = false,
+  showBorder = false,
 }: AchievementCardProps) {
   const galleryImages = images && images.length > 0 ? images : image ? [image] : [];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -168,7 +170,7 @@ export function AchievementCard({
                   {category && <Badge variant="secondary">{category}</Badge>}
                 </div>
                 
-                <h3 className="text-lg sm:text-2xl md:text-3xl font-bold mb-3 leading-tight text-center whitespace-pre-line">{renderTitleWithSuperscript(title)}</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-3 leading-tight tracking-tight">{renderTitleWithSuperscript(title)}</h3>
                 
                 <p className="text-xs sm:text-sm text-muted-foreground mb-1 text-center">{organization}</p>
               
@@ -195,7 +197,7 @@ export function AchievementCard({
         </div>
       ) : (
         // Original achievement layout
-        <div className="overflow-hidden flex flex-col md:flex-row min-h-64 md:min-h-80">
+        <div className={`overflow-hidden flex flex-col md:flex-row min-h-64 md:min-h-80 ${showBorder ? 'border border-border rounded-lg' : ''}`}>
           <div className={`flex flex-col md:flex-row w-full ${imageOnLeft ? "md:flex-row" : "md:flex-row-reverse"}`}>
             {imageSection}
             <div className="p-4 sm:p-6 flex flex-col flex-1 justify-between">

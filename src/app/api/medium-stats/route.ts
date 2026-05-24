@@ -11,6 +11,7 @@ const FALLBACK_CLAPS: Record<string, number> = {
   '8c15c04d1f3c': 51,      // Beyond the Pedals
   '65d87079d742': 50,      // Ink, Mud and Memories
   '218197818958': 57,      // Blind on the Summit
+  '24cabe6610be': 0,       // Ditch the Spreadsheet
 };
 
 interface MediumPostData {
