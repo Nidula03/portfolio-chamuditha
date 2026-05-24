@@ -14,7 +14,7 @@ export default function ResearchPage() {
   return (
     <main className="min-h-dvh flex flex-col gap-8 sm:gap-14 relative">
       <section id="research">
-        <div className="mx-auto w-full max-w-2xl space-y-2 sm:space-y-2">
+        <div className="mx-auto w-full max-w-2xl space-y-6 sm:space-y-8">
           <div className="space-y-3 sm:space-y-4">
             <BlurFadeText
               delay={BLUR_FADE_DELAY}
@@ -30,12 +30,10 @@ export default function ResearchPage() {
                   <AchievementCard
                     index={0}
                     title="Novel Model Development in Fourier Transform - Near Infrared Spectroscopy (FTNIR) for Total Fatty Matter (TFM) Determination in Baby Soap"
-                    category=""
                     date=""
                     organization=""
-                    description=""
+                    description="Hands-on technical and instrumentation competencies: FTNIR, GC-FID, Origin, ChemDraw, ANOVA, PLS, t-test, F-test, Q-test, Regression analysis."
                     images={["/FTNIR.png", "/research/research2.png"]}
-                    isResearchLayout
                   />
                 </BlurFade>
               </div>
