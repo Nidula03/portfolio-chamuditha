@@ -35,6 +35,7 @@ export interface AchievementCardProps {
   index?: number;
   isResearchLayout?: boolean;
   showBorder?: boolean;
+  compact?: boolean;
 }
 
 export function AchievementCard({
@@ -49,6 +50,7 @@ export function AchievementCard({
   index = 0,
   isResearchLayout = false,
   showBorder = false,
+  compact = false,
 }: AchievementCardProps) {
   const galleryImages = images && images.length > 0 ? images : image ? [image] : [];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -114,7 +116,7 @@ export function AchievementCard({
     </div>
   ) : galleryImages.length > 0 ? (
     // Achievement layout - original with carousel
-    <div className="w-full md:w-full lg:w-1/2 h-80 md:h-96 overflow-hidden bg-muted relative cursor-pointer flex-shrink-0" onClick={() => setIsModalOpen(true)}>
+    <div className="w-full md:w-2/5 h-full overflow-hidden bg-muted relative cursor-pointer flex-shrink-0 rounded-md" onClick={() => setIsModalOpen(true)}>
       <img
         src={galleryImages[currentImageIndex]}
         alt={`${title} image ${currentImageIndex + 1}`}
@@ -158,6 +160,13 @@ export function AchievementCard({
     </div>
   ) : null;
 
+  // Placeholder for cards without images
+  const imagePlaceholder = !imageSection ? (
+    <div className="w-full md:w-2/5 h-full bg-muted rounded-md flex-shrink-0 flex items-center justify-center">
+      <div className="text-muted-foreground text-sm">No image available</div>
+    </div>
+  ) : null;
+
   return (
     <>
       {isResearchLayout ? (
@@ -197,16 +206,16 @@ export function AchievementCard({
         </div>
       ) : (
         // Original achievement layout
-        <div className={`overflow-hidden flex flex-col md:flex-row min-h-64 md:min-h-80 ${showBorder ? 'border border-border rounded-lg' : ''}`}>
+        <div className={`overflow-hidden flex flex-col md:flex-row rounded-lg ${compact ? 'min-h-24 md:min-h-40' : 'min-h-40 md:min-h-56'} ${showBorder ? 'border border-border' : ''}`}>
           <div className={`flex flex-col md:flex-row w-full ${imageOnLeft ? "md:flex-row" : "md:flex-row-reverse"}`}>
-            {imageSection}
-            <div className="p-4 sm:p-6 flex flex-col flex-1 justify-between">
+            {imageSection || imagePlaceholder}
+            <div className={`flex flex-col flex-1 ${index === 0 ? 'justify-start p-5 sm:p-6 pt-5 sm:pt-6' : 'justify-between p-5 sm:p-6'}`}>
               <div>
                 <div className="flex items-start justify-between mb-4">
                   {category && <Badge variant="secondary">{category}</Badge>}
                 </div>
                 
-                <h3 className="text-lg sm:text-2xl md:text-3xl font-bold mb-3 leading-tight">{renderTitleWithSuperscript(title)}</h3>
+                <h3 className="text-lg sm:text-xl font-bold mb-3 leading-tight">{renderTitleWithSuperscript(title)}</h3>
                 
                 <p className="text-xs sm:text-sm text-muted-foreground mb-1">{organization}</p>
               
@@ -220,7 +229,7 @@ export function AchievementCard({
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Button variant="default" size="sm" className="w-full md:w-1/2">
+                    <Button variant="default" size="sm" className="w-full md:w-2/3">
                       Read More
                       <ExternalLink className="size-3 ml-2" />
                     </Button>

@@ -28,7 +28,8 @@ export default function BlogPageClient() {
       if (gridRef.current) {
         const rect = gridRef.current.getBoundingClientRect();
         // Convert viewport-relative to document-relative coordinates for fixed positioning
-        setStatsTop(`${rect.top + window.scrollY}px`);
+        // Add 1rem (16px) to align with the first card's mt-4 offset
+        setStatsTop(`${rect.top + window.scrollY + 16}px`);
       }
     };
 
@@ -47,12 +48,12 @@ export default function BlogPageClient() {
         <BlogStatsCard />
       </BlurFade>
 
-      <div ref={gridRef} className="grid grid-cols-1 gap-4 w-full mx-auto max-w-5xl" style={{ gridAutoRows: isMobile ? 'auto' : '260px' }}>
+      <div ref={gridRef} className="grid grid-cols-1 gap-6 w-full mx-auto max-w-5xl" style={{ gridAutoRows: isMobile ? 'auto' : '320px' }}>
         {DATA.blogs.map((blog, id) => (
           <BlurFade
             key={blog.title}
             delay={BLUR_FADE_DELAY * 3 + id * 0.05}
-            className="h-full"
+            className={`h-full ${id === 0 ? 'mt-4' : ''}`}
           >
             <ProjectCard
               href={blog.href}

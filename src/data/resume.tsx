@@ -25,7 +25,6 @@ Today, I continue to explore, learn, and grow through scouting and outdoor exper
     { href: "/achievements", icon: Trophy, label: "Achievements" },
     { href: "/research", icon: Microscope, label: "Research" },
     { href: "/blog", icon: BookOpen, label: "Blog" },
-    { href: "/talks", icon: MessageSquare, label: "Talks" },
     { href: "/interests", icon: Sparkles, label: "Interests" },
   ],
   contact: {

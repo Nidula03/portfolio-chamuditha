@@ -311,10 +311,10 @@ export function ProjectCard({
           </div>
         )}
       </div>
-      <div className={cn("flex flex-col gap-2.5 flex-1", horizontal ? "p-4 md:p-5" : "p-6")}>
+      <div className={cn("flex flex-col gap-2 flex-1", horizontal ? "p-3 md:p-4" : "p-6")}>
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-0.5">
-            <h3 className={cn("font-semibold", horizontal ? "text-sm md:text-base line-clamp-1" : "")}>{title}</h3>
+            <h3 className={cn("font-bold text-lg sm:text-xl")}>{title}</h3>
             <time className="text-xs text-muted-foreground hidden md:block">{dates}</time>
           </div>
           {hasProjectUrl ? (
@@ -328,7 +328,7 @@ export function ProjectCard({
             </a>
           ) : null}
         </div>
-        <div className={cn("flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert", horizontal ? "text-xs line-clamp-2" : "text-xs")}>
+        <div className={cn("flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert text-sm sm:text-base", horizontal ? "line-clamp-2" : "")}>
           <Markdown>{description}</Markdown>
         </div>
         {tags && tags.length > 0 && (

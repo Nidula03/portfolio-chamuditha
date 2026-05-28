@@ -137,7 +137,7 @@ export default function InterestsPage() {
   }, [activeId]);
 
   return (
-    <main className="min-h-dvh flex flex-col gap-10 pt-8">
+    <main className="min-h-dvh flex flex-col gap-10  ">
       {/* Header */}
       <div className="space-y-4">
         <BlurFadeText
