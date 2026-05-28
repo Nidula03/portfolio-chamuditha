@@ -29,8 +29,6 @@ export default function AchievementsPage() {
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <div className="space-y-6 sm:space-y-8 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
               <div className="flex min-h-0 flex-col gap-y-6 sm:gap-y-8 w-full px-4 sm:px-8 md:px-16 lg:px-20">
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">Scouting</h2>
                   <div className="grid grid-cols-1 gap-6 w-full mx-auto max-w-6xl">
                     <BlurFade delay={BLUR_FADE_DELAY * 4}>
                       <div className="border border-border bg-background rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300">
@@ -108,7 +106,6 @@ export default function AchievementsPage() {
                       </div>
                     </BlurFade>
                   </div>
-                </div>
               </div>
             </div>
           </BlurFade>

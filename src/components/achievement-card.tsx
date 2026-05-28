@@ -166,7 +166,7 @@ export function AchievementCard({
   // Placeholder for cards without images
   const imagePlaceholder = !imageSection ? (
     <div className="w-full md:w-2/5 h-full bg-muted rounded-md flex-shrink-0 flex items-center justify-center">
-      <div className="text-muted-foreground text-sm">No image available</div>
+      <div className="text-muted-foreground text-sm">Image available</div>
     </div>
   ) : null;
 
