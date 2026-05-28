@@ -56,20 +56,20 @@ export default function Navbar() {
   return (
     <>
       <nav className="fixed inset-x-0 top-0 z-50 backdrop-blur-md border-b border-border/40 bg-background/80">
-        <div className="relative w-full h-16 flex items-center justify-between px-6 sm:px-8 md:px-16 lg:px-20">
+        <div className="relative w-full h-16 flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-16">
           
           {/* Left - Logo */}
-          <div className="flex items-center flex-1">
+          <div className="flex items-center">
             <Link
               href="/"
-              className="font-semibold text-lg hover:text-primary transition-colors"
+              className="font-semibold text-base sm:text-lg hover:text-primary transition-colors"
             >
               {DATA.name.split(" ")[0]}.
             </Link>
           </div>
 
           {/* Center - Nav (perfectly centered) */}
-          <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8 flex-1 justify-center">
             <NavLinks
               pathname={pathname}
               isOpen={isOpen}
@@ -78,13 +78,30 @@ export default function Navbar() {
           </div>
 
           {/* Right - Desktop Social + Theme */}
-          <div className="hidden md:flex items-center gap-4 flex-1 justify-end">
+          <div className="hidden lg:flex items-center gap-3 xl:gap-4 justify-end">
+            {/* Social Links */}
+            {Object.entries(DATA.contact.social).map(([key, social]) => {
+              if (!social.navbar) return null;
+              const Icon = social.icon;
+              return (
+                <a
+                  key={key}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label={social.name}
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              );
+            })}
             {/* Theme Toggle */}
             <ModeToggle className="h-4 w-4 p-0" />
           </div>
 
-          {/* Mobile Right */}
-          <div className="md:hidden flex items-center gap-4 ml-auto">
+          {/* Tablet + Mobile Right */}
+          <div className="lg:hidden flex items-center gap-3 sm:gap-4 ml-auto">
             <ModeToggle className="h-4 w-4 p-0" />
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -99,11 +116,11 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile/Tablet Menu */}
       {isOpen && (
         <div
           id="mobile-menu"
-          className="fixed top-16 left-0 right-0 bottom-0 z-30 md:hidden"
+          className="fixed top-16 left-0 right-0 bottom-0 z-30 lg:hidden"
         >
           {/* Backdrop */}
           <div
@@ -113,13 +130,34 @@ export default function Navbar() {
 
           {/* Content */}
           <div className="relative h-full overflow-y-auto bg-background border-t border-border/40">
-            <div className="mx-auto w-full max-w-6xl px-6 py-4 flex flex-col gap-4">
+            <div className="w-full px-4 sm:px-6 py-4 flex flex-col gap-4">
               
               <NavLinks
                 pathname={pathname}
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
               />
+              
+              {/* Mobile Social Links */}
+              <div className="flex gap-3 sm:gap-4 pt-4 border-t border-border/40">
+                {Object.entries(DATA.contact.social).map(([key, social]) => {
+                  if (!social.navbar) return null;
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={key}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                      aria-label={social.name}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Icon className="h-4 w-4" />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

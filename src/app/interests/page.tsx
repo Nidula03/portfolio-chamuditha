@@ -18,6 +18,26 @@ const tabs = [
   { id: "acting",      label: "Stage Play",    icon: Star     },
 ];
 
+const imageDescriptions: Record<string, string> = {
+  'IMG_5960.jpg': 'Jodu Ella Water Falls, Panvilla, Sri Lanka',
+  'IMG_5964.jpg': 'Mountain Vista',
+  'IMG_5959.jpg': 'Trail View',
+  'IMG_5967.jpg': 'Peak Summit',
+  'IMG_5955.jpg': 'Forest Path',
+  'IMG_5972.jpg': 'Scenic Overlook',
+  'IMG_5963.jpg': 'Alpine Meadow',
+  'IMG_5961.jpg': 'Rocky Terrain',
+  'IMG_5970.jpg': 'Water Stream',
+  'IMG_5958.jpg': 'Valley View',
+  'IMG_5965.jpg': 'Mountain Ridge',
+  'IMG_5968.jpg': 'Sunset Peak',
+  'IMG_5962.jpg': 'Forest Trail',
+  'IMG_5969.jpg': 'Morning Mist',
+  'IMG_5957.jpg': 'Canyon View',
+  'IMG_5971.jpg': 'Alpine Lake',
+  'IMG_5966.jpg': 'Ridge Walk',
+};
+
 function InstagramImageCarousel() {
   const images = [
     "/instaPics/insta1.jpg",
@@ -228,7 +248,7 @@ export default function InterestsPage() {
                   'IMG_5966.jpg',
                 ].map((imageName, idx) => (
                   <BlurFade key={imageName} delay={BLUR_FADE_DELAY * (4.5 + idx * 0.05)} inView>
-                    <div className="mb-4 relative rounded-lg overflow-hidden">
+                    <div className={`mb-4 relative rounded-lg overflow-hidden ${imageName === 'IMG_5960.jpg' ? 'group' : ''}`}>
                       <Image
                         src={`/hiking_pics/${imageName}`}
                         alt={`Hiking photo ${idx + 1}`}
@@ -239,6 +259,14 @@ export default function InterestsPage() {
                         loading="lazy"
                         quality={85}
                       />
+                      {/* Hover overlay with description - only for IMG_5960.jpg */}
+                      {imageName === 'IMG_5960.jpg' && (
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
+                          <p className="text-white text-sm font-semibold leading-tight">
+                            {imageDescriptions[imageName]}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </BlurFade>
                 ))}
