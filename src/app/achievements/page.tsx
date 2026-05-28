@@ -91,6 +91,7 @@ export default function AchievementsPage() {
                           date="Dec 2016"
                           organization="Trinity College Kandy, Sri Lanka"
                           description="Awarded as the most outstanding and dedicated Scout of the year. This award recognized the deep commitment to the Scouting movement and active, enthusiastic engagement in a wide variety of Scouting initiatives at the high school, national, and international levels."
+                          image="/achievements/sy.png"
                         />
                       </div>
                     </BlurFade>
