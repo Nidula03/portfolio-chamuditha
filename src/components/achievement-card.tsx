@@ -121,8 +121,10 @@ export function AchievementCard({
         src={galleryImages[currentImageIndex]}
         alt={`${title} image ${currentImageIndex + 1}`}
         className="w-full h-full object-cover select-none"
-        loading="lazy"
+        loading={index === 0 ? "eager" : "lazy"}
         decoding="async"
+        fetchPriority={index === 0 ? "high" : "low"}
+        sizes="(max-width: 768px) 100vw, 40vw"
         onError={(e) => {
           (e.target as HTMLImageElement).style.display = "none";
         }}
@@ -262,8 +264,9 @@ export function AchievementCard({
               src={galleryImages[currentImageIndex]}
               alt={`${title} image ${currentImageIndex + 1}`}
               className="w-full h-full object-contain"
-              loading="lazy"
+              loading="eager"
               decoding="async"
+              fetchPriority="high"
               onClick={(e) => e.stopPropagation()}
             />
 
