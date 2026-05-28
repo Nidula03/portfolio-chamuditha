@@ -117,7 +117,7 @@ export function AchievementCard({
     </div>
   ) : galleryImages.length > 0 ? (
     // Achievement layout - original with carousel
-    <div className="w-full md:w-2/5 h-full overflow-hidden bg-muted relative cursor-pointer flex-shrink-0 rounded-md" onClick={() => setIsModalOpen(true)}>
+    <div className="w-full md:w-2/5 h-64 sm:h-72 md:h-full overflow-hidden bg-muted relative cursor-pointer flex-shrink-0 rounded-md" onClick={() => setIsModalOpen(true)}>
       <Image
         src={galleryImages[currentImageIndex]}
         alt={`${title} image ${currentImageIndex + 1}`}
@@ -165,7 +165,7 @@ export function AchievementCard({
 
   // Placeholder for cards without images
   const imagePlaceholder = !imageSection ? (
-    <div className="w-full md:w-2/5 h-full bg-muted rounded-md flex-shrink-0 flex items-center justify-center">
+    <div className="w-full md:w-2/5 h-64 sm:h-72 md:h-full bg-muted rounded-md flex-shrink-0 flex items-center justify-center">
       <div className="text-muted-foreground text-sm">Image available</div>
     </div>
   ) : null;
@@ -174,7 +174,7 @@ export function AchievementCard({
     <>
       {isResearchLayout ? (
         // Research layout
-        <div className="overflow-hidden flex flex-col min-h-64 md:min-h-80 border border-border rounded-lg">
+        <div className="overflow-hidden flex flex-col min-h-[450px] md:min-h-[500px] border border-border rounded-lg">
           <div className="flex flex-col w-full items-center">
             <div className="p-4 sm:p-6 flex flex-col flex-1 justify-between w-full max-w-2xl">
               <div>
