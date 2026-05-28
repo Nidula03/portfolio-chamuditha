@@ -224,7 +224,7 @@ export function AchievementCard({
               
                 <span className="text-xs text-muted-foreground mb-3 sm:mb-4 block">{date}</span>
                 
-                <p className="text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 text-muted-foreground line-clamp-2 sm:line-clamp-none">{description}</p>
+                <p className="text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 text-muted-foreground">{description}</p>
                 
                 {link && (
                   <a
