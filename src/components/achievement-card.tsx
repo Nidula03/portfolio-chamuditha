@@ -173,30 +173,31 @@ export function AchievementCard({
   return (
     <>
       {isResearchLayout ? (
-        // Research layout
-        <div className="overflow-hidden flex flex-col min-h-[450px] md:min-h-[500px] border border-border rounded-lg">
-          <div className="flex flex-col w-full items-center">
-            <div className="p-4 sm:p-6 flex flex-col flex-1 justify-between w-full max-w-2xl">
+        // Research layout — use the same achievement card layout but with more height for content
+        <div className="overflow-hidden flex flex-col md:flex-row rounded-lg min-h-80 md:min-h-96 border border-border">
+          <div className="flex flex-col md:flex-row w-full">
+            {imageSection || imagePlaceholder}
+            <div className="flex flex-col flex-1 justify-between p-5 sm:p-6">
               <div>
                 <div className="flex items-start justify-between mb-4">
                   {category && <Badge variant="secondary">{category}</Badge>}
                 </div>
-                
-                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-3 leading-tight tracking-tight">{renderTitleWithSuperscript(title)}</h3>
-                
-                <p className="text-xs sm:text-sm text-muted-foreground mb-1 text-center">{organization}</p>
-              
-                <span className="text-xs text-muted-foreground mb-3 sm:mb-4 block text-center">{date}</span>
-                
-                <p className="text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 text-muted-foreground line-clamp-2 sm:line-clamp-none text-center">{description}</p>
-                
+
+                <h3 className="text-lg sm:text-xl font-bold mb-3 leading-tight">{renderTitleWithSuperscript(title)}</h3>
+
+                <p className="text-xs sm:text-sm text-muted-foreground mb-1">{organization}</p>
+
+                <span className="text-xs text-muted-foreground mb-3 sm:mb-4 block">{date}</span>
+
+                <p className="text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 text-muted-foreground">{description}</p>
+
                 {link && (
                   <a
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Button variant="default" size="sm" className="w-full md:w-1/2">
+                    <Button variant="default" size="sm" className="w-full md:w-2/3">
                       Read More
                       <ExternalLink className="size-3 ml-2" />
                     </Button>
@@ -204,12 +205,11 @@ export function AchievementCard({
                 )}
               </div>
             </div>
-            {imageSection}
           </div>
         </div>
       ) : (
         // Original achievement layout
-        <div className={`overflow-hidden flex flex-col md:flex-row rounded-lg ${compact ? 'min-h-24 md:min-h-40' : 'min-h-40 md:min-h-56'} ${showBorder ? 'border border-border' : ''}`}>
+        <div className={`overflow-hidden flex flex-col md:flex-row rounded-lg ${compact ? 'min-h-24 md:min-h-40' : 'min-h-64 md:min-h-80'} ${showBorder ? 'border border-border' : ''}`}>
           <div className={`flex flex-col md:flex-row w-full ${imageOnLeft ? "md:flex-row" : "md:flex-row-reverse"}`}>
             {imageSection || imagePlaceholder}
             <div className={`flex flex-col flex-1 ${index === 0 ? 'justify-start p-5 sm:p-6 pt-5 sm:pt-6' : 'justify-between p-5 sm:p-6'}`}>

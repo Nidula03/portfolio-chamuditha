@@ -34,7 +34,6 @@ export default function ResearchPage() {
                 <BlurFade delay={BLUR_FADE_DELAY * 5}>
                   <AchievementCard
                     index={0}
-                    isResearchLayout={true}
                     title="Novel Model Development in Fourier Transform - Near Infrared Spectroscopy (FTNIR) for Total Fatty Matter (TFM) Determination in Baby Soap"
                     date=""
                     organization=""
