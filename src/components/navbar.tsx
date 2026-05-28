@@ -41,7 +41,6 @@ const NavLinks = ({
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
-            <item.icon className="size-4" />
             <span>{item.label}</span>
           </Link>
         );
@@ -80,30 +79,6 @@ export default function Navbar() {
 
           {/* Right - Desktop Social + Theme */}
           <div className="hidden md:flex items-center gap-4 flex-1 justify-end">
-            <div className="flex items-center gap-3">
-              {Object.entries(DATA.contact.social)
-                .filter(([_, social]) => social.navbar)
-                .map(([name, social]) => {
-                  const isExternal = social.url.startsWith("http");
-                  const IconComponent = social.icon;
-
-                  return (
-                    <a
-                      key={name}
-                      href={social.url}
-                      target={isExternal ? "_blank" : undefined}
-                      rel={isExternal ? "noopener noreferrer" : undefined}
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      <IconComponent className="size-4" />
-                    </a>
-                  );
-                })}
-            </div>
-
-            {/* Separator */}
-            <div className="w-px h-4 bg-border"></div>
-
             {/* Theme Toggle */}
             <ModeToggle className="h-4 w-4 p-0" />
           </div>
@@ -145,32 +120,6 @@ export default function Navbar() {
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
               />
-
-              {/* Let's Connect Section */}
-              <div className="border-t border-border/40 pt-4 flex flex-col gap-3">
-                <p className="text-sm font-semibold text-foreground">Let's Connect</p>
-                <div className="flex items-center gap-3">
-                  {Object.entries(DATA.contact.social)
-                    .filter(([_, social]) => social.navbar)
-                    .map(([name, social]) => {
-                      const isExternal = social.url.startsWith("http");
-                      const IconComponent = social.icon;
-
-                      return (
-                        <a
-                          key={name}
-                          href={social.url}
-                          target={isExternal ? "_blank" : undefined}
-                          rel={isExternal ? "noopener noreferrer" : undefined}
-                          className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-                        >
-                          <IconComponent className="size-4" />
-                          <span className="text-sm">{name}</span>
-                        </a>
-                      );
-                    })}
-                </div>
-              </div>
             </div>
           </div>
         </div>
