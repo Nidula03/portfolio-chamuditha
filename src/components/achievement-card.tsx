@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 // Helper function to render title with superscript
 const renderTitleWithSuperscript = (text: string) => {
@@ -100,13 +101,13 @@ export function AchievementCard({
     // Research layout - multiple images side by side
     <div className="w-full flex gap-24 justify-center items-center py-0">
       {galleryImages.map((imgUrl, idx) => (
-        <div key={idx} className="h-80 md:h-96 overflow-visible bg-transparent relative">
-          <img
+        <div key={idx} className="h-80 md:h-96 overflow-visible bg-transparent relative w-80 md:w-96">
+          <Image
             src={imgUrl}
             alt={`${title} image ${idx + 1}`}
-            className="h-full object-contain select-none"
-            loading="lazy"
-            decoding="async"
+            fill
+            className="object-contain select-none"
+            quality={75}
             onError={(e) => {
               (e.target as HTMLImageElement).style.display = "none";
             }}
@@ -117,13 +118,13 @@ export function AchievementCard({
   ) : galleryImages.length > 0 ? (
     // Achievement layout - original with carousel
     <div className="w-full md:w-2/5 h-full overflow-hidden bg-muted relative cursor-pointer flex-shrink-0 rounded-md" onClick={() => setIsModalOpen(true)}>
-      <img
+      <Image
         src={galleryImages[currentImageIndex]}
         alt={`${title} image ${currentImageIndex + 1}`}
-        className="w-full h-full object-cover select-none"
-        loading={index === 0 ? "eager" : "lazy"}
-        decoding="async"
-        fetchPriority={index === 0 ? "high" : "low"}
+        fill
+        className="object-cover select-none"
+        priority={index === 0}
+        quality={75}
         sizes="(max-width: 768px) 100vw, 40vw"
         onError={(e) => {
           (e.target as HTMLImageElement).style.display = "none";
@@ -260,13 +261,13 @@ export function AchievementCard({
               <X className="h-5 sm:h-6 w-5 sm:w-6" />
             </button>
 
-            <img
+            <Image
               src={galleryImages[currentImageIndex]}
               alt={`${title} image ${currentImageIndex + 1}`}
-              className="w-full h-full object-contain"
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
+              fill
+              className="object-contain"
+              priority
+              quality={90}
               onClick={(e) => e.stopPropagation()}
             />
 
