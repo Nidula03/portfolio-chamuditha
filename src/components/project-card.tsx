@@ -295,8 +295,6 @@ export function ProjectCard({
               <a
                 href={link.href}
                 key={idx}
-                target="_blank"
-                rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
               >
                 <Badge
@@ -359,8 +357,6 @@ export function ProjectCard({
             {hasProjectUrl && projectUrl ? (
               <a
                 href={projectUrl}
-                target="_blank"
-                rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
                 className={cn("inline-flex items-center justify-center gap-1.5 rounded-md border border-primary bg-primary px-3 text-primary-foreground shadow-sm transition-colors hover:bg-primary/90", horizontal ? "h-7 text-xs w-1/2" : "h-8 w-full text-xs font-semibold")}
               >
