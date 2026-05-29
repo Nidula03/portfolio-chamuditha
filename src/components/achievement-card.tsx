@@ -194,8 +194,6 @@ export function AchievementCard({
                 {link && (
                   <a
                     href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
                     <Button variant="default" size="sm" className="w-full md:w-2/3">
                       Read More
@@ -229,8 +227,6 @@ export function AchievementCard({
                 {link && (
                   <a
                     href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
                     <Button variant="default" size="sm" className="w-full md:w-2/3">
                       Read More
