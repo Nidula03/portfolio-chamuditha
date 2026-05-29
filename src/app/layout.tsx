@@ -6,6 +6,8 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
+import { generatePersonSchema, generateWebsiteSchema } from "./schema";
 import "./globals.css";
 
 const geist = Geist({
@@ -23,18 +25,39 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
-    default: DATA.name,
+    default: `${DATA.name} - Analytical Chemist & Researcher`,
     template: `%s | ${DATA.name}`,
   },
   description: DATA.description,
+  keywords: [
+    DATA.name,
+    "Chamuditha Ekanayake",
+    "Chamuditha Sawan Ekanayake",
+    "analytical chemist",
+    "chemistry researcher",
+    "laboratory digitalization",
+    "MS Analytical Chemistry",
+    "graduate chemist",
+    "scientific research",
+  ],
+  authors: [{ name: DATA.name }],
+  creator: DATA.name,
   icons: {
     icon: "/favicon.png",
   },
   openGraph: {
-    title: `${DATA.name}`,
+    title: `${DATA.name} - Analytical Chemist & Researcher`,
     description: DATA.description,
     url: DATA.url,
-    siteName: `${DATA.name}`,
+    siteName: DATA.name,
+    images: [
+      {
+        url: `${DATA.url}/me.png`,
+        width: 400,
+        height: 400,
+        alt: DATA.name,
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
@@ -50,12 +73,17 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: `${DATA.name}`,
+    title: `${DATA.name} - Analytical Chemist & Researcher`,
+    description: DATA.description,
     card: "summary_large_image",
+    images: [`${DATA.url}/me.png`],
   },
   verification: {
-    google: "",
+    google: "E9kagQYYrWpG9in0E4Z-E8ecNv247VLdKbTa5eYd3Sc",
     yandex: "",
+  },
+  alternates: {
+    canonical: DATA.url,
   },
 };
 
@@ -69,6 +97,18 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script
+          id="person-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generatePersonSchema()) }}
+        />
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebsiteSchema()) }}
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased relative",

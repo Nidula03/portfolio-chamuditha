@@ -5,9 +5,7 @@ import { OrcidIcon } from "@/components/ui/svgs/orcid";
 export const DATA = {
   name: "Chamuditha Sawan Ekanayake",
   initials: "CE",
-  url: "https://chamuditha.dev",
-  location: "San Francisco, CA",
-  locationLink: "https://www.google.com/maps/place/sanfrancisco",
+  url: "https://chamuditha.vercel.app",
   description: "MS Analytical Chemistry | Graduate Chemist | Passionate on Laboratory Digitalization | Baden-Powell  &  President Scout Awardee | Mountaineer | Nature Visualist",
   summary: `Hello! 👋😊
 

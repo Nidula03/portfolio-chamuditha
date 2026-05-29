@@ -3,8 +3,8 @@ import BlurFade from "@/components/magicui/blur-fade";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Read my latest blog posts and articles",
+  title: "Blog - Analytical Chemistry & Adventure Stories",
+  description: "Read my latest blog posts on data visualization, mountain hiking, cycling, scouting memories, and laboratory innovation techniques.",
 };
 
 const BLUR_FADE_DELAY = 0.04;

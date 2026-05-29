@@ -4,8 +4,8 @@ import ProjectsSection from "@/components/section/projects-section";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "My Projects",
-  description: "Explore my projects and work",
+  title: "Projects - Laboratory Innovation & Process Optimization",
+  description: "Discover my research and development projects including TFM determination, soap production optimization, laboratory digitalization, and ISO method implementation.",
 };
 
 const BLUR_FADE_DELAY = 0.04;

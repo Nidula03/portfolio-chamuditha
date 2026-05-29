@@ -4,8 +4,8 @@ import { AchievementCard } from "@/components/achievement-card";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "My Volunteering",
-  description: "Explore my volunteering experiences and community service",
+  title: "Volunteering - Community Service & Leadership",
+  description: "Explore my volunteering experiences including Boy Scout leadership, Rover Scout activities, mentoring, and community service initiatives.",
 };
 
 const BLUR_FADE_DELAY = 0.04;

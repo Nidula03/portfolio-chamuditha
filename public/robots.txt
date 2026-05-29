@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chamuditha.vercel.app/sitemap.xml
+
+# Specific rules for crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

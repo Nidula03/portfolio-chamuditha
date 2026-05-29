@@ -4,8 +4,8 @@ import { AchievementCard } from "@/components/achievement-card";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Research",
-  description: "Explore my research projects and publications",
+  title: "Research - Nanocomposites & Analytical Chemistry",
+  description: "Explore my research on nanocomposites for corrosion inhibition, instrumental analysis techniques including GC-MS, FTIR, PXRD, and method development.",
 };
 
 const BLUR_FADE_DELAY = 0.04;

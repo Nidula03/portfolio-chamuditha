@@ -5,8 +5,8 @@ import Markdown from "react-markdown";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "Learn more about Chamuditha and their journey",
+  title: "About Chamuditha Ekanayake - Analytical Chemist & Researcher",
+  description: "Learn about Chamuditha Sawan Ekanayake - MS Analytical Chemistry graduate, passionate about laboratory digitalization, scouting awardee, and nature enthusiast with expertise in analytical techniques.",
 };
 
 const BLUR_FADE_DELAY = 0.04;

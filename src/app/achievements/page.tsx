@@ -4,8 +4,8 @@ import { AchievementCard } from "@/components/achievement-card";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "My Achievements",
-  description: "Explore my achievements and awards",
+  title: "Achievements - Awards & Recognition",
+  description: "Explore my achievements including Baden Powell Award, President Scout Award, leadership recognition, and professional accomplishments in chemistry.",
 };
 
 const BLUR_FADE_DELAY = 0.04;
