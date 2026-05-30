@@ -23,8 +23,14 @@ export default function AboutPage() {
             text="About Me"
           />
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
-              <Markdown>{DATA.summary}</Markdown>
+            <div className="prose max-w-full text-pretty leading-relaxed text-muted-foreground dark:prose-invert">
+              <div style={{ fontFamily: "'Times New Roman', Times, serif", color: 'black' }}>
+                <p>Hello! 👋😊</p>
+                <p>I'm a self-driven researcher with expertise in analytical chemistry and passionate about applying analytical techniques to solve complex problems with a focus on innovation and sustainability through multi-disciplinary knowledge in academic and industrial setting.</p>
+              </div>
+              <Markdown>{`Advancing the traditional laboratory, I ♥️ go beyond the bench by implementing laboratory digitalization strategies to streamline workflows and integrating modern scientific techniques into conventional chemistry methods.
+
+Outside the lab, I am an avid hiker who finds inspiration in exploring challenging trails and the untamed beauty of nature. My experiences as a Boy Scout and Rover Scout, culminating in receiving both the Baden Powell Award and the President's Scout Award—the highest honors at the international and national levels of scouting have profoundly shaped my character. Today, I continue to explore, learn, and grow through scouting and outdoor experiences — building discipline, leadership, and a deeper connection with the world around me.`}</Markdown>
             </div>
           </BlurFade>
         </div>
