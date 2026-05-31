@@ -53,7 +53,7 @@ export default function Page() {
                   <div className="flex flex-col gap-2">
                     <a href="#About" className="text-muted-foreground hover:text-foreground transition-colors text-xs">About me</a>
                     <a href="#Education" className="text-muted-foreground hover:text-foreground transition-colors text-xs">Education</a>
-                    <a href="#Experience" className="text-muted-foreground hover:text-foreground transition-colors text-xs">Experience</a>
+                    <a href="#Work Experience" className="text-muted-foreground hover:text-foreground transition-colors text-xs">Work Experience</a>
                     <a href="#Skills" className="text-muted-foreground hover:text-foreground transition-colors text-xs">Skills</a>
                     <a href="#Contact" className="text-muted-foreground hover:text-foreground transition-colors text-xs">Contact</a>
                   </div>
@@ -142,12 +142,12 @@ export default function Page() {
               </BlurFade>
 
               <BlurFade delay={BLUR_FADE_DELAY * 8}>
-                <div id="Experience" className="space-y-4 scroll-mt-24">
+                <div id="Work Experience" className="space-y-4 scroll-mt-24">
                   <BlurFadeText
                     delay={BLUR_FADE_DELAY * 9}
                     className="text-3xl font-bold tracking-tighter"
                     yOffset={8}
-                    text="Experience"
+                    text="Work Experience"
                   />
                   {DATA.work.length > 0 ? (
                     <div className="mt-4 space-y-4">
@@ -184,11 +184,18 @@ export default function Page() {
                             </p>
                           </div>
 
-                          {item.description ? (
-                            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                              {item.description}
-                            </p>
-                          ) : null}
+                          {item.description &&
+                            (Array.isArray(item.description) ? (
+                              <ul className="mt-3 text-sm text-muted-foreground leading-relaxed list-disc list-inside space-y-1">
+                                {item.description.map((desc, i) => (
+                                  <li key={i}>{desc.replace(/^•\s*/, "")}</li>
+                                ))}
+                              </ul>
+                            ) : (
+                              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                                {item.description}
+                              </p>
+                            ))}
 
                           {item.skills ? (
                             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">

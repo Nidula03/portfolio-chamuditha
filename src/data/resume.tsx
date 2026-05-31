@@ -54,52 +54,50 @@ Outside the lab, I am an avid hiker who finds inspiration in exploring challengi
   },
 
   work: [
+{
+  company: "Executive – Quality Assurance (Laboratory)",
+  title: "Ceylon Biscuits Limited, Sri Lanka",
+  start: "Oct 2024",
+  end: "Jun 2025",
+  description: [
+    "• Directed chemical lab operations, ensuring GMP, FDA, ISO compliance through material and product testing.",
+    "• Redesigned lab workflows to ISO/IEC 17025:2017 standards, and QMS compliance.",
+    "• Validated AOAC and ASTM methodologies to uphold stringent food safety and product quality.",
+    "• Developed a digital lab results reporting app using Microsoft Power Apps.",
+  ],
+},
     {
-      company: "CBL Group",
-      title: "Quality Assurance Executive",
-      badge: "Full-time",
-      logoUrl: "/cbl.jpg",
-      start: "Oct 2024",
-      end: "Jun 2025",
-      description: "Sri Lanka · On-site",
-      skills:
-        "Laboratory Operations Management (Lab Layout Designing, Procurement & Vendor Management, Workflow Optimization), Internal Auditing - ISO/IEC 17025:2017 (Laboratory Accreditation), Method Implementation & Validation, Regulatory & Compliance, Laboratory Digitalization.",
-    },
-    {
-      company: "Unilever",
+      company: "Executive – Quality Assurance and Instructor – Laboratory (Dual Responsibilities)",
       title:
-        "Executive – Quality Assurance and Instructor – Laboratory (Dual Responsibilities)",
-      badge: "Full-time",
-      logoUrl: "/unilever_logo.jpeg",
+        "Unilever Sri Lanka Limited",
       start: "Sep 2023",
       end: "Sep 2024",
-      description: "Horana, Western Province, Sri Lanka · On-site",
-      skills:
-        "Analytical instrument operation & data interpretation: (GC-FID, FTNIR, FTIR, Celsis Advanced Luminometer) Laboratory Management, Lab Personnel Training, SOPs Development, Laboratory Digitalization"
+      description: [
+        "Directed a multi-user lab of 15+ analysts with zero safety incidents, establishing safety programs and driving compliance by training staff on SOPs, analytical instruments and testing. ",
+        "Authored SOPs that streamlined instrument training (Chemical & Microbiology)",
+        "Performed analytical testing using GC-FID, FTIR spectrometer, and Celsis Advanced Luminometer with spectral interpretation."
+      ],
     },
 
     {
-      company: "Unilever",
+      company: "Industrial Trainee",
       title:
-        "Industrial Trainee - Quality Assurance",
-      badge: "Full-time",
-      logoUrl: "/unilever_logo.jpeg",
+        "Unilever Sri Lanka Limited",
       start: "Feb 2023",
       end: "Jul 2023", 
-      description: "Horana, Western Province, Sri Lanka · On-site",
-      skills:
-        "Managing multiple factory-level projects simultaneously"
+      description: [
+        "Gained industrial experience in a manufacturing environment & drove multiple factory-level project."
+      ]
     },
 
     {
-      company: "Intertek",
-      title: "Intern",
-      badge: "Internship",
-      logoUrl: "/intertek.jpg",
+      company: "Intern Chemist",
+      title: "Intertek Lanka Pvt. Limited, Sri Lanka",
       start: "Aug 2022",
       end: "Jan 2023",
-      description: "Sri Lanka",
-      skills: "Analytical instrument operation: ICP-MS",
+       description: [
+        "Gained industrial experience in a manufacturing environment & drove multiple factory-level project."
+      ]
     },
   ] as Array<{
     company: string;
@@ -109,7 +107,7 @@ Outside the lab, I am an avid hiker who finds inspiration in exploring challengi
     logoUrl?: string;
     start: string;
     end: string;
-    description?: string;
+     description?: string | string[]; 
     skills?: string;
   }>,
   experienceSkills: [
