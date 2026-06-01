@@ -39,6 +39,7 @@ export default function VolunteeringPage() {
                           date="Apr 2026"
                           organization="New Mexico Tech"
                           description="Evaluated three oral presentations and three research posters spanning multiple scientific disciplines. Provided structured and constructive feedback to help enhance students' research quality and scientific communication skills, while supporting the academic standards and integrity of the Symposium."
+                          images={["/volunteer/srs1.jpg", "/volunteer/srs2.jpg"]}
                         />
                       </div>
                     </BlurFade>
