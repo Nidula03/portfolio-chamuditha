@@ -96,7 +96,7 @@ Outside the lab, I am an avid hiker who finds inspiration in exploring challengi
       start: "Aug 2022",
       end: "Jan 2023",
        description: [
-        "•Gained industrial experience in a manufacturing environment & drove multiple factory-level project."
+        "•Conducted heavy metals analysis of textile samples using ICP-MS."
       ]
     },
   ] as Array<{
