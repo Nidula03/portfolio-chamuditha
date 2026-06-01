@@ -6,7 +6,7 @@ export const DATA = {
   name: "Chamuditha Sawan Ekanayake",
   initials: "CE",
   url: "https://chamuditha.vercel.app",
-  description: "MS Analytical Chemistry | Graduate Chemist | Passionate on Laboratory Digitalization | Baden-Powell  &  President Scout Awardee | Mountaineer | Nature Visualist",
+  description: "",
   summary: `Hello! 👋😊
 
 I'm a self-driven researcher with expertise in analytical chemistry and passionate about applying analytical techniques to solve complex problems with a focus on innovation and sustainability through multi-disciplinary knowledge in academic and industrial setting.
@@ -60,10 +60,10 @@ Outside the lab, I am an avid hiker who finds inspiration in exploring challengi
   start: "Oct 2024",
   end: "Jun 2025",
   description: [
-    "• Directed chemical lab operations, ensuring GMP, FDA, ISO compliance through material and product testing.",
-    "• Redesigned lab workflows to ISO/IEC 17025:2017 standards, and QMS compliance.",
-    "• Validated AOAC and ASTM methodologies to uphold stringent food safety and product quality.",
-    "• Developed a digital lab results reporting app using Microsoft Power Apps.",
+    "•Directed chemical lab operations, ensuring GMP, FDA, ISO compliance through material and product testing.",
+    "•Redesigned lab workflows to ISO/IEC 17025:2017 standards, and QMS compliance.",
+    "•Validated AOAC and ASTM methodologies to uphold stringent food safety and product quality.",
+    "•Developed a digital lab results reporting app using Microsoft Power Apps.",
   ],
 },
     {
@@ -73,9 +73,9 @@ Outside the lab, I am an avid hiker who finds inspiration in exploring challengi
       start: "Sep 2023",
       end: "Sep 2024",
       description: [
-        "Directed a multi-user lab of 15+ analysts with zero safety incidents, establishing safety programs and driving compliance by training staff on SOPs, analytical instruments and testing. ",
-        "Authored SOPs that streamlined instrument training (Chemical & Microbiology)",
-        "Performed analytical testing using GC-FID, FTIR spectrometer, and Celsis Advanced Luminometer with spectral interpretation."
+        "•Directed a multi-user lab of 15+ analysts with zero safety incidents, establishing safety programs and driving compliance by training staff on SOPs, analytical instruments and testing.",
+        "•Authored SOPs that streamlined instrument training (Chemical & Microbiology)",
+        "•Performed analytical testing using GC-FID, FTIR spectrometer, and Celsis Advanced Luminometer with spectral interpretation."
       ],
     },
 
@@ -86,7 +86,7 @@ Outside the lab, I am an avid hiker who finds inspiration in exploring challengi
       start: "Feb 2023",
       end: "Jul 2023", 
       description: [
-        "Gained industrial experience in a manufacturing environment & drove multiple factory-level project."
+        "•Gained industrial experience in a manufacturing environment & drove multiple factory-level project."
       ]
     },
 
@@ -96,7 +96,7 @@ Outside the lab, I am an avid hiker who finds inspiration in exploring challengi
       start: "Aug 2022",
       end: "Jan 2023",
        description: [
-        "Gained industrial experience in a manufacturing environment & drove multiple factory-level project."
+        "•Gained industrial experience in a manufacturing environment & drove multiple factory-level project."
       ]
     },
   ] as Array<{

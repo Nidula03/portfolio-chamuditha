@@ -18,19 +18,21 @@ export default function Page() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Left: Profile Picture and Info */}
             <div className="flex flex-col gap-y-6 self-start h-fit md:sticky md:top-24">
-              <BlurFade delay={BLUR_FADE_DELAY}>
-                <div className="size-40 border rounded-full shadow-lg ring-4 ring-muted overflow-hidden">
-                  <Image
-                    src={DATA.avatarUrl}
-                    alt={DATA.name}
-                    width={160}
-                    height={160}
-                    priority
-                    quality={75}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </BlurFade>
+              <div className="flex justify-center w-full">
+                <BlurFade delay={BLUR_FADE_DELAY}>
+                  <div className="size-40 border rounded-full shadow-lg ring-4 ring-muted overflow-hidden">
+                    <Image
+                      src={DATA.avatarUrl}
+                      alt={DATA.name}
+                      width={160}
+                      height={160}
+                      priority
+                      quality={75}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </BlurFade>
+              </div>
               <div>
                 <BlurFadeText
                   delay={BLUR_FADE_DELAY * 1}
@@ -170,8 +172,8 @@ export default function Page() {
                                 </div>
                               ) : null}
                               <div>
-                                <h3 className="text-base font-semibold text-foreground">{item.company}</h3>
-                                <p className="text-sm text-muted-foreground">{item.title}</p>
+                                <h3 className="text-base font-bold text-foreground">{item.company}</h3>
+                                <p className="text-sm font-semibold text-muted-foreground">{item.title}</p>
                                 {item.badge ? (
                                   <p className="mt-1 text-xs text-muted-foreground">
                                     {item.badge}
@@ -186,9 +188,9 @@ export default function Page() {
 
                           {item.description &&
                             (Array.isArray(item.description) ? (
-                              <ul className="mt-3 text-sm text-muted-foreground leading-relaxed list-disc list-inside space-y-1">
+                              <ul className="mt-3 text-sm text-muted-foreground leading-relaxed list-disc space-y-1 pl-4 [&_li]:pl-0">
                                 {item.description.map((desc, i) => (
-                                  <li key={i}>{desc.replace(/^•\s*/, "")}</li>
+                                  <li key={i} className="pl-2">{desc.replace(/^•\s*/, "")}</li>
                                 ))}
                               </ul>
                             ) : (
