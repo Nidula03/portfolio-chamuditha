@@ -18,10 +18,10 @@ Outside the lab, I am an avid hiker who finds inspiration in exploring challengi
   skills: [],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/research", icon: Microscope, label: "Research" },
     { href: "/projects", icon: Code, label: "Projects" },
     { href: "/achievements", icon: Trophy, label: "Achievements" },
     { href: "/volunteering", icon: Hand, label: "Volunteering" },
-    { href: "/research", icon: Microscope, label: "Research" },
     { href: "/blog", icon: BookOpen, label: "Blog" },
     { href: "/interests", icon: Sparkles, label: "Interests" },
   ],
