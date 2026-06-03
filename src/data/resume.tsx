@@ -120,41 +120,35 @@ Outside the lab, I am an avid hiker who finds inspiration in exploring challengi
   ],
   education: [
     {
-      school: "University of Peradeniya",
-      degree: "Master of Analytical Chemistry",
-      logoUrl: "/peradeniya.png",
+      school: "Master of Analytical Chemistry",
+      degree: "University of Peradeniya, Sri Lanka\n(GPA: 3.29/4.00)",
+      // logoUrl: "/peradeniya.png",
       start: "Feb 2024",
-      end: "Present",
-      description:
-        "Independent Study: Nanocomposites for Corrosion Inhibition of Steel-Based Objects",
-      skills:
-        "Instrumental Analysis (EIS, GC-MS, FTIR, PXRD, AAS, NMR, Raman, UV-Vis), Scientific Writing",
+      end: "Aug 2025",
+      description: [
+        "•Independent Study: Nanocomposites for Corrosion Inhibition of Steel-Based Objects."
+      ]
     },
     {
-      school: "College of Chemical Sciences, Institute of Chemistry Ceylon",
-      degree: "Graduateship in Chemistry",
-      logoUrl: "/ichem.png",
-      start: "2019",
-      end: "2023",
-      skills:
-        "Handling & interpreting data (FT-NIR spectrometer, GC-FID), Chemometrics Modeling, Software (Origin, ChemDraw, CurveExpert Professional, Minitab & Mendeley), Method Development & Validation",
+      school: "Graduateship in Chemistry ",
+      degree: "College of Chemical Sciences, Institute of Chemistry Ceylon, Sri Lanka",
+      // logoUrl: "/ichem.png",
+      start: "Jan 2019",
+      end: "Nov 2023",
+      description: [
+        "•Research Project: Novel Model Development in Fourier Transform Near Infrared Spectroscopy (FTNIR) for Total Fatty Matter (TFM) Determination in Baby Soap",
+      ],
     },
     {
-      school: "Chartered Institute of Personnel Management (CIPM)",
-      degree: "Advanced Certificate Course in Human Resource Management",
-      logoUrl: "/cimp.png",
-      start: "Nov 2020",
-      end: "Mar 2021",
-    },
-    {
-      school: "Trinity College Kandy",
-      degree: "Primary and Secondary Education",
-      logoUrl: "/trinity.png",
+      school: "Primary and Secondary Education",
+      degree: "Trinity College Kandy, Sri Lanka",
+      // logoUrl: "/trinity.png",
       start: "Jan 2007",
       end: "Aug 2018",
-      description:
-        "Activities and societies: Boy Scout, Rover Scout, Science Society, Electronic Club. G.C.E Advanced Level Examination (2018): Biological Science. ACHIEVEMENTS: President Scout Award (2016), Scout of the Year 2016, Best Explorer Scout - 18th Sampath Ranawaka Memorial Challenge Trophy All Island Competition Hike (2016), Represented Sri Lanka at the 23rd World Scout Jamboree, Japan (2015). Thumbnail for Baden Powell Award - Highest International Award in Scouting (Dec, 2024).",
-      skills: "Team Leadership, Project Planning, Project Management",
+      description: [
+        "•G.C.E Advanced Level Examination (2018): Biological Science",
+        "•Activities and societies: Boy Scout, Rover Scout, Science Society, Electronic Club."
+      ],
     },
   ] as Array<{
     school: string;
@@ -163,7 +157,7 @@ Outside the lab, I am an avid hiker who finds inspiration in exploring challengi
     logoUrl?: string;
     start: string;
     end: string;
-    description?: string;
+    description?: string | string[];
     skills?: string;
   }>,
   blogs: [

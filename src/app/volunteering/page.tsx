@@ -51,6 +51,7 @@ export default function VolunteeringPage() {
                           date="Feb 2022 - Dec 2023"
                           organization="Trinity College Kandy & Vidiyaloka Maha Vidyalaya Kandy, Sri Lanka"
                           description="Conducted weekly seminars and practical courses on the scouting badge syllabus with over 110 scouts aged 14 to 18, to assist in the completion of the badge work with 100 individual exams to achieve the President Scout Award."
+                          images={["/volunteer/scoutInstructor.JPG", "/volunteer/scoutInstructor2.JPG"]}
                         />
                       </div>
                     </BlurFade>
@@ -62,6 +63,7 @@ export default function VolunteeringPage() {
                           date="Jul 2019 - Sep 2019"
                           organization="Department of Agricultural Biology at University of Peradeniya"
                           description="Engaged as a volunteer researcher for 2-months. Field visited Horton Plains National Park, Sri Lanka, and reported to the supervisor on duties related to the research topic on A Preliminary Estimation of the Sambar Deer, which included acquiring an accurate count of the Sambar Deer and categorizing them."
+                          images={["/volunteer/researcher.jpg"]}
                         />
                       </div>
                     </BlurFade>

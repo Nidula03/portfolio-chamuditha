@@ -33,13 +33,15 @@ export default function Page() {
                   </div>
                 </BlurFade>
               </div>
-              <div>
-                <BlurFadeText
-                  delay={BLUR_FADE_DELAY * 1}
-                  className="text-2xl  font-bold"
-                  yOffset={8}
-                  text={DATA.name}
-                />
+              <div className="w-full">
+                <div className="text-center pl-6">
+                  <BlurFadeText
+                    delay={BLUR_FADE_DELAY * 1}
+                    className="text-2xl  font-bold"
+                    yOffset={8}
+                    text={DATA.name}
+                  />
+                </div>
                 <BlurFadeText
                   delay={BLUR_FADE_DELAY * 2}
                   className="text-sm text-muted-foreground mt-2"
@@ -50,7 +52,7 @@ export default function Page() {
 
               {/* Contents Section */}
               <BlurFade delay={BLUR_FADE_DELAY * 3}>
-                <div className="bg-muted/20 rounded-lg p-4 border border-border/40">
+                <div className="bg-muted/20 rounded-lg p-4 border border-border/40 w-full">
                   <h3 className="text-sm font-semibold mb-3">Contents</h3>
                   <div className="flex flex-col gap-2">
                     <a href="#About" className="text-muted-foreground hover:text-foreground transition-colors text-xs">About me</a>
@@ -118,7 +120,7 @@ export default function Page() {
                             ) : null}
                             <div>
                               <h3 className="text-base font-semibold text-foreground">{item.school}</h3>
-                              <p className="text-sm text-muted-foreground">{item.degree}</p>
+                              <p className="text-sm text-muted-foreground whitespace-pre-wrap">{item.degree}</p>
                             </div>
                           </div>
                           <p className="text-xs text-muted-foreground sm:mt-0 mt-1">
@@ -126,11 +128,18 @@ export default function Page() {
                           </p>
                         </div>
 
-                        {item.description ? (
-                          <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                            {item.description}
-                          </p>
-                        ) : null}
+                        {item.description &&
+                          (Array.isArray(item.description) ? (
+                            <ul className="mt-3 text-sm text-muted-foreground leading-relaxed list-disc space-y-1 pl-4 [&_li]:pl-0">
+                              {item.description.map((desc, i) => (
+                                <li key={i} className="pl-2">{desc.replace(/^•\s*/, "")}</li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                              {item.description}
+                            </p>
+                          ))}
 
                         {item.skills ? (
                           <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
