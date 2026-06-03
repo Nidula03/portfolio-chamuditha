@@ -20,22 +20,22 @@ const tabs = [
 
 const imageDescriptions: Record<string, string> = {
   'IMG_5960.jpg': 'Jodu Ella Water Falls, Panvilla, Sri Lanka',
-  'IMG_5964.jpg': 'Mountain Vista',
-  'IMG_5959.jpg': 'Trail View',
-  'IMG_5967.jpg': 'Peak Summit',
-  'IMG_5955.jpg': 'Forest Path',
-  'IMG_5972.jpg': 'Scenic Overlook',
-  'IMG_5963.jpg': 'Alpine Meadow',
-  'IMG_5961.jpg': 'Rocky Terrain',
-  'IMG_5970.jpg': 'Water Stream',
-  'IMG_5958.jpg': 'Valley View',
-  'IMG_5965.jpg': 'Mountain Ridge',
-  'IMG_5968.jpg': 'Sunset Peak',
-  'IMG_5962.jpg': 'Forest Trail',
-  'IMG_5969.jpg': 'Morning Mist',
-  'IMG_5957.jpg': 'Canyon View',
-  'IMG_5971.jpg': 'Alpine Lake',
-  'IMG_5966.jpg': 'Ridge Walk',
+  'IMG_5964.jpg': 'Hunasgiriya Mountain, Sri Lanka',
+  'IMG_5959.jpg': 'Patipolla Mountain, Sri Lanka',
+  'IMG_5967.jpg': 'Mount View, Sri Lanka',
+  'IMG_5955.jpg': 'Yakdessagala  Mountain, Sri Lanka',
+  'IMG_5972.jpg': 'Ella Mountain, Sri Lanka',
+  'IMG_5963.jpg': 'Manigala Mountain, Sri Lanka',
+  'IMG_5961.jpg': 'Arangalla Mountain, Sri Lanka',
+  'IMG_5970.jpg': 'Great Western Mountain, Sri Lanka',
+  'IMG_5958.jpg': 'Kalabokka 360, Sri Lanka',
+  'IMG_5965.jpg': 'Hanthana Mountain, Sri Lanka',
+  'IMG_5968.jpg': 'Deniyaya, Sri Lanka',
+  'IMG_5962.jpg': 'Kondagala Mountain, Sri Lanka',
+  'IMG_5969.jpg': 'Bana Samanala Mountain, Sri Lanka',
+  'IMG_5957.jpg': 'Great Western Mountain, Sri Lanka',
+  'IMG_5971.jpg': 'Great Western Mountain, Sri Lanka',
+  'IMG_5966.jpg': 'Pidurangala Mountain, Sri Lanka',
 };
 
 function InstagramImageCarousel() {
@@ -248,24 +248,24 @@ export default function InterestsPage() {
                   'IMG_5966.jpg',
                 ].map((imageName, idx) => (
                   <BlurFade key={imageName} delay={BLUR_FADE_DELAY * (4.5 + idx * 0.05)} inView>
-                    <div className={`mb-4 relative rounded-lg overflow-hidden ${imageName === 'IMG_5960.jpg' ? 'group' : ''}`}>
-                      <Image
-                        src={`/hiking_pics/${imageName}`}
-                        alt={`Hiking photo ${idx + 1}`}
-                        width={500}
-                        height={600}
-                        sizes="(max-width: 640px) 50vw, 33vw"
-                        className="w-full h-auto rounded-lg object-cover"
-                        loading="lazy"
-                        quality={85}
-                      />
-                      {/* Hover overlay with description - only for IMG_5960.jpg */}
-                      {imageName === 'IMG_5960.jpg' && (
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
-                          <p className="text-white text-sm font-semibold leading-tight">
-                            {imageDescriptions[imageName]}
-                          </p>
-                        </div>
+                    <div className="mb-4">
+                      <div className="relative rounded-lg overflow-hidden">
+                        <Image
+                          src={`/hiking_pics/${imageName}`}
+                          alt={`Hiking photo ${idx + 1}`}
+                          width={500}
+                          height={600}
+                          sizes="(max-width: 640px) 50vw, 33vw"
+                          className="w-full h-auto rounded-lg object-cover"
+                          loading="lazy"
+                          quality={85}
+                        />
+                      </div>
+                      {/* Caption below image - for specific images */}
+                      {['IMG_5960.jpg', 'IMG_5964.jpg', 'IMG_5959.jpg', 'IMG_5967.jpg', 'IMG_5955.jpg', 'IMG_5972.jpg', 'IMG_5963.jpg', 'IMG_5961.jpg', 'IMG_5970.jpg', 'IMG_5958.jpg', 'IMG_5965.jpg', 'IMG_5968.jpg', 'IMG_5962.jpg', 'IMG_5969.jpg', 'IMG_5957.jpg', 'IMG_5971.jpg', 'IMG_5966.jpg'].includes(imageName) && (
+                        <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm font-medium mt-2 text-center">
+                          {imageDescriptions[imageName]}
+                        </p>
                       )}
                     </div>
                   </BlurFade>
