@@ -111,12 +111,12 @@ Outside the lab, I am an avid hiker who finds inspiration in exploring challengi
     skills?: string;
   }>,
   experienceSkills: [
-    "Project Management", 
-    "Project Planning", 
-    "Team Leadership",
-    "Analytical Chemistry (GC-FID, FTNIR, FTIR, Celsis Advanced II)",
-    "Industrial Automation",
-    "Quality & Supply Chain Management",
+    "Leadership & operations",
+    "Analytical instrument operation",
+    "SOP development",
+    "Multi-user laboratory management",
+    "Budgeting & procurement",
+    "Personnel onboarding and training",
   ],
   education: [
     {

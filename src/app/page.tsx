@@ -222,16 +222,17 @@ export default function Page() {
                         yOffset={8}
                         text="Skills"
                       />
-                      <div className="flex flex-wrap gap-2">
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2 mt-1">
                         {DATA.experienceSkills.map((skill) => (
-                          <span
+                          <li
                             key={skill}
-                            className="rounded-full border border-border/60 bg-muted/30 px-4 py-2 text-sm text-muted-foreground"
+                            className="flex items-center gap-2 text-sm text-muted-foreground"
                           >
+                            <span className="text-foreground">•</span>
                             {skill}
-                          </span>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
                   ) : null}
 
