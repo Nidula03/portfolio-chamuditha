@@ -51,11 +51,11 @@ export default function Page() {
                 <div className="bg-muted/20 rounded-lg p-4 border border-border/40 w-96">
                   <h3 className="text-sm font-semibold mb-3">Contents</h3>
                   <div className="flex flex-col gap-2">
-                    <a href="#About" className="text-muted-foreground hover:text-foreground transition-colors text-xs">About me</a>
-                    <a href="#Education" className="text-muted-foreground hover:text-foreground transition-colors text-xs">Education</a>
-                    <a href="#Work Experience" className="text-muted-foreground hover:text-foreground transition-colors text-xs">Work Experience</a>
-                    <a href="#Skills" className="text-muted-foreground hover:text-foreground transition-colors text-xs">Skills</a>
-                    <a href="#Contact" className="text-muted-foreground hover:text-foreground transition-colors text-xs">Contact</a>
+                    <a href="#About" className="text-muted-foreground hover:text-foreground transition-colors text-sm">About me</a>
+                    <a href="#Education" className="text-muted-foreground hover:text-foreground transition-colors text-sm">Education</a>
+                    <a href="#Work Experience" className="text-muted-foreground hover:text-foreground transition-colors text-sm">Work Experience</a>
+                    <a href="#Skills" className="text-muted-foreground hover:text-foreground transition-colors text-sm">Skills</a>
+                    <a href="#Contact" className="text-muted-foreground hover:text-foreground transition-colors text-sm">Contact</a>
                   </div>
                 </div>
               </BlurFade>
@@ -115,8 +115,8 @@ export default function Page() {
                               </div>
                             ) : null}
                             <div>
-                              <h3 className="text-base font-semibold text-foreground">{item.school}</h3>
-                              <p className="text-sm text-muted-foreground whitespace-pre-wrap">{item.degree}</p>
+                              <h3 className="text-lg font-semibold text-foreground">{item.school}</h3>
+                              <p className="text-base text-muted-foreground whitespace-pre-wrap">{item.degree}</p>
                             </div>
                           </div>
                           <p className="text-xs text-muted-foreground sm:mt-0 mt-1">
@@ -126,13 +126,13 @@ export default function Page() {
 
                         {item.description &&
                           (Array.isArray(item.description) ? (
-                            <ul className="mt-3 text-sm text-muted-foreground leading-relaxed list-disc space-y-1 pl-4 [&_li]:pl-0">
+                            <ul className="mt-3 text-base text-muted-foreground leading-relaxed list-disc space-y-1 pl-4 [&_li]:pl-0">
                               {item.description.map((desc, i) => (
                                 <li key={i} className="pl-2">{desc.replace(/^•\s*/, "")}</li>
                               ))}
                             </ul>
                           ) : (
-                            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                            <p className="mt-3 text-base text-muted-foreground leading-relaxed">
                               {item.description}
                             </p>
                           ))}
@@ -177,8 +177,8 @@ export default function Page() {
                                 </div>
                               ) : null}
                               <div>
-                                <h3 className="text-base font-bold text-foreground">{item.company}</h3>
-                                <p className="text-sm font-semibold text-muted-foreground">{item.title}</p>
+                                <h3 className="text-lg font-bold text-foreground">{item.company}</h3>
+                                <p className="text-base font-semibold text-muted-foreground">{item.title}</p>
                                 {item.badge ? (
                                   <p className="mt-1 text-xs text-muted-foreground">
                                     {item.badge}
@@ -193,13 +193,13 @@ export default function Page() {
 
                           {item.description &&
                             (Array.isArray(item.description) ? (
-                              <ul className="mt-3 text-sm text-muted-foreground leading-relaxed list-disc space-y-1 pl-4 [&_li]:pl-0">
+                              <ul className="mt-3 text-base text-muted-foreground leading-relaxed list-disc space-y-1 pl-4 [&_li]:pl-0">
                                 {item.description.map((desc, i) => (
                                   <li key={i} className="pl-2">{desc.replace(/^•\s*/, "")}</li>
                                 ))}
                               </ul>
                             ) : (
-                              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                              <p className="mt-3 text-base text-muted-foreground leading-relaxed">
                                 {item.description}
                               </p>
                             ))}
