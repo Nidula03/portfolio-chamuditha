@@ -17,34 +17,30 @@ export default function Page() {
           {/* Hero with Profile and About Side by Side */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Left: Profile Picture and Info */}
-            <div className="flex flex-col gap-y-6 self-start h-fit md:sticky md:top-24">
-              <div className="flex justify-center w-full">
-                <BlurFade delay={BLUR_FADE_DELAY}>
-                  <div className="size-40 border rounded-full shadow-lg ring-4 ring-muted overflow-hidden">
-                    <Image
-                      src={DATA.avatarUrl}
-                      alt={DATA.name}
-                      width={160}
-                      height={160}
-                      priority
-                      quality={75}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </BlurFade>
-              </div>
-              <div className="w-full">
-                <div className="text-center pl-6">
-                  <BlurFadeText
-                    delay={BLUR_FADE_DELAY * 1}
-                    className="text-2xl  font-bold"
-                    yOffset={8}
-                    text={DATA.name}
+            <div className="flex flex-col gap-y-6 items-center h-fit md:sticky md:top-24">
+              <BlurFade delay={BLUR_FADE_DELAY}>
+                <div className="size-40 border rounded-full shadow-lg ring-4 ring-muted overflow-hidden">
+                  <Image
+                    src={DATA.avatarUrl}
+                    alt={DATA.name}
+                    width={160}
+                    height={160}
+                    priority
+                    quality={75}
+                    className="w-full h-full object-cover"
                   />
                 </div>
+              </BlurFade>
+              <div className="flex flex-col items-center gap-y-1">
+                <BlurFadeText
+                  delay={BLUR_FADE_DELAY * 1}
+                  className="text-2xl font-bold text-center"
+                  yOffset={8}
+                  text={DATA.name}
+                />
                 <BlurFadeText
                   delay={BLUR_FADE_DELAY * 2}
-                  className="text-sm text-muted-foreground mt-2"
+                  className="text-sm text-muted-foreground text-center"
                   yOffset={8}
                   text={DATA.description}
                 />
@@ -52,7 +48,7 @@ export default function Page() {
 
               {/* Contents Section */}
               <BlurFade delay={BLUR_FADE_DELAY * 3}>
-                <div className="bg-muted/20 rounded-lg p-4 border border-border/40 w-full">
+                <div className="bg-muted/20 rounded-lg p-4 border border-border/40 w-96">
                   <h3 className="text-sm font-semibold mb-3">Contents</h3>
                   <div className="flex flex-col gap-2">
                     <a href="#About" className="text-muted-foreground hover:text-foreground transition-colors text-xs">About me</a>
