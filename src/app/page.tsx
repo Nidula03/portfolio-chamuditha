@@ -115,7 +115,7 @@ export default function Page() {
                               </div>
                             ) : null}
                             <div>
-                              <h3 className="text-lg font-semibold text-foreground">{item.school}</h3>
+                              <h3 className="text-lg font-bold text-foreground">{item.school}</h3>
                               <p className="text-base text-muted-foreground whitespace-pre-wrap">{item.degree}</p>
                             </div>
                           </div>
