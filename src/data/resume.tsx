@@ -162,6 +162,27 @@ Outside the lab, I am an avid hiker who finds inspiration in exploring challengi
   }>,
   blogs: [
     {
+      title: "My To-Do Book, Catalyst for Life",
+      href: "https://medium.com/@chamudithasawan/my-to-do-book-catalyst-for-life-993916ca136e",
+      dates: "July 6, 2026",
+      active: true,
+      description:
+        "A reflection on how a simple physical to-do book, combined with planning and time blocking, became a reliable system for staying focused, accountable, and productive.",
+      technologies: ["Productivity", "Time Blocking", "Planning"],
+      links: [
+        {
+          type: "Read on Medium",
+          href: "https://medium.com/@chamudithasawan/my-to-do-book-catalyst-for-life-993916ca136e",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/todo.webp",
+      video: "",
+      claps: 52,
+      comments: 0,
+      mediumPostId: "993916ca136e",
+    },
+    {
       title: "Ditch the Spreadsheet: A Step-by-Step Guide to Plotting in KaleidaGraph",
       href: "https://medium.com/@chamudithasawan/ditch-the-spreadsheet-a-step-by-step-guide-to-plotting-in-kaleidagraph-24cabe6610be",
       dates: "May 24, 2026",
