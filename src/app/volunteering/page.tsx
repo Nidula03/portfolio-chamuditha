@@ -31,7 +31,7 @@ export default function VolunteeringPage() {
               <div className="flex min-h-0 flex-col gap-y-6 sm:gap-y-8 w-full px-4 sm:px-8 md:px-16 lg:px-20">
                 <div>
                   <div className="grid grid-cols-1 gap-6 w-full mx-auto max-w-6xl">
-                    <BlurFade delay={BLUR_FADE_DELAY * 4}>
+                    {/* <BlurFade delay={BLUR_FADE_DELAY * 4}>
                       <div className="border border-border bg-background rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300">
                         <AchievementCard
                           index={0}
@@ -42,7 +42,7 @@ export default function VolunteeringPage() {
                           images={["/volunteer/srs1.jpg", "/volunteer/srs2.JPG"]}
                         />
                       </div>
-                    </BlurFade>
+                    </BlurFade> */}
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
                       <div className="border border-border bg-background rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300">
                         <AchievementCard
